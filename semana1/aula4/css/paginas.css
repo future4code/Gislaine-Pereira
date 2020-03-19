@@ -1,0 +1,69 @@
+* {
+	padding:0;
+	margin:0;
+	vertical-align:baseline;
+	border:0;
+}
+
+header{
+	display: block;
+	background-image: url("images/bordas.jpg");
+	height: 30px;
+	padding: 10px;
+	vertical-align: middle;
+	text-align: center;
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif; 
+	font-size: 20px;
+}
+
+section {
+	padding-top: 20px;
+	background-color: #f8ecf3;
+	padding-bottom: 20px
+}
+
+footer{
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif; 
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+p{
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif; 
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif;
+	text-align: center;
+}
+
+.titulo-pagina {
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif; 
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+}
+
+#logo-principal {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle
+}
+
+.titulo-secundario {
+	color: #3d2718;
+	font-family: Gabriola, Arial, sans-serif; 
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
