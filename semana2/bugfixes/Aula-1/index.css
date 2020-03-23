@@ -48,7 +48,7 @@ div img {
 
 
 .container {
-    height: 500px;
+    height: 300px;
     text-align: center;
     padding-top: 60px;
 }
@@ -98,6 +98,7 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    margin: auto;
 }
 
 td button {
@@ -117,6 +118,11 @@ td button:active {
     background-color: #c44f00;
     color: white;
 }
+
+tr td:last-of-type{
+  margin-top: 100px;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -136,6 +142,7 @@ td button:active {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin-top: 100px
 }
 
 #back-button:hover {
@@ -146,3 +153,4 @@ td button:active {
     background-color: #635a3d;
     color: white;
 }
+
