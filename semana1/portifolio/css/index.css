@@ -1,0 +1,210 @@
+*{
+	margin:0;
+	padding:0;
+	border: none;
+	
+}
+
+body{
+	background-image: url("fundo-folhas.jpg");
+}
+
+a{
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	padding: 0 27px;
+	position: relative; 
+	left: -80px;
+}
+
+a:link, a:visited{
+	color: #033A08 ;
+}
+
+a:hover{
+	color: #F5FEF3 ; 
+	background: #011703;
+}
+
+a:active{
+	color: #e4f371
+}
+
+input{
+	width: 200px;
+	padding-left: 10px;
+	border-radius: 15px;
+    border: 1px solid #011703;
+    height: 30px;
+}
+
+#retangulo-claro{
+	background: #F5FEF3; 
+	padding: 10px; 
+	margin: 20px 60px;
+	color:#F5FEF3;
+	font-weight: bold;
+}
+
+#header{
+	padding-left: 400px;
+	height: 10vh;
+	margin: 0 10px;
+}
+
+
+#foto-perfil{
+	width: 50vh;
+	margin-left: 30px;
+	position: relative;
+	top:-60px;
+	float: left;
+}
+
+#icones{
+	width: 60%;
+	display: block;
+	margin: auto;
+}
+
+#nome-titulo{
+	font-size: 100px;
+	text-align: center;
+	position: relative;
+	right: 30px;
+}
+
+#sobre-mim{
+	margin: 50px 0px;
+	font-size: 25px;
+	padding:70px;
+	text-align: center;
+	display: block;
+}
+
+#formacao, #projetos, #habilidades{
+	border-radius: 10px;
+	border: 5px solid #F5FEF3;
+	margin: 0 30px 30px 30px;
+	padding: 20px;
+	height: 500px;
+	vertical-align: middle;
+}
+
+#logo-ufsc, #logo-udemy{
+	width: 200px;
+	margin: auto;
+	align-self: center;
+	}
+
+#logo-future{
+	width: 350px;
+	margin: auto;
+	align-self: center;
+	position: relative;
+	top: 110px;
+}
+
+ #logo-ufpr{
+	width: 250px;
+	margin: auto;
+	align-self: center;
+	position: relative;
+	top: 60px;
+}
+
+#assinatura{
+	display: inline;
+	color:#011703;
+	text-align: center;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	float: left;
+	margin: 70px 150px 0 70px;
+}
+
+#foto-contato{
+	width: 120px;
+	display:inline;
+	margin: auto;
+	align-self: center;
+}
+
+#facebook, #instagram, #linkedin{
+	width: 2vw;
+	font-family: Gabriola, Helvetica, Sans-serif;
+}
+
+#lattes{
+	width: 2vw;
+	font-family: Helvetica, Sans-serif;
+}
+
+#formulario-contato{
+	display: inline;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-size: 20px;
+	float:left;
+	padding: 10px 150px 0 0px;
+	}
+
+#botao{
+	color: #F5FEF3 ; 
+	background: #011703;
+	border-radius: 2px;
+	width:10vw;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-size: 20px;
+}
+
+#redes-sociais{
+	display: inline;
+	font-size: 17px;
+	color:#011703;
+	float: left;
+	margin: 70px 150px 0 70px;
+}
+
+#footer{
+	background-color: #F5FEF3;
+	margin: 0 10px;
+	color:#011703;
+	height: 250px;
+}
+
+.divisoria-flutuante{
+	display: inline;
+}
+
+.parte-escura{
+	background-color:#011703;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	margin: 0 10px;
+	position: relative; 
+	left: -60px;
+	width: 96vw;
+	}
+
+.titulo-rodape{
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-size: 30px;
+	color:#011703;
+}
+
+.cursos{
+	display: inline;
+	color:#F5FEF3;
+	text-align: center;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-size: 30px;
+	float: left;
+	margin: 10px 20px;
+	vertical-align: middle;
+}
+
+.titulo-secao{
+	color:#F5FEF3;
+	text-align: center;
+	font-family: Gabriola, Helvetica, Sans-serif;
+	font-size: 50px;
+}
