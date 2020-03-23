@@ -21,10 +21,6 @@ input {
     width: 500px;
 }
 
-button:focus {
-    color: white;
-}
-
 img {
     width: 100px;
 }
@@ -47,9 +43,6 @@ div img {
     margin: 25px;
 }
 
-.botao-amarelo:hover {
-    background-color: #c44f00;
-}
 
 .container {
     height: 500px;
@@ -112,6 +105,15 @@ td button {
     color: black;
 }
 
+td button:hover {
+    background-color: #c44f00;
+    color: black;
+}
+
+td button:active {
+    background-color: #c44f00;
+    color: white;
+}
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -134,5 +136,10 @@ td button {
 }
 
 #back-button:hover {
-    background-color: #635a3d
+    background-color: #635a3d;
+}
+
+#back-button:active {
+    background-color: #635a3d;
+    color: white;
 }
