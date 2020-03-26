@@ -3,6 +3,11 @@
     border: 0;
 }
 
+body{
+    background-color: #ffffff;
+    width: 100vw;
+}
+
 main{
     height: 160vh;
     width: 100vw;
@@ -52,7 +57,6 @@ header > p{
 .conteudo-principal {
     margin-top: 10px ;
     display: grid;
-    background-color: #ffffff;
     grid-template-columns: repeat(4,25%);
     grid-template-rows: repeat(4,25%);
     row-gap: 10px;
