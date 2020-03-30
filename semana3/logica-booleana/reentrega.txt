@@ -1,0 +1,88 @@
+Exercícios de escrita de código - reentrega (continuação dos exercícios feitos até 17h)
+
+
+2. 
+const nome = prompt("Qual o seu nome?");
+console.log("1. Qual o seu endereço?\nResposta:" + nome)
+
+const animal = prompt("Qual o seu animal favorito?");
+console.log("2. Qual o seu animal favorito?\nResposta:" + animal)
+
+const comida = prompt("Qual a sua comida predileta?");
+console.log("3. Qual a sua comida predileta?\nResposta:" + comida)
+
+const curiosidade = prompt("Conte-nos uma curiosidade sobre você");
+console.log("4. Conte-nos uma curiosidade sobre você\nResposta:" + curiosidade)
+
+const sonho = prompt("Qual o seu maior sonho?");
+console.log("5. Qual o seu maior sonho?\nResposta:" + sonho)
+
+
+3.
+a)
+const kwh = 280
+valor_total = kwh*0.05
+
+console.log("O valor total da conta é R$" + valor_total)
+
+
+b)
+const kwh = prompt("Insira o consumo em Kwh - somente valores");
+valor_total = kwh*0.05
+valor_com_desconto = valor_total*0.85
+
+console.log("O valor total da sua conta é R$" + valor_total)
+console.log("O valor da sua conta com desconto fica R$" + valor_com_desconto)
+
+
+
+Desafio
+1-
+a)
+let libra = 20
+quilo = libra * 0.453592
+
+console.log("20 lb equivalem a " + quilo + "kg")
+
+b)
+let onça = 10.5
+quilo = onça * 0.0283495
+
+console.log("10,5oz equivalem a " + quilo + "kg")
+
+c)
+let milha = 100
+metro = milha * 1609.34
+
+console.log("100mi equivalem a " + metro + "m")
+
+d)
+let pes = 50
+metro = pes * 0.3048
+
+console.log("50ft equivalem a " + metro + "m")
+
+e)
+let galoes = 103.56
+litro = galoes * 3.78541
+
+console.log("103.56gal equivalem a " + litro + "l")
+
+f)
+let xicara = 450
+litro = xicara * 0.24
+
+console.log("450xic equivalem a " + litro + "l")
+
+g)
+let milha = prompt("Insira o valor em milhas")
+metro = milha * 1609.34
+console.log(milha + "mi equivalem a " + metro + "m")
+
+let xicara = prompt("Insira o valor em xícaras")
+litro = xicara * 0.24
+console.log(xicara + "xic equivalem a " + litro + "l")
+
+let pes = prompt("Insira o valor em pés")
+metro = pes * 0.3048
+console.log(pes + "ft equivalem a " + metro + "m")
