@@ -1,0 +1,58 @@
+Exercícios de interpretação de código
+
+1 - 
+a) false
+b) false
+c)  true
+d)  false
+e)  boolean
+
+2 - 
+a) É um tipo de código para lista, permite guardar e também acessar mais de uma informação ao mesmo tempo.
+b) 0
+c) Utilizando o comando length
+d) O códeigo saiu assim:
+	a.  false
+	b.  false
+	c.  true
+	d.  false
+	e.  boolean
+	e.  boolean (não seira o f?)
+
+	I.  undefined
+	II.  null
+	III.  11
+	IV.  3  e  4
+	V.  19  e  9
+	VI.  3
+	VII.  1
+
+
+Exercícios de escrita de código	
+
+1- 
+a)
+let GRAUS_FAHRENHEIT = 77;
+let GRAUS_KELVIN = (GRAUS_FAHRENHEIT-32)*5/9+273.15;
+console.log(GRAUS_KELVIN + "ºK")
+
+b)
+let GRAUS_CELSIUS = 80;
+GRAUS_FAHRENHEIT = (GRAUS_CELSIUS)*9/5+32
+console.log(GRAUS_FAHRENHEIT + "ºF")
+
+c)
+let GRAUS_CELSIUS = 30;
+GRAUS_FAHRENHEIT = (GRAUS_CELSIUS)*9/5+32
+console.log(GRAUS_FAHRENHEIT + "ºF")
+
+GRAUS_KELVIN = (GRAUS_FAHRENHEIT - 32) * 5 / 9 + 273.15
+console.log(GRAUS_KELVIN + "ºK")
+
+d)
+let GRAUS_CELSIUS =prompt("Digite o valor em Graus Celsius")
+GRAUS_FAHRENHEIT = (GRAUS_CELSIUS) * 9 / 5 + 32
+console.log(GRAUS_FAHRENHEIT + "ºF")
+
+GRAUS_KELVIN = (GRAUS_FAHRENHEIT - 32) * 5 / 9 + 273.15
+console.log(GRAUS_KELVIN + "ºK")
