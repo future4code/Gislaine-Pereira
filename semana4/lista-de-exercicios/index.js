@@ -19,4 +19,7 @@ EXERCÍCIO 3
         Quantidade de números 14
         6
         8
+
+EXERCÍCIO 4
+    Estes comandos irão percorrer o array numeros. O numero1 será o menor valor (-10) e o número2 o maior (1590)
 */
