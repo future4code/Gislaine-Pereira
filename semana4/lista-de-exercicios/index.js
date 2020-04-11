@@ -51,4 +51,29 @@ for (let i = 0; i <= ((numeroFornecido*2)-1); i++) {
 console.log(quantidadeDeNumerosPares)
 
 
+EXERCÍCIO 3
+
+ladoA = Number(prompt('Digite o tamanho (cm) do primeiro lado'))
+ladoB = Number(prompt('Digite o tamanho (cm) do segundo lado'))
+ladoC = Number(prompt('Digite o tamanho (cm) do terceiro lado'))
+let tipoTriangulo = ""
+
+function queTrianguloSera(ladoA, ladoB, ladoC) {
+        
+    if (ladoA === ladoB && ladoB === ladoC) {
+        tipoTriangulo += 'Este triângulo é Equilátero'
+    } 
+    else if (ladoA !== ladoB && ladoB !== ladoC && ladoA !== ladoC) {
+        tipoTriangulo += 'Este triângulo é Escaleno'
+    }
+    else{
+        tipoTriangulo += 'Este triângulo é Isóceles'
+    }
+    return tipoTriangulo
+}
+
+console.log(queTrianguloSera(ladoA,ladoB,ladoC))
+
+
+
 */
