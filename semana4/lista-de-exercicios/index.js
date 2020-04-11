@@ -30,10 +30,25 @@ EXERCÍCIO 4
 
 
 EXERCÍCIO 1
+    a)F
+    b)F
+    c)T
+    d)T
+    e)T (porém tem 2 repetidos)
 
-a)F
-b)F
-c)T
-d)T
-e)T (porém tem 2 repetidos)
-    */
+EXERCÍCIO 2
+    Este código não vai funcionar. Não está vendo números pares e também falta pedir o número ao usuário. 
+    Segue o código correto:
+
+numeroFornecido = Number(prompt('Digite o número desejado'))
+quantidadeDeNumerosPares = []
+
+for (let i = 0; i <= ((numeroFornecido*2)-1); i++) {
+    if (i % 2 === 0) {
+        quantidadeDeNumerosPares.push(i)
+    }
+}
+console.log(quantidadeDeNumerosPares)
+
+
+*/
