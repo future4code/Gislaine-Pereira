@@ -1,9 +1,16 @@
-/* ==========================  EXERCÍCIOS DE LEITURA DE CÓDIGO =====================================
+/* ========================================================================================================
+================================== PROJETO SEMANA, PARTE 1 - AULA 14 ======================================
+=========================================================================================================== 
+
+
+
+********************************  EXERCÍCIOS DE LEITURA DE CÓDIGO *****************************************
 
 EXERCÍCIO 1 
     O valor impresso depende do valor indicado pelo usuário no prompt. Esta função vai multiplicar o valor 
     de 100 pelo número indicado pelo usuário.
 
+-----------------------------------------------------------------------------------------------------
 EXERCÍCIO 2 
     Esta função leva em consideração 2 parâmetros: O tipo de investimento e o valor investido. 
     Por exemplo, se o usuário escolher a Poupança, o valor investido será multiplicado por 1.03, 
@@ -11,8 +18,7 @@ EXERCÍCIO 2
     novoMontante = 165
     segundoMontate = (vai ter um alert informando que o tipo de investimento é incorreto)
 
-    
-
+---------------------------------------------------------------------------------------------------
 EXERCÍCIO 3
     Separa a array original em duas. A array1 com os números pares e a array2 com os ímpares.
     Respostas impressas no console:
@@ -20,13 +26,14 @@ EXERCÍCIO 3
         6
         8
 
+----------------------------------------------------------------------------------------------
 EXERCÍCIO 4
     Estes comandos irão percorrer o array numeros. O numero1 será o menor valor (-10) e o número2 o maior (1590)
 
 
 
 
-==========================  EXERCÍCIOS DE LÓGICA DE PROGRAMAÇÃO =====================================
+********************************  EXERCÍCIOS DE LÓGICA DE PROGRAMAÇÃO ******************************************
 
 
 EXERCÍCIO 1
@@ -36,6 +43,7 @@ EXERCÍCIO 1
     d)T
     e)T (porém tem 2 repetidos)
 
+----------------------------------------------------------------------------------
 EXERCÍCIO 2
     Este código não vai funcionar. Não está vendo números pares e também falta pedir o número ao usuário. 
     Segue o código correto:
@@ -50,7 +58,7 @@ for (let i = 0; i <= ((numeroFornecido*2)-1); i++) {
 }
 console.log(quantidadeDeNumerosPares)
 
-
+-------------------------------------------------------------------------------------
 EXERCÍCIO 3
 
 ladoA = Number(prompt('Digite o tamanho (cm) do primeiro lado'))
@@ -74,6 +82,49 @@ function queTrianguloSera(ladoA, ladoB, ladoC) {
 
 console.log(queTrianguloSera(ladoA,ladoB,ladoC))
 
+-------------------------------------------------------------------------------------------
+EXERCÍCIO 4
 
+
+num1 = Number(prompt('Digite o primeiro número'))
+num2 = Number(prompt('Digite o segundo número'))
+
+function qualMaior(a, b) {
+    let maior = 0
+   
+    if (a<b) {
+        maior = b
+    } else {
+       maior = a 
+    }
+    return maior
+}
+
+function divisível(a,b){
+    let resposta = ""
+    
+    if (a%b === 0) {
+        resposta = ' é '
+    } 
+    else {
+        resposta = ' não é '
+    }
+    return resposta
+}
+
+function qualMenor(a, b) {
+    let menor = 0
+
+    if (a > b) {
+        menor = b
+    } else {
+        menor = a
+    }
+    return menor
+}
+
+console.log('O maior é: ' + qualMaior(num1, num2) + "\n" + num1 + divisível(num1, num2) + "divisível por " + num2 +
+             "\n" + num2 + divisível(num2, num1) + "divisível por " + num1 + "\n" + "A diferença entre eles é " +
+    (qualMaior(num1, num2) - qualMenor(num1, num2)))
 
 */
