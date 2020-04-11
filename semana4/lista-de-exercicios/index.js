@@ -22,4 +22,18 @@ EXERCÍCIO 3
 
 EXERCÍCIO 4
     Estes comandos irão percorrer o array numeros. O numero1 será o menor valor (-10) e o número2 o maior (1590)
-*/
+
+
+
+
+==========================  EXERCÍCIOS DE LÓGICA DE PROGRAMAÇÃO =====================================
+
+
+EXERCÍCIO 1
+
+a)F
+b)F
+c)T
+d)T
+e)T (porém tem 2 repetidos)
+    */
