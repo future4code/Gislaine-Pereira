@@ -11,4 +11,12 @@ EXERCÍCIO 2
     novoMontante = 165
     segundoMontate = (vai ter um alert informando que o tipo de investimento é incorreto)
 
-    */
+    
+
+EXERCÍCIO 3
+    Separa a array original em duas. A array1 com os números pares e a array2 com os ímpares.
+    Respostas impressas no console:
+        Quantidade de números 14
+        6
+        8
+*/
