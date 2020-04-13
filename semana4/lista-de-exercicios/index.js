@@ -156,10 +156,25 @@ function arrumarArray(arrayMaior) {
 console.log(arrayNumeros)
 console.log(arrumarArray(arrayNumeros))
 
-*/
+
+---------------------------------------------------------------------
+EXERCÍCIO 2
 
 let fraseFinal = (a,b) =>{
     return a + " " + b
 }
 
 alert(fraseFinal("Hello", "Labenu" ))
+
+
+
+********************************  EXERCÍCIOS DE OBJETOS *****************************************
+
+EXERCÍCIO 1
+    Array = conjunto de daods, um vetor, uma lista. 
+            Aglomera uma lista de daos que podem ser acessados pelo seu índice (i) 
+            Utilizada quando temos uma lista simples.
+    
+    Objeto = reune num só local ,uitas informações, desde stings, números e até arrays. 
+            É uma coleção de dados, sendo que cada "entrada" (propriedade) tem uma chave e um valor.
+            Utilizado quando temos dados heterogêneos*/
