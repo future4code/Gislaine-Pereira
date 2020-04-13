@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Sitka Small', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header, footer{
+    background-size: 100vw;
+}
+
+footer{
+   background-image: url("imagens/rodape.png");
+   height: 30vh;
+}
+
+header {
+    background-image: url("imagens/cabecalho.png");
+    height: 33vh;
+}
+
+body{
+    background-color: #dfd0db
+}
+
+nav{
+    background-color: #23001e;
+    width: 10vw;
+    height: 130vh;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #dfd0db;
+    padding: 1vw;
+}
+
+article{
+    padding: 1.5vw 2.5vw;
+    margin-bottom: 5vh;
+}
+select, #enviar-form-contato {
+    background-color: #dfd0db;
+    color: #23001e;
+    border-radius: 10vw;
+    width: 9vw;
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    margin-bottom: 1vw;
+}
+
+#enviar-form-contato {
+    box-shadow: -2px 3px 6px 0px rgba(50, 50, 50, 0.75);
+    border: 3px solid #530447;
+}
+
+#conteúdo-principal{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#conteudo-site{
+    padding:2vw;
+    color: #23001e;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#texto-form-contato, #nome-form-contato {
+    width: 9.5vw;
+    margin: 0.5vw 0;
+}
+
+#mais{
+    display: none
+}
+
+.botao-leia-mais{
+    background-color: #23001e;
+    color: #dfd0db;
+    box-shadow: -2px 3px 6px 0px rgba(50, 50, 50, 0.75);
+    border: 3px solid #530447;
+    margin: 1.3vw 0;
+}
+
+.data{
+    color: #c23cae;
+}
+
+.imagem-post{
+    float: left;
+    height: 20vh;
+    margin: 1vw;
+    box-shadow: -3px 4px 5px 0px rgba(50, 50, 50, 0.75);
+    border: 0.1vw solid #23001e;
+}
+
+.fonte{
+    border-left: 0.4vw solid #23001e;
+    padding-left: 0.2vw;
+    color: #c23cae;
+}
+
+.linha-nav {
+    color: #dfd0db;
+}
+
+.tema-postagem {
+    color:#c23cae;
+}
+
+.linha-postagem{
+    background-color: #774c71;
+    margin: 2vw 0;
+    height: 0.3vw;
+    border: none;
+}
