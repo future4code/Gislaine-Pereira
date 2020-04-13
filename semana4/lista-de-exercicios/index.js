@@ -157,3 +157,9 @@ console.log(arrayNumeros)
 console.log(arrumarArray(arrayNumeros))
 
 */
+
+let fraseFinal = (a,b) =>{
+    return a + " " + b
+}
+
+alert(fraseFinal("Hello", "Labenu" ))
