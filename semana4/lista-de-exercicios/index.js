@@ -218,4 +218,30 @@ function formarFrase(){
 
 document.write(formarFrase())
 
+
+-------------------------------------------------------------------------------------
+EXERCÍCIO 4
+
+Crie um objeto que represente uma pessoa qualquer, 
+com as propriedades de nome, idade, email e endereco.Crie uma função chamada anonimizarPessoa, 
+que deverá retornar um novo objeto com as mesmas propriedades, mas com a string ANÔNIMO no lugar do nome.
+O objeto original deve ser mantido com o nome da pessoa.
+
+
+const pessoa = {
+    nome: "Gislaine Costa",
+    idade: 36,
+    eMail: "gislaine_costa@hotmail.com",
+    endereço: "Servidão Anhatomirim, 71. Ponta das Canas, Florianópolis/SC"
+}
+
+function anonimizarPessoa() {
+    const anonimo = {
+        ...pessoa,
+        nome: "ANÔNIMO"
+    }
+
+    return anonimo
+}
+
 */
