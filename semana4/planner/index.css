@@ -1,0 +1,171 @@
+*{
+    border: none;
+    margin: none;
+    font-family: 'French Script MT','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-image: url('imagens/fundo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300vh;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20vh;
+}
+
+h1{
+    color:#0d2d00;
+    font-weight: bold;
+    font-size: 7vw;
+    padding-left: 2vw;
+    flex-grow: 4;
+    text-align: start;
+}
+
+textarea, select, button, option, .conteudo, p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+textarea{
+    width: 20vw;
+    height: 5vw;
+    color: #0d2d00;
+    border-radius: 0.5em;
+    border: 1px solid #0d2d00;
+    flex-grow: 0.7;
+}
+
+select, button{
+    height: 5vh;
+    color: #c1e8b3;
+    background-color: #0d2d00;
+    border-radius: 0.8em;
+    margin: 0.3em;
+    text-align: center;
+    box-shadow: -3px 3px 7px 0px rgba(50, 50, 50, 0.87);
+    font-size: 1vw;
+}
+
+select:first-of-type{
+    width: 12vw;
+    text-align: center;
+}
+
+select:last-of-type {
+    width: 5vw;
+    text-align: center;
+}
+
+button:first-of-type{
+    width: 7vw;
+}
+
+button:last-of-type{
+    width: 3.5vw;
+    font-size: 0.6vw;
+    background-color: #2d9500
+}
+
+#container {
+    margin: 2.0vw;
+    background-color: rgba(208, 246, 221, 0.5);
+    box-shadow: -3px 3px 7px 0px rgba(50, 50, 50, 0.87);
+    text-align: center;
+    height: 120vh;
+    padding: 1vw;
+}
+
+#tarefas{
+    display: flex;
+    height: 100vh;
+    padding: 0.5vw;
+}
+
+.titulo-dia {
+    font-size: 3.5vw;
+    border-bottom: 1px solid #0d2d00;
+    color: #0d2d00;
+    font-weight: bold
+    ;
+}
+
+.dia-semana{
+    width: 13vw;
+    border-right: #0d2d00 1px solid;
+}
+
+.dia-semana:nth-of-type(7){
+    border-right: none;
+}
+
+.conteudo{
+    color: #0d2d00;
+    font-size: 1.6vw;
+    padding: 2vw 1vw;
+    text-align: justify;
+}
+
+
+@media (max-width: 767px){
+    
+    header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        align-items: center;
+        height: 20vh;
+        row-gap: 0.7vw;
+        column-gap: 0.5vw;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: 3vh;
+    }
+
+    h1{
+        grid-area: 1/1/2/5;
+        font-size: 9vw;
+    }
+
+    textarea{
+        grid-area: 2/1/3/5;
+        width: 80vw;
+        font-size: 4vw;
+    }
+
+    select:first-of-type {
+        width: 16vw;
+        text-align: center;
+        font-size: 2.1vw;
+    }
+
+    select:last-of-type {
+        width: 15vw;
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    button:first-of-type {
+        width: 15vw;
+        font-size: 3vw;
+    }
+
+    button:last-of-type {
+        width: 10vw;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    #container {
+        margin: 0.8vw;
+    }
+
+    #tarefas {
+        padding-top: 3vh;
+    }
+
+}
