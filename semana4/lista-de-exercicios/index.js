@@ -134,5 +134,26 @@ console.log('O maior é: ' + qualMaior(num1, num2) + "\n" + num1 + divisível(nu
 ===========================================================================================================
 
 
+********************************  EXERCÍCIOS DE FUNÇÕES *****************************************
 
-    */
+EXERCÍCIO 1 
+
+let arrayNumeros = [12, 35, 72, 47, 58, 2, 45, 18]
+
+
+function arrumarArray(arrayMaior) {
+    arrayNumeros.sort((a, b) => a - b)
+    let segundoMenor = "O segundo menor número é "
+    let segundoMaior = "O segundo maior número é "
+    
+    segundoMaior += arrayNumeros[arrayNumeros.length - 2]
+    segundoMenor += arrayNumeros[1]
+
+
+    return segundoMaior + '\n' + segundoMenor
+}
+
+console.log(arrayNumeros)
+console.log(arrumarArray(arrayNumeros))
+
+*/
