@@ -20,13 +20,13 @@ function postar(ev) {
     document.getElementById('imagem-postagem').value = ""
 
     document.getElementById("#conteudo-site").innerHTML += //não sei como enviar isso para a próxima página
-        '<article class = "postagem">' +
-        '<h2>' + conteudoArtigo.titulo + '</h2>' +
-        '<span class = "data" > Data Postagem: ' + conteudoArtigo.data + '<sspan>' +
-        '<span class = "tema-postagem" > - Tema: ' + conteudoArtigo.tema  + '</span> <br><br>' +
-        '<img class = "imagem-post" src = "' + conteudoArtigo.imagem + '">' +
-        '<p>' + conteudoArtigo.texto + '</p><br>' +        
-        '<span class= "fonte" > Fonte: ' + conteudoArtigo.fonte + ' </span> <hr class="linha-postagem"> </article >'
+        `<article class = "postagem">
+        <h2> ${conteudoArtigo.titulo}</h2> <span class = "data" > Data Postagem: ${conteudoArtigo.data}<span>
+        <span class = "tema-postagem" > - Tema: ${conteudoArtigo.tema}</span><br><br>
+        <img class = "imagem-post" src = "${conteudoArtigo.imagem}"> 
+        <p>${conteudoArtigo.texto}</p><br>        
+        <span class= "fonte" > Fonte: ${conteudoArtigo.fonte}</span>
+        <hr class="linha-postagem"></article >`
 
     alert('O conteúdo foi postado com secesso')
 }

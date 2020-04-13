@@ -8,6 +8,26 @@ header, footer{
     background-size: 100vw;
 }
 
+h2{
+    font-size: 2vw;
+}
+
+span{
+    font-size: 1vw;
+}
+
+p{
+    font-size: 1vw;
+}
+
+input{
+    height: 1vw;
+}
+
+textarea{
+    height: 15vw;
+}
+
 footer{
    background-image: url("imagens/rodape.png");
    height: 30vh;
@@ -15,7 +35,7 @@ footer{
 
 header {
     background-image: url("imagens/cabecalho.png");
-    height: 33vh;
+    height: 34vh;
 }
 
 body{
@@ -32,6 +52,10 @@ nav{
     justify-content: space-around;
     color: #dfd0db;
     padding: 1vw;
+}
+
+select{
+    font-size: 1vw
 }
 
 article{
@@ -51,9 +75,24 @@ p{
     margin-bottom: 1vw;
 }
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #530447;
+    font-size: 1vw;
+    padding: 1vw;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #530447;
+}
+
 #enviar-form-contato {
     box-shadow: -2px 3px 6px 0px rgba(50, 50, 50, 0.75);
-    border: 3px solid #530447;
+    border: 1px solid #530447;
+    height: 2vw;
+    width: 10vw;
+    font-size: 1vw;
 }
 
 #conteúdo-principal{
@@ -91,7 +130,7 @@ p{
 
 .imagem-post{
     float: left;
-    height: 20vh;
+    height: 15vw;
     margin: 1vw;
     box-shadow: -3px 4px 5px 0px rgba(50, 50, 50, 0.75);
     border: 0.1vw solid #23001e;
@@ -105,6 +144,7 @@ p{
 
 .linha-nav {
     color: #dfd0db;
+    height: 0.2vw;
 }
 
 .tema-postagem {
@@ -116,4 +156,31 @@ p{
     margin: 2vw 0;
     height: 0.3vw;
     border: none;
+}
+
+@media screen and (max-device-width: 780px) {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        height: 8.5vh;
+    }
+
+    footer {
+        height: 8vh;
+    }
+
+    nav{
+        height: 30vh;
+        width: 30vw;
+    }
+
+    h3{
+       font-size:1vw 
+    }
+
+    hr{
+
+    }
 }
