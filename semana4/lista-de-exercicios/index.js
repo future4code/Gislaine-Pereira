@@ -177,4 +177,45 @@ EXERCÍCIO 1
     
     Objeto = reune num só local ,uitas informações, desde stings, números e até arrays. 
             É uma coleção de dados, sendo que cada "entrada" (propriedade) tem uma chave e um valor.
-            Utilizado quando temos dados heterogêneos*/
+            Utilizado quando temos dados heterogêneos
+            
+            
+-------------------------------------------------------------------------------------           
+EXERCÍCIO 2
+
+let lado1 = Number(prompt("Digite a largura do retângulo (cm)"))
+let lado2 = Number(prompt("Digite a altura do retângulo (cm)"))
+let informacoesRetangulo = {}
+
+function retangulo (a,b) {
+    informacoesRetangulo.largura =  `${a} cm`
+    informacoesRetangulo.altura = `${b} cm`
+    informacoesRetangulo.perímeto = `${2*a + 2*b} cm`
+    informacoesRetangulo.área = `${a*b} cm²`
+
+    return informacoesRetangulo
+}
+
+console.log(retangulo(lado1, lado2))
+
+------------------------------------------------------------------------------
+EXERCICIO 3
+
+
+let fraseFinal = ""
+
+function formarFrase(){
+    let filmeFavorito = {
+        título: "Moulin Rouge",
+        ano: 2001,
+        diretor: "Baz Luhrmann",
+        elenco: ['Ewan McGregor', 'Nicole Kidman', 'Deobia Oparei', 'John Leguizamo', 'Jim Broadbent', 'Richard Roxburgh']
+    }
+
+    fraseFinal += `Venha  se emocionar com o aclamado musical ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.elenco}.`
+    return fraseFinal
+}
+
+document.write(formarFrase())
+
+*/
