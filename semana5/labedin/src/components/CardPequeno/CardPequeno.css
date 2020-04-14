@@ -1,0 +1,23 @@
+.shortcard-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    height: 15vh;
+}
+
+.shortcard-container > img {
+    width: 5vw;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.shortcard-container h4 {
+    margin-bottom: 15px;
+}
+
+.shortcard-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
