@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+
+    <title>Controlador de despesas</title>
+</head>
+
+<body>
+    <section id="inserir-despesa">
+        <h2>Adicionar Despesa</h2><br>
+        <form class="formulario">
+            <label for="valor-despesa">Valor </label><input placeholder='0.00' id="valor-despesa" type="number" step="0.01"><br><br>
+            <label for="tipo-despesa">Tipo de Despesa </label> <select id="tipo-despesa">
+                <option value="casa">Casa</option>
+                <option value="viagem">Viagem</option>
+                <option value="estudos">Estudos</option>
+                <option value="alimentação">Alimentação</option>
+            </select> <br><br>
+            <label for="descricao-despesa">Descreva a despesa</label><textarea id="descricao-despesa" cols="30" rows="10"></textarea><br>
+        </form>
+        <button id='botao-de-cadastro' onclick="criarDespesa(event)"> Cadastrar Despesa</button>
+    </section>
+    
+    <section id="lista-despesas">
+        <h2>Despesas Detalhadas</h2><br>
+        <div id='filtro'>
+            <label for="despesa-filtro">Tipo de Despesa </label> <select id="despesa-filtro">
+                <option value="casa">Casa</option>
+                <option value="viagem">Viagem</option>
+                <option value="estudos">Estudos</option>
+                <option value="alimentação">Alimentação</option>
+            </select> <br>
+            <label for="despesa-minima">Despesa Mínima</label> <input type='text' id="despesa-minima"></input><br>
+            <label for="despesa-maxima">Despesa Máxima</label> <input type='text' id="despesa-maxima"></input><br><br>
+            <button onclick='filtrarDespesas(evento)'  id='filtrar-despesa'> Filtrar</button>
+            <button onclick='limparFiltro(evento)' id='limpar-filtros'> Limpar Filtros</button>
+        </div><br><br>
+
+        <h3>Despesas</h3><br>
+        <table>
+            <tr id='tab-valor'>Valor</tr>
+            <tr id='tab-tipo'>Tipo</tr>
+            <tr id="tab-descricao">Descição</tr>
+        </table>
+        
+
+    </section>
+    
+    <section id="extrato">
+        <h3>Extrato</h3><br>
+        <table>
+            <tr id='tipo-extrato'>Tipo</tr>
+            <tr id='valor-extrato'>Valor</tr>
+            <tr></tr>
+        </table><br><br>
+        <h2 id="valor-total">Valor Total: </h2>
+    </section>
+</body>
+
+</html>
