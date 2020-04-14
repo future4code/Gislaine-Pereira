@@ -288,3 +288,21 @@ const contas = [
 	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
 	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
 ]
+
+function totalDespesas(despesas) {
+    let valorTotal = 0;
+    
+   despesas.forEach(
+       (compra) => {
+        valorTotal += compra
+        }
+    )
+    return valorTotal
+}
+
+contas.forEach(
+    (cliente) => {
+    let somaCompras = totalCompras(cliente.compras)
+    cliente.saldoTotal -= somaCompras
+    }   
+)
