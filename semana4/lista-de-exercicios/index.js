@@ -128,6 +128,125 @@ console.log('O maior é: ' + qualMaior(num1, num2) + "\n" + num1 + divisível(nu
     (qualMaior(num1, num2) - qualMenor(num1, num2)))
 
 
+============================================================================+++===========================
+================================== PROJETO SEMANA, PARTE 2 - AULA 15 ======================================
+===========================================================================================================
+
+
+********************************  EXERCÍCIOS DE FUNÇÕES *****************************************
+
+EXERCÍCIO 1 
+
+let arrayNumeros = [12, 35, 72, 47, 58, 2, 45, 18]
+
+
+function arrumarArray(arrayMaior) {
+    arrayNumeros.sort((a, b) => a - b)
+    let segundoMenor = "O segundo menor número é "
+    let segundoMaior = "O segundo maior número é "
+    
+    segundoMaior += arrayNumeros[arrayNumeros.length - 2]
+    segundoMenor += arrayNumeros[1]
+
+
+    return segundoMaior + '\n' + segundoMenor
+}
+
+console.log(arrayNumeros)
+console.log(arrumarArray(arrayNumeros))
+
+
+---------------------------------------------------------------------
+EXERCÍCIO 2
+
+let fraseFinal = (a,b) =>{
+    return a + " " + b
+}
+
+alert(fraseFinal("Hello", "Labenu" ))
+
+
+
+********************************  EXERCÍCIOS DE OBJETOS *****************************************
+
+EXERCÍCIO 1
+    Array = conjunto de daods, um vetor, uma lista. 
+            Aglomera uma lista de daos que podem ser acessados pelo seu índice (i) 
+            Utilizada quando temos uma lista simples.
+    
+    Objeto = reune num só local ,uitas informações, desde stings, números e até arrays. 
+            É uma coleção de dados, sendo que cada "entrada" (propriedade) tem uma chave e um valor.
+            Utilizado quando temos dados heterogêneos
+            
+            
+-------------------------------------------------------------------------------------           
+EXERCÍCIO 2
+
+let lado1 = Number(prompt("Digite a largura do retângulo (cm)"))
+let lado2 = Number(prompt("Digite a altura do retângulo (cm)"))
+let informacoesRetangulo = {}
+
+function retangulo (a,b) {
+    informacoesRetangulo.largura =  `${a} cm`
+    informacoesRetangulo.altura = `${b} cm`
+    informacoesRetangulo.perímeto = `${2*a + 2*b} cm`
+    informacoesRetangulo.área = `${a*b} cm²`
+
+    return informacoesRetangulo
+}
+
+console.log(retangulo(lado1, lado2))
+
+------------------------------------------------------------------------------
+EXERCICIO 3
+
+
+let fraseFinal = ""
+
+function formarFrase(){
+    let filmeFavorito = {
+        título: "Moulin Rouge",
+        ano: 2001,
+        diretor: "Baz Luhrmann",
+        elenco: ['Ewan McGregor', 'Nicole Kidman', 'Deobia Oparei', 'John Leguizamo', 'Jim Broadbent', 'Richard Roxburgh']
+    }
+
+    fraseFinal += `Venha  se emocionar com o aclamado musical ${filmeFavorito.título}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.elenco}.`
+    return fraseFinal
+}
+
+document.write(formarFrase())
+
+
+-------------------------------------------------------------------------------------
+EXERCÍCIO 4
+
+Crie um objeto que represente uma pessoa qualquer, 
+com as propriedades de nome, idade, email e endereco.Crie uma função chamada anonimizarPessoa, 
+que deverá retornar um novo objeto com as mesmas propriedades, mas com a string ANÔNIMO no lugar do nome.
+O objeto original deve ser mantido com o nome da pessoa.
+
+
+const pessoa = {
+    nome: "Gislaine Costa",
+    idade: 36,
+    eMail: "gislaine_costa@hotmail.com",
+    endereço: "Servidão Anhatomirim, 71. Ponta das Canas, Florianópolis/SC"
+}
+
+function anonimizarPessoa() {
+    const anonimo = {
+        ...pessoa,
+        nome: "ANÔNIMO"
+    }
+
+    return anonimo
+}
+
+*/
+
+
+
 ========================================================================================
 =============================== PROJETO SEMANA, PARTE 3 - AULA 16 ======================
 =========================================================================================
@@ -306,3 +425,4 @@ contas.forEach(
     cliente.saldoTotal -= somaCompras
     }   
 )
+

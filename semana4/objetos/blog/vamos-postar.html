@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link href="postagem.css" type="text/css" rel="stylesheet" />
+
+    <title>Postar Artigo</title>
+</head>
+
+<body>
+   
+    <header></header>
+    
+    <div id="criar-postagem">
+        <form id="formulário-postagem">
+            <label>Título postagem </label><input type="text" id="titulo-postagem"> <br>
+            <label>Data da Postagem </label><input type="text" id="data-postagem" placeholder="DD/MM/AAAA"> <br>
+            <label>Tema da Postagem </label><input type="text" id="tema-postagem"> <br>
+            <label>Digite o texto do post </label><textarea id="texto-postagem" cols="10" placeholder="Para quebra de linha, digite <br>"
+                rows="30"></textarea><br>
+            <label>Fonte da Postagem </label><input type="text" id="fonte-postagem"><br>
+            <label>Imagem para a postagem </label><input type="text" id="imagem-postagem" placeholder="Digite a url da imagem"><br>
+        </form>
+        <button onclick="postar(event)">Enviar</button>
+    </div>
+    
+    <footer></footer>
+
+</body>
+
+</html>
