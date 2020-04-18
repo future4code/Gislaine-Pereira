@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Sitka Small', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header, footer{
+    background-size: 100vw;
+}
+
+footer{
+   background-image: url("imagens/rodape.png");
+   height: 30vh;
+}
+ 
+header {
+    background-image: url("imagens/cabecalho.png");
+    height: 34vh;
+}
+
+body{
+    background-color: #dfd0db
+}
+
+form{
+    padding: 3vw 5vw 2vw 10vw;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #530447;
+    font-size: 1vw;
+    padding: 2vw;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #530447;
+}
+
+button{
+    color: #dfd0db;
+    background-color: #23001e;
+    border-radius: 1vw;
+    width: 9vw;
+    text-align: center;
+    height: 3.2vw;
+    font-size: 2vw;
+    margin: 3vw;
+    box-shadow: -2px 3px 6px 0px rgba(50, 50, 50, 0.75);
+    border: 3px solid #530447;
+}
+
+
+label{
+    color: #23001e;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+input{
+    width: 40vw;
+    height: 4vw;
+    border-radius: 0.5vw;
+}
+
+textarea {
+    width: 80vw;
+    height: 20vw;
+    border-radius: 1.2vw;
+}
+
+input, textarea {
+    background-color: #f5daee;
+    text-align: center;
+    border: 2px solid #23001e;
+    margin: 1vw 0;
+}
+
+#data-postagem {
+    width: 30vw;
+}
+
+@media screen and (max-device-width: 780px){
+
+    header {
+        height: 8.5vh;
+    }
+
+    div{
+        height: 83.5vh
+    }
+    
+    footer{
+        height: 8vh;
+    }
+}

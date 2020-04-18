@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+
+    <title></title>
+</head>
+
+<body>
+   
+    <header></header>
+    
+    <div id="conteúdo-principal">
+        <nav>
+            <div id="mes">
+                <h3>Selecione o Mês</h3><br>
+                <select id="mes">
+                    <option value="jan">Janeiro</option>
+                    <option value="fev">Fevereiro</option>
+                    <option value="mar">Março</option>
+                    <option value="abr">Abril</option>
+                    <option value="mai">Maio</option>
+                    <option value="jun">Junho</option>
+                    <option value="jul">Julho</option>
+                    <option value="ago">Agosto</option>
+                    <option value="set">Setembro</option>
+                    <option value="out">Outubro</option>
+                    <option value="nov">Novembro</option>
+                    <option value="dez">Dezembro</option>
+                </select>
+            </div><br>
+            <hr class="linha-nav">
+            <div id="tema">
+                <h3>Selecione o Tema</h3><br>
+                <select id="tema">
+                    <option value="sostema-solar">Sistema Solar</option>
+                    <option value="estrelas">Estrelas</option>
+                    <option value="exoplanetas">Exoplanetas</option>
+                    <option value="buracos-negros">Buracos Negros</option>
+                    <option value="cospos-celestes">Corpos celestes</option>
+                    <option value="astrofisica">Astrofísica</option>
+                </select>
+            </div><br>
+            <hr class="linha-nav">
+            <form>
+                <h3>Entre em contato conosco</h3>
+                <input type="text" id='nome-form-contato' placeholder="Seu nome">
+                <textarea name="form-mensagem" id="texto-form-contato" cols="30" rows="10" placeholder="Digite sua mensagem"></textarea>
+                <button id='enviar-form-contato'>Enviar</button>
+            </form>
+        </nav>
+        
+        <section id="conteudo-site">
+            <article class="postagem">
+                <h2>Estrela em formato de "Boneco-deNeve" surpreende pesquisadores</h2>
+                <span class="data">Data Postagem: 10/04/2020</span>
+                <span class="tema-postagem"> - Tema: Estrelas</span>
+                <br><br>
+                <img class="imagem-post" src="imagens/boneco-neve.jpeg" alt="Ilustração da estrela">
+                <p>Pesquisadores descobriram uma estrela incomum em forma de boneco de neve com uma composição
+                    atmosférica nunca vista antes<br><br>
+                    Tem uma massa maior que o nosso Sol, mas apenas dois terços do diâmetro da Terra. <br><br>
+                    Acredita-se que o objeto tenha resultado da fusão de duas estrelas anãs brancas que 
+                    frequentemente explodem como supernovas poderosas. <br><br> Segundo o pesquisador Mark 
+                    Hollands, da Universidade Warwick, a descoberta da equipe pode audar os cientistas a entender 
+                    melhor como esse processo ocorre. <br><br> "O aspecto mais empolgante sobre esta estrela é que 
+                    ela quase não explodiu como uma supernova. Não há muitas anãs brancas tão grandes", disse. <br><br>
+                    "Ainda há muita incerteza sobre quais tipos de sistemas estelares chegam ao estágio 
+                    da supernova. Por mais estranho que pareça, medir as propriedades dessa supernova que 'falhou' está
+                    nos dizendo muito sobre os caminhos da aniquilação termonuclear."<br><br> Isso porque uma anã branca 
+                    é o que estrelas como o Sol se tornam no final de suas vidas, quando gastam todo o seu combustível 
+                    nuclear. <br><br> É quando perdem a maior parte de sua atmosfera, deixando um núcleo muito quente. 
+                    Os átomos mais pesados ​​em sua atmosfera afundam e os mais leves permanecem na superfície. Algumas 
+                    anãs brancas têm atmosferas quase puras de hidrogênio ou hélio. <br><br> Mas essa estrela, chamada WDJ0551 
+                    + 4135, tem uma atmosfera extraordinariamente rica em carbono <br><br> "A única maneira de explicar isso é 
+                    se ela foi formada por meio da fusão de duas anãs brancas", diz Hollands.
+                </p> <br>
+                <span class="fonte">Fonte: BBC Brasil</span>
+                <hr class="linha-postagem">
+            </article >
+
+            <article class="postagem">
+                <h2>Pesquisadores descobrem novos planetoides além de Netuno</h2>
+                <span class="data">Data Postagem: 10/04/2020</span>
+                <span class="tema-postagem"> - Tema: Sistema Solar</span> <br><br>
+                <img class="imagem-post" src="imagens/plutao.jpg" alt="Foto Planetoide">
+                <p>Lista inclui mais de 100 objetos do Sistema Solar situados além de Netuno descobertos pelo
+                    Dark Energy Survey (DES)<br><br>
+                    Usando dados do (DES), pesquisadores internacionais encontraram mais de 300 objetos transnetunianos 
+                    (TNOs, na sigla em inglês), pequenos "planetas" localizados nos confins do Sistema Solar, incluindo
+                    mais de 100 novas descobertas. Publicado na revista “The Astrophysical Journal Supplement Series”, o 
+                    estudo também descreve uma nova abordagem para encontrar tipos semelhantes de objetos e pode ajudar a 
+                    futuras pesquisas pelo hipotético Planeta Nove e outros planetas não descobertos. <br><br>
+                    O trabalho foi liderado pelo brasileiro Pedro Bernardinelli (formado em física na
+                    USP), aluno de doutorado da Universidade da Pensilvânia (EUA), e pelos professores Gary
+                    Bernstein e Masao Sako, também da Universidade da Pensilvânia. <br> O objetivo do DES, que completou 
+                    seis anos de coleta de dados em janeiro, é entender a natureza da energia escura, coletando imagens de 
+                    alta precisão do céu do hemisfério sul. Embora o DES não tenha sido projetado especificamente para os TNOs, 
+                    sua abrangência e profundidade de cobertura o tornaram particularmente hábil em encontrar novos objetos além 
+                    de Netuno. “O número de TNOs que você pode encontrar depende de quanto do céu você olha e qual é a coisa mais 
+                    fraca que pode encontrar”, diz Bernstein. <br> Como o DES foi projetado para estudar galáxias e supernovas, os 
+                    pesquisadores tiveram de desenvolver uma nova maneira de rastrear o movimento. Pesquisas dedicadas a TNOs fazem 
+                    medições com a frequência de uma ou duas horas, o que permite aos pesquisadores rastrear mais facilmente
+                    seus movimentos. “As pesquisas dedicadas a TNOs têm uma maneira de ver os objetos se moverem, e
+                    é fácil rastreá-los”, diz Bernardinelli. “Uma das principais coisas que fizemos neste artigo foi
+                    descobrir uma maneira de recuperar esses movimentos.”.<br>
+                </p> 
+                <span class="fonte">Fonte: BBC Brasil</span>
+                 <hr class="linha-postagem">
+            </article>
+            
+        </section>
+    </div>
+
+    <footer></footer>
+
+</body>
+
+</html>

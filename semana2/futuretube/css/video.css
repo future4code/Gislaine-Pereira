@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    border: 0;
+}
+
+main {
+    height: 70vh;
+    width: 100vw;
+    padding: 10px;
+}
+
+header, footer {
+    background-color: #ce6517;
+    height: 10vh;
+    width: 100vw;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+header {
+    justify-content: space-between;
+}
+
+header>p {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+#video-da-pagina{
+    width: 45vw;
+}
+
+.buscador {
+    margin-right: 40px;
+    height: 5vh;
+    width: 20vw;
+}
+
+.conteudo-principal {
+    margin-top: 10px;
+    background-color: #ffffff;
+}
