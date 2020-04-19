@@ -1,9 +1,0 @@
-.share-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 5px;
-}
-
-.share-container img {
-    height: 2vw;
-}
