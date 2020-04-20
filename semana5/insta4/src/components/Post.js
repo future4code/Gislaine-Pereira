@@ -1,19 +1,50 @@
 import React from 'react'
-import './Post.css'
+import styled from 'styled-components'
 
-import {IconeComContador} from '../IconeComContador/IconeComContador'
-import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
+import {IconeComContador} from './IconeComContador'
+import {IconeSemContador} from './IconeSemContador'
 
-import iconeCoracaoBranco from '../../img/favorite-white.svg'
-import iconeCoracaoPreto from '../../img/favorite.svg'
-import iconeComentario from '../../img/comment_icon.svg'
-import iconeSalvarBranco from '../../img/salvarbranco.svg'
-import iconeSalvarPreto from '../../img/salvarpreto.svg'
-import iconeCompartilhar from '../../img/share-24px.svg'
+import iconeCoracaoBranco from '../img/favorite-white.svg'
+import iconeCoracaoPreto from '../img/favorite.svg'
+import iconeComentario from '../img/comment_icon.svg'
+import iconeSalvarBranco from '../img/salvarbranco.svg'
+import iconeSalvarPreto from '../img/salvarpreto.svg'
+import iconeCompartilhar from '../img/share-24px.svg'
 
-import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
-import {SecaoCompartilhar} from '../SecaoCompartilhar/SecaoCompartilhar'
+import {SecaoComentario} from './SecaoComentario'
+import {SecaoCompartilhar} from './SecaoCompartilhar'
 
+let PostContainer = styled.div`
+    border: 1px solid gray;
+    width: 300px;
+    margin-bottom: 10px;
+`
+
+let PostHeader = styled.div`
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+`
+
+let PostFooter = styled.div`
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between;
+`
+
+let UserPhoto = styled.img`
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+`
+
+let PostPhoto = styled.img `
+    width: 100%;
+`
 
 class Post extends React.Component {
   state = {
@@ -97,15 +128,15 @@ class Post extends React.Component {
     }
 
 
-    return <div className={'post-container'}>
-      <div className={'post-header'}>
-        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+    return <PostContainer>
+      <PostHeader>
+        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
-      </div>
+      </PostHeader>
 
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
 
-      <div className={'post-footer'}>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
@@ -128,10 +159,10 @@ class Post extends React.Component {
           onClickIcone={this.onClickCompartilhar}
         />
 
-      </div>
+      </PostFooter>
       {componenteComentario}
       {componenteCompartilhar}
-    </div>
+    </PostContainer>
   }
 }
 
