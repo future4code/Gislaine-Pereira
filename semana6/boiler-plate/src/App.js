@@ -21,21 +21,15 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
     state = {
-      tarefas: [
-        {id: Date.now(), texto: 'Terminar o site', completa: false },
-        {id: Date.now(), texto: 'Pensar no layout', completa: true }
-      ],
+      tarefas: [],
       inputValue: '',
       filter: ''
     }
 
 
   componentDidUpdate() {
-
-  };
-
-  componentDidMount() {
-
+    const novasTarefas = this.state;
+    localStorage.setItem("tarefasGuardadas", JSON.stringify(novasTarefas));
   };
 
   onChangeInput = (event) => {
@@ -53,16 +47,36 @@ class App extends React.Component {
   }
 
   selectTarefa = (id) => {
-
+    const tarefaFeita = this.state.tarefas.map((tarefa)=>{
+      if(id === tarefa.id){
+        const tarefasConcluidas = {
+          ...tarefa,
+          completa: !tarefa.completa
+        }
+        return tarefasConcluidas
+      } 
+      else{
+        return tarefa
+      }
+    })  
+    
+    this.setState({tarefas:tarefaFeita})
   }
 
   onChangeFilter = (event) => {
+    this.setState({ filter: event.target.value })
+  }
 
+  apagarTarefa = (tarefaId) => {
+    const novaListaDeTarefas = this.state.tarefas.filter((tarefa) => {
+      return tarefaId !== tarefa.id
+    })
+
+    this.setState({tarefas: novaListaDeTarefas})
   }
 
   render() {
-    const listaFiltrada = this.state.tarefas
-      .filter(tarefa => {
+    const listaFiltrada = this.state.tarefas.filter(tarefa => {
         switch (this.state.filter) {
           case 'pendentes':
             return !tarefa.completa
@@ -89,13 +103,16 @@ class App extends React.Component {
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
           </select>
-        </InputsContainer>
+        </InputsContainer> <br/>
+        <p>Para marcar uma tarefa como concluída, clique 1 vez. Para apagar uma tarefa, clique 2 vezes.</p>
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
               <Tarefa
                 completa={tarefa.completa}
+                
                 onClick={() => this.selectTarefa(tarefa.id)}
+                onDoubleClick={() => this.apagarTarefa(tarefa.id)}
               >
                 {tarefa.texto}
               </Tarefa>
