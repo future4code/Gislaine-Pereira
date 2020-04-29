@@ -31,6 +31,10 @@ class Lista extends React.Component {
   };
 
   componentDidMount(){
+    this.pegarUsuario()
+  }
+
+  pegarUsuario = () =>{
     axios
       .get(
         'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
@@ -39,12 +43,14 @@ class Lista extends React.Component {
           }
         }
       )
-    .then(response =>{
-      this.setState({listaUsuarios: response.data})
-    })
-    .catch(erro =>{
-      alert(erro.response)
-    })
+      .then(response => {
+        this.setState({
+          listaUsuarios: response.data
+        })
+      })
+      .catch(erro => {
+        alert(erro.response)
+      })
   }
   
   apagarUsuario = (userId) => {
