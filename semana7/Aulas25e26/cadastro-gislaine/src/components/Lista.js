@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const Botao = styled.button `
 width: 5vw;
+height:2vw;
 `
 const Nome = styled.p`
 `
@@ -12,6 +13,7 @@ const Usuario = styled.article `
   display: flex;
   width: 20vw;
   justify-content: space-between;
+  align-items:center;
 `
 
 const TelaToda = styled.div`
@@ -34,42 +36,46 @@ class Lista extends React.Component {
     this.pegarUsuario()
   }
 
-  pegarUsuario = () =>{
-    axios
-      .get(
-        'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
-          headers: {
-            Authorization: "gislaine-costa-julian"
+  pegarUsuario = async () =>{
+    try{
+      const response = await axios
+        .get(
+          'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
+            headers: {
+              Authorization: "gislaine-costa-julian"
+            }
           }
-        }
-      )
-      .then(response => {
-        this.setState({
-          listaUsuarios: response.data
-        })
+        )
+      this.setState({
+        listaUsuarios: response.data
+      })
+    }
+    catch(erro) {
+      alert(erro.response)
+    }
+  }
+  
+  apagarUsuario = (userId) => {
+    
+    const confirmaApagar = window.confirm('Tem certeza que deseja deletar o usuário?')
+    
+    if (confirmaApagar === true){
+      axios
+        .delete(
+          `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`, {
+            headers: {
+              Authorization: 'gislaine-costa-julian'
+            }
+          }
+        )
+      .then(response =>{
+        alert('Usuário deletado com sucesso')
       })
       .catch(erro => {
         alert(erro.response)
       })
+    }
   }
-  
-  apagarUsuario = (userId) => {
-    axios
-      .delete(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`, {
-          headers: {
-            Authorization: 'gislaine-costa-julian'
-          }
-        }
-      )
-    .then(response =>{
-      alert('Usuário deletado com sucesso')
-    })
-    .catch(erro => {
-      alert(erro.response)
-    })
-  }
-
 
   render(){
   

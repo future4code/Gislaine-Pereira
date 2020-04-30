@@ -33,26 +33,27 @@ class Formulario extends React.Component {
     this.setState({inputEmail: event.target.value})
   }
 
-  adicionaUsuario = (usuarioNome) =>{
+  adicionaUsuario = () =>{
+    
     const body = {
-      name: usuarioNome
-    };
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-        body,
-        {
-          headers: {
-            Authorization: "gislaine-costa-julian"
-          }
+      name: this.state.inputNome,
+      email: this.state.inputEmail
+    }
+    
+    axios
+    .post(
+      'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
+        headers: {
+          Authorization: "gislaine-costa-julian"
         }
-      )
-      .then(resposta => {
-        console.log("UHUL DEU CERTO!!!!!", resposta);
-        this.pegaPlaylists();
-      })
-      .catch(error => {
-        console.log("DEU ERRO :((((", error.response);
       }
-    );
+    )
+    .then(response =>{
+      alert('Usuário criado com sucesso')
+    })
+    .catch(erro => {
+      alert(erro.response)
+    })
     this.setState({inputNome: '', inputEmail:'',})
   };
   
@@ -66,7 +67,7 @@ class Formulario extends React.Component {
               type="text" 
               id="name"
               onChange={this.MudarInputNome}
-              Value = {this.state.inputNome}
+              value = {this.state.inputNome}
               /><br/>
         </label>
         
@@ -75,7 +76,7 @@ class Formulario extends React.Component {
                 type="text" 
                 id="email"
                 onChange={this.MudarInputEmail}
-                Value = {this.state.inputEmail}
+                value = {this.state.inputEmail}
                 /><br/>
         </label>
       
