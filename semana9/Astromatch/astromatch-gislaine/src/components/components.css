@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.informacoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.moldura-perfil{
+    height: 80vw;
+    width: 40vw;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.foto-perfil{
+    width: 40vw;
+    position: absolute;
+    top: 0%;
+}

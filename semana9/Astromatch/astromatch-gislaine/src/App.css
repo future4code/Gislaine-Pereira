@@ -1,0 +1,23 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  padding: 1.8vw;
+}
+
+.Cabecalho{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconeRoxo{
+  color: #753192;
+  width: 50vw;
+}
+ .iconeAzul{
+   color: #4aa397;
+ }
