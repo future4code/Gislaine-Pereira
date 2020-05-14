@@ -1,35 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./components.css";
-import styled from 'styled-components';
 import axios from "axios";
 import Botao from '@material-ui/core/Fab';
 import IconMatch from '@material-ui/icons/Favorite'
 import IconNoMatch from '@material-ui/icons/Close'
 import Coracao from '../img/Coracao.gif'
 import Logo from '../img/logo.png'
+import { Informações } from './ImagensBackground.js'
+import { ImagemPerfil } from './ImagensBackground.js'
 
-const Informações = styled.section`
-  background-size: cover;
-  background-image: url(${props => props.imagem});
-  background-repeat: no-repeat;
-  filter: blur(20px); 
-  width: 87vw;
-  height: 120vw;
-  position: absolute;
-  z-index: 1;
-  background-position: center;
-`
-const ImagemPerfil = styled.div`
-  background-size: cover;
-  background-image: url(${props => props.imagem});
-  background-repeat: no-repeat;
-  height: 120vw;
-  width: 87vw;
-  overflow: hidden;
-  z-index: 2;
-  position: absolute;
-  background-position: center;
-`
 function Perfil(props) {
   
   const [perfil, setPerfil] = useState([]);
@@ -56,7 +35,7 @@ function Perfil(props) {
     setEscolha(true)
     setMostraConteudo('icones')
     const body ={
-        id: "71gMbZs2txS9LDvGK5Ew",
+        id: perfil.id,
         choice: true
     }
     axios
@@ -74,7 +53,7 @@ function Perfil(props) {
     setEscolha(false)
     setMostraConteudo('icones')
     const body ={
-        id: "71gMbZs2txS9LDvGK5Ew",
+        id: perfil.id,
         choice: false
     }
     axios
@@ -92,10 +71,17 @@ function Perfil(props) {
     
   if (mostraConteudo === 'icones') {
       conteudoNaTela = <div id='loading'>
-        <img id='coracao-loading' src={Coracao} alt='Coração Pulsando'/>
+        <img className='coracao-loading' src={Coracao} alt='Coração Pulsando'/>
         <img id='logo-loading' src={Logo} alt='Logo'/>
       </div>
-    } else {
+  } else{
+    if (perfil === null) {
+      conteudoNaTela = <div id='sem-perfis'>
+        <img className='coracao-loading' src={Coracao} alt='Coração Pulsando'/>
+        <h1>Acabaram os perfis</h1>
+        <p id='texto-acabou'>Aproveite para xavecar aquele match ou comece tudo novamente clicando na Lixeira</p>
+      </div>
+    }else{
       conteudoNaTela = <div>
         <section id='card-perfil'>
           <Informações imagem= {perfil.photo} />
@@ -105,26 +91,25 @@ function Perfil(props) {
             <p>{perfil.bio}</p>
           </div>
         </section>
-
+      
         <section id='container-botoes'> 
           <Botao 
-            Botao className="botoes"
+            id='botao-x'
             onClick ={naoGosteiPerfil}
             variant ="outlined">
-            <IconNoMatch id='botao-coracao'/>
+            <IconNoMatch id='icone-x'/>
           </Botao>
-
+      
           <Botao 
-            Botao className="botoes"
+            id='botao-coracao'
             onClick ={gosteiPerfil}
             variant ="outlined">
-            <IconMatch id='botao-coracao'/>
+            <IconMatch id='icone-coracao'/>
           </Botao> 
         </section>
       </div>
+    }
   }
-
-  console.log(escolha)
 
   return (
     <div id="App" >

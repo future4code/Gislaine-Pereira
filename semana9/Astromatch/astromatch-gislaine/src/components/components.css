@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+h1{
+    color: #753192;
+    margin-top: 7vw;
+}
+
 #App{
     display: flex;
     flex-direction: column;
@@ -15,8 +20,19 @@
     flex-direction: column;
     align-items: center;
 }
-#coracao-loading{
-    width: 40vw;
+
+#sem-perfis{
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#texto-acabou{
+    color: #4aa397;
+    text-align: center;
+    margin-top: 2vw;
 }
 
 #logo-loading{
@@ -29,6 +45,7 @@
     width: 85vw;
     justify-content: space-around;
     align-items: center;
+    margin-top: 5vw;
 }
 
 #card-perfil {
@@ -41,6 +58,7 @@
     height: 120vw;
     position: relative;
     overflow: hidden;
+    margin-top: 3vw;
 }
 
 #textousuario {
@@ -54,6 +72,33 @@
     width: 87vw;
     background: linear-gradient(179.6deg, rgba(0, 0, 0, 0) 1.06%, rgba(0, 0, 0, 0.38) 30.12%, rgba(0, 0, 0, 0.83) 98.94%);
     ;
+}
+
+#icone-coracao {
+    font-size: 17vw;
+    color: #753192;
+}
+
+#botao-coracao {
+    background-color: #4aa397;
+    width: 25vw;
+    height: 25vw;
+}
+
+#icone-x {
+    font-size: 17vw;
+    color: #753192;
+    
+}
+
+#botao-x {
+    background-color: #4aa397;
+    width: 25vw;
+    height: 25vw;
+}
+
+.coracao-loading {
+    width: 55vw;
 }
 
 .foto-match {
@@ -76,8 +121,10 @@
     transform: scale(1.04)
 }
 
-.botoes{
+.container-botao{
+    height: 30vw;
     width: 30vw;
+    border: 1px solid black;
 }
 
 .foto-perfil{
