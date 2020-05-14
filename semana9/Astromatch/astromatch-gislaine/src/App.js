@@ -9,6 +9,8 @@ import Right from '@material-ui/icons/Redo'
 import IconPerfil from '@material-ui/icons/Group'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import BotaoResetar from '@material-ui/core/Button';
+import Apagar from '@material-ui/icons/DeleteForever'
 
 const apiUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gislaine-costa-julian"
 
@@ -33,23 +35,26 @@ function App() {
 
   return (
     <div className="App">
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar position="static" >
+          <Toolbar className='Cabecalho' >
             <IconButton onClick={escolhePerfis} aria-label="Ver Matchs" >
-              <IconPerfil className='iconeAzul'/>
-              <Left className='iconeRoxo'/>
-              <Right className='iconeRoxo'/>
+              <div id='icone-perfil' >
+                <IconPerfil id='icone-maior' className='iconeRoxo'/>
+                <Left className='iconeRoxo'/>
+                <Right className='iconeRoxo'/>
+              </div>
             </IconButton>
 
-            <IconButton aria-label="Ver Matchs">
+            <IconButton id="icone-match" aria-label="Ver Matchs">
               <IconMatch className='iconeRoxo' onClick={escolheMatchs}/>
             </IconButton>
           </Toolbar>
         </AppBar>
         
-      <section className='conteúdo-principal'>
+      <section id='conteudo-principal'>
         {telaMostrada}
       </section>
+
     </div>
   );
 }

@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./components.css";
 import axios from "axios";
+import styled from 'styled-components';
 
+const ContainerMatch = styled.section`
+  background-size: cover;
+  background-image: url(${props => props.imagem});
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-position: center;
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;
+  margin-right: 3vw;
+  box-shadow:  -3px 1px 4px 0px rgba(74, 163, 151, 0.7);
+  border: 2px solid #753192;
+`
 
 function Perfil(props) {
 
@@ -41,14 +55,13 @@ function Perfil(props) {
 //      });
 //  }, [match, props.baseUrl])
 
-  const listaMatchs = match.map((pessoa) => {
-  return <section>
-      <article key={pessoa.id}>
-          <p>{pessoa.name}</p>
-          <img src={pessoa.photo} alt={'Fotopessoa'}></img>
-      </article>
-  </section>
+  const clicouPerfilMatch = () =>{}
 
+  const listaMatchs = match.map((pessoa) => {
+  return <article onClick={clicouPerfilMatch()} className='perfis-match' key={pessoa.id}>
+            <ContainerMatch imagem= {pessoa.photo} />
+            <p>{pessoa.name}</p>
+    </article>
   })
 
   return (

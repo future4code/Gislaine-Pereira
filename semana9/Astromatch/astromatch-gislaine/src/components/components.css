@@ -3,19 +3,81 @@
     padding: 0;
 }
 
-.informacoes{
+#App{
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    min-height: 87vh;
+    justify-content: space-around;
+    align-items: center;
+}
+#loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#coracao-loading{
+    width: 40vw;
+}
+
+#logo-loading{
+    width: 40vw;
+}
+
+#container-botoes{
+    padding: 2vw;
+    display: flex;
+    width: 85vw;
+    justify-content: space-around;
     align-items: center;
 }
 
-.moldura-perfil{
-    height: 80vw;
-    width: 40vw;
+#card-perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: left;
+    box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+    width: 87vw;
+    height: 120vw;
     position: relative;
     overflow: hidden;
-    border: 1px solid black;
+}
+
+#textousuario {
+    padding: 0 2vw 0 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    height: 35vw;
+    z-index: 3;
+    width: 87vw;
+    background: linear-gradient(179.6deg, rgba(0, 0, 0, 0) 1.06%, rgba(0, 0, 0, 0.38) 30.12%, rgba(0, 0, 0, 0.83) 98.94%);
+    ;
+}
+
+.foto-match {
+    width: 17vw;
+    position: center;
+}
+
+.perfis-match {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 6vw;
+    height: 14vw;
+    width: 90vw;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.perfis-match:hover {
+    transform: scale(1.04)
+}
+
+.botoes{
+    width: 30vw;
 }
 
 .foto-perfil{
@@ -23,3 +85,4 @@
     position: absolute;
     top: 0%;
 }
+

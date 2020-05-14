@@ -4,20 +4,51 @@
   padding: 0;
 }
 
+#conteudo-principal{
+ padding: 1.8vw;
+}
+
+#icone-match{
+  display: flex;
+}
+
+#icone-perfil{
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 11VW;
+}
+
 .App{
-  padding: 1.8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Cabecalho{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #4aa397;
+  height: 10VW;
+}
+
+.toolbar{
+  background-color: #4aa397;
 }
 
 .iconeRoxo{
   color: #753192;
-  width: 50vw;
+  size: 5000;
+  font-size: large;
+  align-self: center;
+  justify-self: center;
 }
- .iconeAzul{
-   color: #4aa397;
- }
+
+.iconeRoxo:first-of-type{
+  grid-area: 1/1/2/3;
+  
+}
