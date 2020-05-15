@@ -11,26 +11,42 @@ import { Informações } from './ImagensBackground.js'
 import { ImagemPerfil } from './ImagensBackground.js'
 
 const CardPerfil = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: left;
-  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
-  width: 87vw;
-  height: 120vw;
-  position: relative;
-  overflow: hidden;
-  margin-top: 3vw;
+  animation: ${props =>{
+    switch (props.animado) {
+      case "left":
+        return "left 1s linear 1;"
+      
+      case "right":
+        return "right 1s linear 1;"
+      default:
+        return "none"
+    }
+  }};
+  
+  @keyframes left {
+    0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity: 1;}
+    100% {transform: rotateZ(-45deg) translate(-200vw, 200vh); opacity: 0;}
+  }
+
+  @keyframes right{
+    0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity:1}
+    100% {transform: rotateZ(45deg) translate(200vw, 200vh); opacity: 0; } /*xvw yvw*/
+  }
 `
 
 function Perfil(props) {
   
   const [perfil, setPerfil] = useState([]);
   const [mostraConteudo, setMostraConteudo] = useState('icones')
-
+  const [animacao, setAnimacao] = useState('none')
+  
   useEffect(() => {
     pegaPerfil()}, 
   [props.baseUrl])
+
+  useEffect(() =>{
+    setAnimacao("none")
+  }, [perfil])
 
   const pegaPerfil = () => {
     setMostraConteudo('icones')  
@@ -45,7 +61,8 @@ function Perfil(props) {
       });
   }
 
-  const gosteiPerfil = () => {
+  const gosteiPerfil = () => {    
+    setAnimacao("right")
     const body ={
         id: perfil.id,
         choice: true
@@ -63,6 +80,7 @@ function Perfil(props) {
   }
 
   const naoGosteiPerfil = () => {
+    setAnimacao('left')
     const body ={
         id: perfil.id,
         choice: false
@@ -93,7 +111,7 @@ function Perfil(props) {
       </div>
     }else{
       conteudoNaTela = <div>
-        <CardPerfil animado={animacao}>
+        <CardPerfil id="card-pessoa" animado={animacao}>
           <Informações imagem= {perfil.photo} />
           <ImagemPerfil imagem= {perfil.photo} />
           <div id='textousuario'>

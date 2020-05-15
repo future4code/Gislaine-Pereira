@@ -11,16 +11,6 @@ import { Informações } from './ImagensBackground.js'
 import { ImagemPerfil } from './ImagensBackground.js'
 
 const CardPerfil = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: left;
-  box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
-  width: 87vw;
-  height: 120vw;
-  position: relative;
-  overflow: hidden;
-  margin-top: 3vw;
   animation: ${props =>{
     switch (props.animado) {
       case "left":
@@ -121,7 +111,7 @@ function Perfil(props) {
       </div>
     }else{
       conteudoNaTela = <div>
-        <CardPerfil animado={animacao}>
+        <CardPerfil id="card-pessoa" animado={animacao}>
           <Informações imagem= {perfil.photo} />
           <ImagemPerfil imagem= {perfil.photo} />
           <div id='textousuario'>
