@@ -69,34 +69,49 @@ h1{
     color: white;
     height: 35vw;
     z-index: 3;
-    width: 87vw;
+    width: 83vw;
     background: linear-gradient(179.6deg, rgba(0, 0, 0, 0) 1.06%, rgba(0, 0, 0, 0.38) 30.12%, rgba(0, 0, 0, 0.83) 98.94%);
     ;
 }
 
 #icone-coracao {
-    font-size: 17vw;
+    font-size: 15vw;
     color: #753192;
 }
 
 #botao-coracao {
     background-color: #4aa397;
-    width: 25vw;
-    height: 25vw;
+    width: 22vw;
+    height: 22vw;
 }
 
 #icone-x {
-    font-size: 17vw;
+    font-size: 15vw;
     color: #753192;
     
 }
 
 #botao-x {
     background-color: #4aa397;
-    width: 25vw;
-    height: 25vw;
+    width: 22vw;
+    height: 22vw;
 }
 
+#alert-dialog-title{
+    color: #054b43;
+}
+
+#alert-dialog-description {
+    color: #077265;
+}
+
+#botao-confimra{
+    color: #72159b;
+}
+
+#dialogo{
+    background: linear-gradient(134.19deg, rgba(74, 163, 151, 0.5) 37.3%, rgba(117, 49, 146, 0.5) 73.03%);
+}
 .coracao-loading {
     width: 55vw;
 }

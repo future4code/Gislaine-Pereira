@@ -12,12 +12,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Apagar from '@material-ui/icons/DeleteForever'
 import axios from "axios";
 import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const apiUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gislaine-costa-julian"
 
 function App() {
   const [escolheTela, setEscolheTela] = useState('perfis')
   const [open, setOpen] = useState(false)
+
+  const confirmaExclui = () => {
+    setOpen(true);
+  };
+
+  const fechaConfirma = () => {
+    setOpen(false);
+  };
+
   
   const apagaTudo = () =>{
     console.log("funciou")
@@ -32,7 +47,7 @@ function App() {
       .catch(err => {
         console.log(err);
       });
-   
+    setOpen(false)
   }
   
   const escolhePerfis = () =>{
@@ -68,10 +83,32 @@ function App() {
             </IconButton>
 
             <Tooltip title="Apagar Tudo" arrow >
-              <IconButton onClick={apagaTudo} aria-label="Resetar" >
+              <IconButton onClick={confirmaExclui} aria-label="Resetar" >
                 <Apagar fontSize={'large'} className='iconeRoxo'/>
               </IconButton>
             </Tooltip>
+            <Dialog
+              open={open}
+              onClose={fechaConfirma}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              id='dialogo'
+            >
+              <DialogTitle id="alert-dialog-title">{"Você tem certeza que quer resetar?"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Isso irá apagar todos os matchs e todas as suas escolhas
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button id="botao-confimra" onClick={fechaConfirma} >
+                  Não
+                </Button>
+                <Button onClick={apagaTudo} id="botao-confimra" autoFocus>
+                  Sim
+                </Button>
+              </DialogActions>
+            </Dialog>
           </Toolbar>
         </AppBar>
         
