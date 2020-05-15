@@ -48,6 +48,7 @@ h1{
     margin-top: 5vw;
 }
 
+/*
 #card-perfil {
     display: flex;
     flex-direction: column;
@@ -61,16 +62,16 @@ h1{
     margin-top: 3vw;
     transform: translate(200px, 150px) rotate(20deg)
 }
-
+*/
 #textousuario {
-    padding: 0 2vw 0 3vw;
+    padding: 0 2vw 0 5vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     color: white;
     height: 35vw;
     z-index: 3;
-    width: 83vw;
+    width: 87vw;
     background: linear-gradient(179.6deg, rgba(0, 0, 0, 0) 1.06%, rgba(0, 0, 0, 0.38) 30.12%, rgba(0, 0, 0, 0.83) 98.94%);
     ;
 }
