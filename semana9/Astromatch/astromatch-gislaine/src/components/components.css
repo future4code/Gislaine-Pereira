@@ -59,6 +59,7 @@ h1{
     position: relative;
     overflow: hidden;
     margin-top: 3vw;
+    transform: translate(200px, 150px) rotate(20deg)
 }
 
 #textousuario {
@@ -148,3 +149,12 @@ h1{
     top: 0%;
 }
 
+@media screen and (min-device-width: 800px){
+
+
+
+
+
+
+    
+}

@@ -14,6 +14,7 @@ function Perfil(props) {
   const [perfil, setPerfil] = useState([]);
   const [escolha, setEscolha] = useState("");
   const [mostraConteudo, setMostraConteudo] = useState('icones')
+  const [animacao, setAnimacao] = useState('null')
   
   useEffect(() => {
     pegaPerfil()}, 

@@ -55,3 +55,18 @@
   grid-area: 1/1/2/3;
   
 }
+
+@media screen and (max-device-width: 800px) {
+  #menu-desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-device-width: 800px) {
+
+  #cabecalho-mobile{
+    display:none;
+  }
+
+
+}
