@@ -22,15 +22,14 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Logo from './img/logo.png'
 import Core from './img/core.png'
+import MenuIcon from '@material-ui/icons/Menu';
+
+
 const apiUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gislaine-costa-julian"
 
 const drawerWidth = 240;
@@ -120,7 +119,7 @@ function App() {
             </IconButton>
 
             <IconButton IconButton onClick={escolheMatchs} id="icone-match" aria-label="Ver Matchs" >
-              <IconMatch fontSize={'large'} className='iconeRoxo' onClick={escolheMatchs}/>
+              <IconMatch fontSize={'large'} className='iconeRoxo'/>
             </IconButton>
 
             <Tooltip title="Apagar Tudo" arrow >
@@ -156,10 +155,9 @@ function App() {
         <div id='menu-desktop' className={classes.root}>
           <CssBaseline />
           <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <Typography variant="h6" noWrap>
-                Permanent drawer
-              </Typography>
+            <Toolbar id="cabeçalho">
+              <img className='logo' src={Core} alt='coração'/>
+              <img className='logo' src={Logo} alt='Logo'/>
             </Toolbar>
           </AppBar>
           <Drawer
@@ -170,24 +168,27 @@ function App() {
             }}
             anchor="left"
           >
-            <div className={classes.toolbar} />
-            <Divider />
             <List>
-              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
+                <ListItem id='titulo-menu'>
+                    <MenuIcon fontSize={'large'} className='iconeRoxo'/>
+                    <ListItemText className="texto-menu"> MENU </ListItemText>
                 </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <List>
-              {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
+                <Divider />
+              
+                <section id="lista-menus">
+                  <ListItem className="item-lista" onClick={escolhePerfis}>
+                      <IconPerfil fontSize={'large'} className='iconeRoxo'/>
+                      <ListItemText className="texto-menu"> Visualizar Perfis </ListItemText>
+                  </ListItem>
+                  <ListItem className="item-lista" onClick={escolheMatchs}>
+                      <IconMatch fontSize={'large'} className='iconeRoxo'/>
+                      <ListItemText className="texto-menu"> Visualizar Matchs </ListItemText>
+                  </ListItem>
+                  <ListItem className="item-lista" onClick={confirmaExclui}>
+                      <Apagar fontSize={'large'} className='iconeRoxo'/>
+                      <ListItemText className="texto-menu"> Resetar tudo </ListItemText>
+                  </ListItem>
+                </section>
             </List>
           </Drawer> 
         </div>

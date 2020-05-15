@@ -17,6 +17,48 @@
   height: 11VW;
 }
 
+#cabeçalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #c1c1c1;
+  height: 13vh;
+}
+
+#titulo-menu {
+  height: 11.5vh;
+}
+
+#lista-menus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50vh;
+}
+
+.logo {
+  width: 20vw;
+}
+
+.item-lista {
+  cursor: pointer;
+}
+
+.logo:first-of-type {
+  width: 5vw;
+  margin-right: 3vw;
+}
+
+.texto-menu {
+
+  margin-left: 1vw;
+}
+
+.texto-menu:first-of-type {
+  color: #0c9782;
+}
+
 .App{
   display: flex;
   flex-direction: column;
