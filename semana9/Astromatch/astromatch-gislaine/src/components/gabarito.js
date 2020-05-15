@@ -21,42 +21,16 @@ const CardPerfil = styled.section`
   position: relative;
   overflow: hidden;
   margin-top: 3vw;
-  animation: ${props =>{
-    switch (props.animado) {
-      case "left":
-        return "left 1s linear 1;"
-      
-      case "right":
-        return "right 1s linear 1;"
-      default:
-        return "none"
-    }
-  }};
-  
-  @keyframes left {
-    0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity: 1;}
-    100% {transform: rotateZ(-45deg) translate(-300vw, 200vh); opacity: 0;}
-  }
-
-  @keyframes right{
-    0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity:1}
-    100% {transform: rotateZ(45deg) translate(300vw, 200vh); opacity: 0; } /*exioX eixoY*/
-  }
 `
 
 function Perfil(props) {
   
   const [perfil, setPerfil] = useState([]);
   const [mostraConteudo, setMostraConteudo] = useState('icones')
-  const [animacao, setAnimacao] = useState('none')
-  
+
   useEffect(() => {
     pegaPerfil()}, 
   [props.baseUrl])
-
-  useEffect(() =>{
-    setAnimacao("none")
-  }, [perfil])
 
   const pegaPerfil = () => {
     setMostraConteudo('icones')  
@@ -72,7 +46,6 @@ function Perfil(props) {
   }
 
   const gosteiPerfil = () => {
-    setAnimacao("right")
     const body ={
         id: perfil.id,
         choice: true
@@ -90,7 +63,6 @@ function Perfil(props) {
   }
 
   const naoGosteiPerfil = () => {
-    setAnimacao('left')
     const body ={
         id: perfil.id,
         choice: false
