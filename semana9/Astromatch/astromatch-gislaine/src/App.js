@@ -88,6 +88,7 @@ function App() {
         console.log(err);
       });
     setOpen(false)
+    setEscolheTela('perfis')
   }
   
   const escolhePerfis = () =>{

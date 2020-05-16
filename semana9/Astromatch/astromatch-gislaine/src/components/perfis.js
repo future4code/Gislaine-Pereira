@@ -81,14 +81,15 @@ function Perfil(props) {
 
   const naoGosteiPerfil = () => {
     setAnimacao('left')
-    const body ={
-        id: perfil.id,
-        choice: false
+    const body = {
+      id: perfil.id,
+      choice: false
     }
     axios
       .post(`${props.baseUrl}/choose-person`, body)
       .then(response => {
         console.log(response.data)
+        pegaPerfil()
       })
       .catch(err => {
         console.log(err);
