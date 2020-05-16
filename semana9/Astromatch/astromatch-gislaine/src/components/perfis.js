@@ -25,12 +25,12 @@ const CardPerfil = styled.section`
   
   @keyframes left {
     0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity: 1;}
-    100% {transform: rotateZ(-45deg) translate(-200vw, 200vh); opacity: 0;}
+    100% {transform: rotateZ(-45deg) translate(-400vw, 200vh); opacity: 0;}
   }
 
   @keyframes right{
     0% {transform: rotateZ(0deg) translate(0vw, 0vw); opacity:1}
-    100% {transform: rotateZ(45deg) translate(200vw, 200vh); opacity: 0; } /*xvw yvw*/
+    100% {transform: rotateZ(45deg) translate(400vw, 200vh); opacity: 0; } /*xvw yvw*/
   }
 `
 
