@@ -4,10 +4,14 @@ import { useHistory } from "react-router-dom";
 const HomeUser = () => {
   const history = useHistory();
 
+  const goToTripPage = () => {
+    history.push("/usuario/detalhe-viagem");
+  };
 
   return (
     <div>
-      <p>Home usuário</p>
+      <p>Home Usuario</p>
+      <button onClick={goToTripPage}>Mais Detalhes</button>
     </div>
   );
 };

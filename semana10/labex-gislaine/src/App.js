@@ -9,7 +9,7 @@ import HomeUser from "./pages/HomeUser/HomeUserPage"
 import NovaRota from "./pages/NovaRota/NovaRotaPage"
 import Wellcome from "./pages/Wellcome/index"
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -17,27 +17,27 @@ function App() {
           <Wellcome />
         </Route>
 
-        <Route exact path="/home-admin">
+        <Route exact path="/admin/home">
           <HomeAdmin />
         </Route>
         
-        <Route exact path="/home-usuario">
+        <Route exact path="/usuario/home">
           <HomeUser />
         </Route>
         
-        <Route exact path="/criar-nova-rota">
+        <Route exact path ="/admin/criar-nova-rota" >
           <NovaRota />
         </Route>
         
-        <Route exact path="/administrar-viagem">
+        <Route exact path = "/admin/administrar-viagem" >
           <AdministrarViagem />
         </Route>
 
-        <Route exact path="/detalhe-viagem">
+        <Route exact path="/usuario/detalhe-viagem">
           <DetalheViagem />
         </Route>
 
-        <Route exact path="/candidatura">
+        <Route exact path="usuario/candidatura">
           <Candidatarse />
         </Route>
       </Switch>

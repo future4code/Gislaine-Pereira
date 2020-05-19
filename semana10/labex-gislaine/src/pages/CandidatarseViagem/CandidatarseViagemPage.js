@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 const Candidatarse = () => {
   const history = useHistory();
 
-
   return (
     <div>
       <p>Candidatura</p>

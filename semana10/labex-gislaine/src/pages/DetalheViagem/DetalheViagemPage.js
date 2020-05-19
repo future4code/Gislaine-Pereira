@@ -5,9 +5,14 @@ const DetalheViagem = () => {
   const history = useHistory();
 
 
+  const goToApplicationPage = () => {
+    history.push("usuario/candidatura");
+  };
+
   return (
     <div>
-      <p>Detalhe viagem</p>
+      <p>Detalhe da Viagem</p>
+      <button onClick={goToApplicationPage}>candidatar-se</button>
     </div>
   );
 };
