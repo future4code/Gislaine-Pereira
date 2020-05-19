@@ -1,25 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import AdministrarViagem from "./pages/AdmnistrarViagem/AdmViagemPage"
+import Candidatarse from "./pages/CandidatarseViagem/CandidatarseViagemPage"
+import DetalheViagem from "./pages/DetalheViagem/DetalheViagemPage"
+import HomeAdmin from "./pages/HomeAdmin/HomeAdmPage"
+import HomeUser from "./pages/HomeUser/HomeUserPage"
+import NovaRota from "./pages/NovaRota/NovaRotaPage"
+import Wellcome from "./pages/Wellcome/index"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Wellcome />
+        </Route>
+
+        <Route exact path="/home-admin">
+          <HomeAdmin />
+        </Route>
+        
+        <Route exact path="/home-usuario">
+          <HomeUser />
+        </Route>
+        
+        <Route exact path="/criar-nova-rota">
+          <NovaRota />
+        </Route>
+        
+        <Route exact path="/administrar-viagem">
+          <AdministrarViagem />
+        </Route>
+
+        <Route exact path="/detalhe-viagem">
+          <DetalheViagem />
+        </Route>
+
+        <Route exact path="/candidatura">
+          <Candidatarse />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
