@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h2 {
+    font-size: 1.5vw;
+    font-weight: 1000;
+    font-style: italic;
+    margin:0;
+    padding: 0;
+}
+
+#astro-img {
+    width: 15vw;
+    cursor: default;
+    border-radius: 50%;
+}
+
+#astro-nome {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(245, 174, 126, 0.7), 0 0 5px rgba(250, 193, 118, 0.7);
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+}
+
+#inscrever-se{
+    background-color: #200d01;
+    color: #ff8035;
+}
+
+#dialog-inscricao{
+    color: #ffe5d2;
+    background-color: #000000;
+}
+
+#display-viagens {
+    width: 100vw;
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 97.5vw;
+    padding: 2vw 0.5vw;
+    justify-items: center;
+    align-items: flex-start;
+}
+
+.viagem {
+    width: 16vw;
+    background: rgba(252, 241, 210, 0.30);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 5% 5%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.2vw;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+}
+
+h2, .detalhe-viagem, .descricao{
+    text-align: center;
+    color: #200d01;
+    font-weight: bold;
+}
+
+.detalhe-viagem{
+    font-size: 1.2vw;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+.descricao {
+    font-size: 1.2vw;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
