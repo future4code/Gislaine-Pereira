@@ -3,9 +3,18 @@ import "./Components.css"
 import Logo from "../img/Logo.png"
 import styled from 'styled-components'
 import IconHome from "@material-ui/icons/Home"
+import Add from "@material-ui/icons/Queue"
 import Exit from "@material-ui/icons/ExitToApp"
 import { useHistory } from "react-router-dom";
 
+const IconeAdd = styled(Add)`
+  color: #200d01;
+  &&{
+    :hover{
+      color: #5a2303
+    }
+  }
+`
 const IconeHome = styled(IconHome)`
   color: #200d01;
   &&{
@@ -22,12 +31,15 @@ const IconeSair = styled(Exit)`
     }
   }
 `
-
 const Cabecalho = () => {
   const history = useHistory();
 
   const goToHome = () => {
-    history.push("/usuario/home");
+    history.push("/admin/home");
+  };
+
+  const goToAddTrip = () => {
+    history.push("/admin/criar-nova-rota");
   };
 
   const goToWellcome = () => {
@@ -40,15 +52,20 @@ const Cabecalho = () => {
       
       <h1 id='titulo-cabecalho'>"Encontre as melhores viagens espaciais!"</h1>
       
-      <section id='icones'>
+      <section id='icones-admin'>
         <article className="navegacao" onClick={goToHome}>
-          <IconeHome fontSize={'large'} />
-          <p className="texto-icone">Home</p>
+          <IconeHome fontSize={'large'}/>
+          <p className="texto-icone-admin">Home</p>
         </article>
 
-        <article onClick={goToWellcome}>
-          <IconeSair fontSize={'large'} />
-          <p className="texto-icone">Sair</p>
+        <article className="navegacao" onClick={goToAddTrip}>
+          <IconeAdd fontSize={'large'}/>
+          <p className="texto-icone-admin">Adicionar<br/>Viagem</p>
+        </article>
+
+        <article className="navegacao" onClick={goToWellcome}>
+          <IconeSair fontSize={'large'}/>
+          <p className="texto-icone-admin">Sair</p>
         </article>
       </section>
       

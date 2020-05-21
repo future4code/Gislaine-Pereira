@@ -62,13 +62,19 @@ input:disabled {
     opacity: 0.4;
 }
 
-p.texto-icone {
+p.texto-icone-user, p.texto-icone-admin {
     color: #200d01;
     font-weight: bold;
-    font-size: 1.7vw;
+    text-align: center;
+    margin:0;
+    padding:0;
 }
 
-p.texto-icone:hover {
+p.texto-icone-admin {
+    font-size: 1vw;
+}
+
+p.texto-icone-user:hover, p.texto-icone-admin:hover {
     color: #5a2303;
 }
 
@@ -118,11 +124,19 @@ p.texto-icone:hover {
     display: flex;
 }
 
-#icones {
+#icones-user, #icones-admin {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+}
+
+#icones-user{
     width: 12vw;
+    align-items: center;
+}
+
+#icones-admin{
+    width: 20vw;
+    align-items: flex-start;
 }
 
 #conteudo-cabecalho {
@@ -164,6 +178,7 @@ p.texto-icone:hover {
     text-shadow: 0 0 10px rgba(250, 170, 117, 0.6), 0 0 5px rgba(243, 166, 65, 0.6);
     font-size: 2.5vw;
     text-align: center;
+    margin-left: 2vw;
 }
 
 #logo-site {

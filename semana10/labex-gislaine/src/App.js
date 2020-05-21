@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import './App.css';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import AdministrarViagem from "./pages/AdmnistrarViagem/AdmViagemPage"
@@ -21,6 +22,24 @@ const TelaToda = styled.div `
 `
 
 const App = () => {
+  const [viagens, setViagens] = useState([]);
+
+  useEffect(() => {
+      pegaViagem()
+    },
+    [apiUrl])
+
+    const pegaViagem = () => {
+    axios
+      .get(`${apiUrl}/trips`)
+      .then(response => {
+        setViagens(response.data.trips);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   return (
     
     <TelaToda>
@@ -31,11 +50,11 @@ const App = () => {
           </Route>
   
           <Route exact path="/admin/home">
-            <HomeAdmin />
+            <HomeAdmin viagens={viagens}/>
           </Route>
           
           <Route exact path="/usuario/home">
-            <HomeUser baseUrl={apiUrl}/>
+            <HomeUser viagens={viagens} baseUrl={apiUrl}/>
           </Route>
           
           <Route exact path ="/admin/criar-nova-rota" >

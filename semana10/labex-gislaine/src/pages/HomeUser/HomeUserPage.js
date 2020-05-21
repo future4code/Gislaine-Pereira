@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import "../Pages.css"
-import axios from "axios";
-import Cabecalho from "../../components/Cabecalho"
+import CabecalhoUser from "../../components/CabecalhoUser"
 import Rodape from "../../components/Rodapé"
 import Fundo from "../../img/fundo2.jpg"
 import Plutao from "../../img/plutão.jpg"
@@ -28,30 +27,14 @@ const TelaToda = styled.div `
 `
 
 const HomeUser = (props) => {
-  const [viagens, setViagens] = useState([]);
   const [open, setOpen] = useState(false);
   const [idViagem, setIdViagem] = useState('')
-
-  useEffect(() => {
-    pegaViagem()},
-  [props.baseUrl])
 
   const fechaForm = () => {
     setOpen(false);
   };
-  
-  const pegaViagem = () => {
-    axios
-      .get(`${props.baseUrl}/trips`)
-      .then(response => {
-        setViagens(response.data.trips);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
 
-  const ListaViagem = viagens.map((viagem) => {
+  const ListaViagem = props.viagens.map((viagem) => {
     let astroEscolhido  
     switch (viagem.planet) {
         case "Marte":
@@ -79,8 +62,8 @@ const HomeUser = (props) => {
           astroEscolhido = Nebula
           break;
       }
-    return <article className='viagem' key={viagem.id}>
-      <img id='astro-img' src={astroEscolhido} alt="Foto do astro"/>
+    return <article className='viagemUser' key={viagem.id}>
+      <img id='astro-img-user' src={astroEscolhido} alt="Foto do astro"/>
       <h1 id='astro-nome'>{viagem.planet} </h1>
       <h2>{viagem.name}</h2>
       <p className='descricao'>"{viagem.description}"</p>
@@ -106,7 +89,7 @@ const HomeUser = (props) => {
 
   return (
     <TelaToda>
-      <Cabecalho />
+      <CabecalhoUser />
       
       <section id='display-viagens'>
           {ListaViagem}
