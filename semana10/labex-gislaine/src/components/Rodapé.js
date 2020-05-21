@@ -13,13 +13,10 @@ const Rodape = () => {
   const [valorNome, setValorNome] = useState('')
   const [valorEmail, setValorEmail] = useState('')
   const [valorMensagem, setValorMensagem] = useState('')
-  const {watch,} = useForm();
   
   const enviarMensagem = () => {
     console.log('funcionou enviar');
   };
-
-  console.log(watch("example"));
   
   return (
     <div id="conteudo-rodape">

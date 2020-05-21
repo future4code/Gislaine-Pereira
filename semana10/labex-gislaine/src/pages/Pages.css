@@ -12,6 +12,7 @@ h2 {
     padding: 0;
 }
 
+
 #astro-img {
     width: 15vw;
     cursor: default;
@@ -37,6 +38,10 @@ h2 {
     background-color: #000000;
 }
 
+#container-idade {
+    width: 20%;
+}
+
 #display-viagens {
     width: 100vw;
     min-height: 90vh;
@@ -46,6 +51,31 @@ h2 {
     padding: 2vw 0.5vw;
     justify-items: center;
     align-items: flex-start;
+}
+
+#conteudo-dialogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+}
+
+.inputs:first-of-type{
+    width: 90%;
+    display:flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.inputs:last-of-type{
+    width: 80%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .viagem {

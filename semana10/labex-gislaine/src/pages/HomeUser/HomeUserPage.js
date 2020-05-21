@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
-import "./HomeUser.css"
+import "../Pages.css"
 import axios from "axios";
-import {useHistory} from "react-router-dom";
 import Cabecalho from "../../components/Cabecalho"
 import Rodape from "../../components/Rodapé"
 import Fundo from "../../img/fundo2.jpg"
@@ -16,12 +15,8 @@ import Tita from "../../img/tita.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Button from '@material-ui/core/Button';
 import IconPlus from '@material-ui/icons/FastForward'
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Candidatarse from "../CandidatarseViagem/CandidatarseViagemPage"
+
 
 const TelaToda = styled.div `
   background-image: url("${Fundo}");
@@ -34,25 +29,17 @@ const TelaToda = styled.div `
 
 const HomeUser = (props) => {
   const [viagens, setViagens] = useState([]);
-  const history = useHistory();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [idViagem, setIdViagem] = useState('')
 
-  const abreForm = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    pegaViagem()},
+  [props.baseUrl])
 
   const fechaForm = () => {
     setOpen(false);
   };
-
-  const goToTripPage = () => {
-    history.push("/usuario/detalhe-viagem");
-  };
-
-  useEffect(() => {
-    pegaViagem()}, 
-  [props.baseUrl])
-
+  
   const pegaViagem = () => {
     axios
       .get(`${props.baseUrl}/trips`)
@@ -92,7 +79,6 @@ const HomeUser = (props) => {
           astroEscolhido = Nebula
           break;
       }
-    
     return <article className='viagem' key={viagem.id}>
       <img id='astro-img' src={astroEscolhido} alt="Foto do astro"/>
       <h1 id='astro-nome'>{viagem.planet} </h1>
@@ -104,7 +90,12 @@ const HomeUser = (props) => {
         variant="contained"
         endIcon={<IconPlus />}
         id="inscrever-se"
-        onClick={abreForm}
+        onClick = {
+          () => {
+            setOpen(true);
+            setIdViagem(viagem.id)
+          }
+        }
         size="small"
       >
         Eu quero!
@@ -116,51 +107,15 @@ const HomeUser = (props) => {
   return (
     <TelaToda>
       <Cabecalho />
+      
       <section id='display-viagens'>
           {ListaViagem}
       </section>
+      
+      <Candidatarse baseUrl={props.baseUrl} fechaForm={fechaForm.bind()} isOpen={open} viagemId={idViagem}/>
+      
       <Rodape />
 
-      <div id='formulario'>
-        <Dialog open={open} onClose={fechaForm} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Formulario de Inscrição</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Preencha todos os dados para se candidatar à viagem. <br />
-              Após o envio, fique de olho no seu e-mail.
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button
-              variant="contained"
-              endIcon={<IconPlus />}
-              id = "dialog-inscricao"
-              onClick={fechaForm}
-              size="small"
-            >
-              Cancelar
-            </Button>
-            
-            <Button
-              variant="contained"
-              endIcon={<IconPlus />}
-              id="dialog-inscricao"
-              onClick={fechaForm}
-              size="small"
-            >
-              Enviar
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
     </TelaToda>
   );
 };
