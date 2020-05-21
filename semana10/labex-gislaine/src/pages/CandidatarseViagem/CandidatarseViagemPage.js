@@ -12,6 +12,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 import axios from "axios";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const MyTheme = createMuiTheme({
   palette: {
@@ -53,19 +69,22 @@ const paises = [{
 
 const Candidatarse = (props) => {
   const [país, setPaís] = useState('Brasil')
-  const [open, setOpen] = useState(false);
+  const [openForm, setOpenForm] = useState('')
   const [idViagem, setIdViagem] = useState("")
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
   const [profissao, setProfissao] = useState("")
   const [mensagem, setMensagem] = useState('')
-  
+  const classes = useStyles();
+  const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
+  const [openAlertErro, setOpenAlertErro] = useState(false);
+
   useEffect(() => {
     setIdViagem(props.viagemId)},
   [props.viagemId])
 
   useEffect(() => {
-    setOpen(props.isOpen)},
+    setOpenForm(props.isOpen)},
   [props.isOpen])
   
   const limpaTudo = () =>{
@@ -77,6 +96,23 @@ const Candidatarse = (props) => {
     setMensagem('');
   }
   
+  const FormSucesso = () => {
+    setOpenAlertSucesso(true);
+  };
+
+  const FormErro = (erro) => {
+    setOpenAlertErro(true);
+    console.log(erro);
+  };
+
+  const fechaAlert = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenAlertSucesso(false);
+    setOpenAlertErro(false);
+  }; 
+
   const enviaCandidato = () => {
     const body ={
       name: {name},
@@ -89,15 +125,17 @@ const Candidatarse = (props) => {
       .post(`${props.baseUrl}/trips/${idViagem}/apply`, body)
       .then(response => {
         console.log(response.data);
-        limpaTudo()
+        limpaTudo();
+        FormSucesso()
       })
       .catch(err => {
-        console.log(err);
+        FormErro(err);
       });
   }
+
   return (
     <MuiThemeProvider theme={MyTheme}>
-      <Dialog fullWidth={true} open={open} onClose={props.fechaForm} id='form-iscricao'>
+      <Dialog fullWidth={true} open={openForm} onClose={props.fechaForm} id='form-iscricao'>
         <DialogTitle id="form-dialog-title">Formulario de Inscrição</DialogTitle>
         <DialogContent id="conteudo-dialogo">
           <DialogContentText>
@@ -181,6 +219,19 @@ const Candidatarse = (props) => {
           </Button>
         </DialogActions>
       </Dialog>
+      
+      <Snackbar open={openAlertSucesso} autoHideDuration={6000} onClose={fechaAlert}>
+        <Alert onClose={fechaAlert} severity="success">
+          Formulário enviado com sucesso!
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={openAlertErro} autoHideDuration={6000} onClose={fechaAlert}>
+        <Alert onClose={fechaAlert} severity="error">
+          Por favor, tente novamente
+        </Alert>
+      </Snackbar>
+      
     </MuiThemeProvider>
   );
 };
