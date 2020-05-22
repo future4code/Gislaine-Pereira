@@ -61,12 +61,6 @@ const TelaToda = styled.div `
   flex-direction: column;
   align-items: center;
 `
-
-const ContainerInputName = styled.div`
-    width: 40vw;
-    display: flex;
-`
-
 const InputName = styled(TextField)`
     flex-basis: 100%;
 `
@@ -108,7 +102,7 @@ const InputLinhas = styled(TextField)`
 const MyTheme = createMuiTheme({
       palette: {
         primary: {
-          main: '#D76D2D'
+          main: '#ff5f00'
         }
       }
 });
@@ -208,7 +202,7 @@ const NovaRota = (props) => {
 
       <MuiThemeProvider theme={MyTheme}>    
         <section id="container-formulario">
-          <TituloForm>Insira as características da Viagem</TituloForm>  
+          <h1>Insira as características da Viagem</h1>  
           <InputsLadoALado>
             <ContainerInputParcelas>
               <InputCategoria
@@ -234,6 +228,7 @@ const NovaRota = (props) => {
                 id="input-duracao"
                 value={duracao}
                 type="number"
+                min="1"
                 onChange={e => {setDuracao(e.target.value)}}
               />
             </ContainerInputPreco>
@@ -251,7 +246,7 @@ const NovaRota = (props) => {
             </ContainerInputPreco>
           </InputsLadoALado>                            
           <InputsLadoALado>
-            <ContainerInputName>
+            <section id="container-titulo">
               <InputName
                 required
                 id="input-titulo-viagem"
@@ -260,7 +255,7 @@ const NovaRota = (props) => {
                 value={titulo}
                 onChange={e => {setTitulo(e.target.value)}}
               />
-            </ContainerInputName>
+            </section>
             <InputLinhas
                 required
                 id="standard-multiline-flexible"
@@ -273,7 +268,7 @@ const NovaRota = (props) => {
             />
           </InputsLadoALado> 
           <ContainerBotao>
-              <BotaoEnviar onClick={cadastraViagem} variant="contained" color="primary" className={""}>
+              <BotaoEnviar id="botao-cadastar-viagem" onClick={cadastraViagem} variant="contained" color="primary" className={""}>
                 Criar Destino &nbsp;
                 <EnviarIcon className={""} />
               </BotaoEnviar>
