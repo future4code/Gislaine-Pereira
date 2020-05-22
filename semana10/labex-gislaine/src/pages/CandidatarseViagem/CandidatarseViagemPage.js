@@ -44,27 +44,39 @@ const Input = styled(TextField)`
 const paises = [{
     value: 'Brasil',
     label: 'Brasil',
+    src: 'https://cdn.countryflags.com/thumbs/brazil/flag-wave-250.png',
+  },
+  {
+    value: 'Dominica',
+    label: 'Dominica',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Flag_of_Dominica.png/800px-Flag_of_Dominica.png'
   },
   {
     value: 'Estados Unidos',
-    label: 'E.U.A',
+    label: 'Estados Unidos',
+    src: 'https://static.todamateria.com.br/upload/ba/nd/bandeira_americana_bb.jpg'
   },
   {
     value: 'Espanha',
     label: 'Espanha',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg'
   },
   {
     value: 'Moçambique',
     label: 'Moçambique',
+    src: 'https://images.uncyc.org/pt/a/ab/Bandeira_de_Mo%C3%A7ambique.png'
   },
   {
-    value: 'Japão',
-    label: 'Japão',
+    value: 'China',
+    label: 'China',
+    src: 'https://ae01.alicdn.com/kf/HTB1JCySFY9YBuNjy0Fgq6AxcXXaY/China-Bandeira-Com-Casaco-de-Bra-os-de-120x180-cm-100D-Poli-ster-Bandeiras-E-Banners.jpg'
   },
   {
-    value: 'Indonédia',
-    label: 'Indonésia',
+    value: 'Austrália',
+    label: 'Austrália',
+    src: 'https://cdn.pixabay.com/photo/2020/02/21/05/49/australia-4866531_960_720.png'
   },
+
 ];
 
 const Candidatarse = (props) => {
@@ -75,7 +87,6 @@ const Candidatarse = (props) => {
   const [age, setAge] = useState('')
   const [profissao, setProfissao] = useState("")
   const [mensagem, setMensagem] = useState('')
-  const classes = useStyles();
   const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
   const [openAlertErro, setOpenAlertErro] = useState(false);
 
@@ -96,11 +107,11 @@ const Candidatarse = (props) => {
     setMensagem('');
   }
   
-  const FormSucesso = () => {
+  const formSucesso = () => {
     setOpenAlertSucesso(true);
   };
 
-  const FormErro = (erro) => {
+  const formErro = (erro) => {
     setOpenAlertErro(true);
     console.log(erro);
   };
@@ -126,10 +137,10 @@ const Candidatarse = (props) => {
       .then(response => {
         console.log(response.data);
         limpaTudo();
-        FormSucesso()
+        formSucesso()
       })
       .catch(err => {
-        FormErro(err);
+        formErro(err);
       });
   }
 
@@ -144,6 +155,7 @@ const Candidatarse = (props) => {
           
           <section className="inputs">
             <Input
+              required
               autoFocus
               margin="dense"
               id='input-medio'
@@ -154,6 +166,7 @@ const Candidatarse = (props) => {
             />
             <section id='container-idade'>
               <Input
+                required
                 autoFocus
                 id='idade'
                 label="Idade"
@@ -163,6 +176,7 @@ const Candidatarse = (props) => {
               />
             </section>
             <Input
+              required
               className='input-pequeno'
               select
               label="País"
@@ -171,13 +185,14 @@ const Candidatarse = (props) => {
             >
               {paises.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                  <div> <img src={option.src} height="18px" width="24px"/> &nbsp; {option.label}</div>
                 </MenuItem>
               ))}
             </Input>
           </section>
           <section className='inputs'>
             <Input
+              required
               autoFocus
               margin="dense"
               label="Profissão"
@@ -187,6 +202,7 @@ const Candidatarse = (props) => {
               onChange={e => {setProfissao(e.target.value)}}
             />
               <Input
+                required
                 autoFocus
                 margin="dense"
                 label="Mensagem"

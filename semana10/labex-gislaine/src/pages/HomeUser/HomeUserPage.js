@@ -11,6 +11,7 @@ import Marte from "../../img/marte.jpg"
 import Netuno from "../../img/netuno.jpg"
 import Saturno from "../../img/saturno.jpg"
 import Tita from "../../img/tita.jpg"
+import Mercurio from "../../img/Mercurio.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Button from '@material-ui/core/Button';
 import IconPlus from '@material-ui/icons/FastForward'
@@ -57,6 +58,9 @@ const HomeUser = (props) => {
           break;
         case "Ganimedes":
           astroEscolhido = Ganimedes
+          break;
+        case "Mercúrio":
+          astroEscolhido = Mercurio
           break;
         default:
           astroEscolhido = Nebula

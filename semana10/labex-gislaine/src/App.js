@@ -58,7 +58,7 @@ const App = () => {
           </Route>
           
           <Route exact path ="/admin/criar-nova-rota" >
-            <NovaRota />
+            <NovaRota baseUrl={apiUrl}/>
           </Route>
           
           <Route exact path = "/admin/administrar-viagem" >

@@ -6,7 +6,6 @@ import Instagram from "../img/insta.png";
 import By from "../img/by.png"
 import Button from '@material-ui/core/Button';
 import IconSend from '@material-ui/icons/Send';
-import { useForm } from "react-hook-form";
 
 
 const Rodape = () => {

@@ -12,6 +12,7 @@ import Netuno from "../../img/netuno.jpg"
 import Saturno from "../../img/saturno.jpg"
 import Tita from "../../img/tita.jpg"
 import Nebula from "../../img/nebula.jpg"
+import Mercurio from "../../img/Mercurio.jpg"
 import Button from '@material-ui/core/Button';
 import IconPlus from '@material-ui/icons/Add'
 import Candidatarse from "../CandidatarseViagem/CandidatarseViagemPage"
@@ -26,7 +27,7 @@ const TelaToda = styled.div `
   min-height: 100vh;
 `
 
-const HomeUser = (props) => {
+const HomeAdmin = (props) => {
   const [open, setOpen] = useState(false);
   const [idViagem, setIdViagem] = useState('')
 
@@ -57,6 +58,9 @@ const HomeUser = (props) => {
           break;
         case "Ganimedes":
           astroEscolhido = Ganimedes
+          break;
+        case "Mercúrio":
+          astroEscolhido = Mercurio
           break;
         default:
           astroEscolhido = Nebula
@@ -101,4 +105,4 @@ const HomeUser = (props) => {
   );
 };
 
-export default HomeUser;
+export default HomeAdmin;
