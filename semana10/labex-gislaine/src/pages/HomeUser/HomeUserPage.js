@@ -35,6 +35,8 @@ const HomeUser = (props) => {
     setOpen(false);
   };
 
+  console.log(props.viagens)
+
   const ListaViagem = props.viagens.map((viagem) => {
     let astroEscolhido  
     switch (viagem.planet) {
@@ -66,6 +68,7 @@ const HomeUser = (props) => {
           astroEscolhido = Nebula
           break;
       }
+
     return <article className='viagemUser' key={viagem.id}>
       <img id='astro-img-user' src={astroEscolhido} alt="Foto do astro"/>
       <h1 id='astro-nome'>{viagem.planet} </h1>

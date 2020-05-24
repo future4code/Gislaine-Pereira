@@ -15,7 +15,6 @@ import Nebula from "../../img/nebula.jpg"
 import Mercurio from "../../img/Mercurio.jpg"
 import Button from '@material-ui/core/Button';
 import IconPlus from '@material-ui/icons/Add'
-import Candidatarse from "../CandidatarseViagem/CandidatarseViagemPage"
 
 
 const TelaToda = styled.div `
@@ -96,8 +95,6 @@ const HomeAdmin = (props) => {
       <section id='display-viagens'>
           {ListaViagem}
       </section>
-      
-      <Candidatarse baseUrl={props.baseUrl} fechaForm={fechaForm.bind()} isOpen={open} viagemId={idViagem}/>
       
       <Rodape />
 
