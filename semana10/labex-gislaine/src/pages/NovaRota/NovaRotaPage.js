@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import EnviarIcon from '@material-ui/icons/Send';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import FormCadastroViagem from "../../components/FormCadastroViagem"
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -100,11 +101,6 @@ const InputLinhas = styled(TextField)`
 `
 
 const MyTheme = createMuiTheme({
-      palette: {
-        primary: {
-          main: '#ff5f00'
-        }
-      }
 });
 
 const astros = [{
@@ -232,18 +228,9 @@ const NovaRota = (props) => {
                 onChange={e => {setDuracao(e.target.value)}}
               />
             </ContainerInputPreco>
-            <ContainerInputPreco>
-              <InputPreco
-                required
-                label="Data da viagem"
-                id="input-data-viagem"
-                min="2020-05-21"
-                placeholder=""
-                type="date"
-                value={data}
-                onChange={e => {setData(e.target.value)}}
-              />
-            </ContainerInputPreco>
+           
+             <FormCadastroViagem />
+            
           </InputsLadoALado>                            
           <InputsLadoALado>
             <section id="container-titulo">

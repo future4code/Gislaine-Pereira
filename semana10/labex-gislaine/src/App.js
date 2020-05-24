@@ -9,6 +9,8 @@ import NovaRota from "./pages/NovaRota/NovaRotaPage"
 import Wellcome from "./pages/Wellcome/index"
 import styled from 'styled-components'
 import ImagemFundo from "./img/fundo2.jpg"
+import { MuiThemeProvider } from "@material-ui/core";
+import theme from "./style/theme";
 
 const apiUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/gislaine-julian"
 
@@ -29,7 +31,7 @@ const App = () => {
     },
     [apiUrl])
 
-    const pegaViagem = () => {
+  const pegaViagem = () => {
     axios
       .get(`${apiUrl}/trips`)
       .then(response => {
@@ -41,8 +43,8 @@ const App = () => {
   }
 
   return (
-    
-    <TelaToda>
+    <MuiThemeProvider theme={theme}>
+      <TelaToda>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -67,6 +69,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </TelaToda>
+    </MuiThemeProvider>
   );
 }
 

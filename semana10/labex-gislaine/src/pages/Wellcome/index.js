@@ -20,7 +20,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const TelaToda = styled.div`
-   background-image: url("${ImagemFundo}");
+  background-image: url("${ImagemFundo}");
   background-color: #0d0d2b;
   height: 100vh;
   background-size: cover;
