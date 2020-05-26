@@ -15,7 +15,7 @@ import Mercurio from "../../img/Mercurio.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Button from '@material-ui/core/Button';
 import IconPlus from '@material-ui/icons/FastForward'
-import Candidatarse from "../CandidatarseViagem/CandidatarseViagemPage"
+import Candidatarse from "../../components/CandidatarseViagem"
 
 
 const TelaToda = styled.div `

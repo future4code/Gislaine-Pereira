@@ -18,6 +18,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={12} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -45,12 +51,6 @@ const MyTheme = createMuiTheme({
             dark: "rgba(34, 13, 0, 1)",
             contrastText: "rgba(255, 229, 210, 1)"
         },
-        error: {
-            main: "#732000",
-            dark: "#1f0c01",
-            light: "rgba(255, 255, 255, 0.4)",
-            contrastText: "#000000",
-        }
     }
 })
 
@@ -72,6 +72,25 @@ const Wellcome = (props) => {
   const [valorSenha, setValorSenha] = useState('')
   const [mostraSenha, setMostraSenha] = useState(false)
   const [valorUsuario, setValorUsuario] = useState('')
+  const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
+  const [openAlertErro, setOpenAlertErro] = useState(false);
+  
+  const formSucesso = () => {
+    setOpenAlertSucesso(true);
+  };
+
+  const formErro = (erro) => {
+    setOpenAlertErro(true);
+    console.log(erro);
+  };
+
+  const fechaAlert = (event ? : React.SyntheticEvent, reason ? : string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenAlertSucesso(false);
+    setOpenAlertErro(false);
+  };
   
   const fazerLogin = async () => {
     const body = {  
@@ -81,9 +100,10 @@ const Wellcome = (props) => {
     try {
       const response = await axios.post(`${props.baseUrl}/login`, body);
       localStorage.setItem("token", response.data.token);
+      formSucesso()
       history.push("/admin/home");
     } catch (e) {
-      alert("Login falhou :" + e);
+      formErro();
     }
   };
   
@@ -96,88 +116,99 @@ const Wellcome = (props) => {
   };
   
   const goToUserPage = () => {
-      history.push("/usuario/home");
+    history.push("/usuario/home");
   };
-  console.log(valorUsuario)
-  console.log(valorSenha)
+  
   return(
       <TelaToda>
           <MuiThemeProvider theme={MyTheme}>
-              <section id="cabecalho">
-                <img id="logo" src={Logo} alt={'Logo'}/>
-                <h1>"Encontre as melhores viagens espaciais!"</h1>
-              </section>
-              <section id="corpo-site">      
-                  <section className="div-login">
-                      <h3>Sou Administrador</h3>
-                      
-                      <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
-                          <InputLabel color="primary.light" htmlFor="input-usuario">Usuário</InputLabel>
-                          <FilledInput
-                              error
-                              id="input-usuario"
-                              type={'text'}
-                              value={valorUsuario}
-                              onChange={e => setValorUsuario(e.target.value)}
-                              endAdornment={
-                                <InputAdornment position="start">
-                                  <AccountCircle color="error"/>
-                                </InputAdornment>
-                              }
-                          />
-                      </Inputs>
-                      
-                      <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
-                          <InputLabel htmlFor="input-senha">Senha</InputLabel>
-                          <FilledInput
-                              error
-                              id="input-senha"
-                              type={mostraSenha ? 'text' : 'password'}
-                              value={valorSenha}
-                              onChange={e => setValorSenha(e.target.value)}
-                              endAdornment={
-                                <InputAdornment position="end">
-                                  <IconButton
-                                    color = "error.dark"
-                                    aria-label="Visibilidade Senha"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                  >
-                                    {mostraSenha ? <Visibility color = "error.dark"/> : <VisibilityOff color = "error.dark" />}
-                                  </IconButton>
-                              </InputAdornment>
-                            }
-                        />
-                      </Inputs>
-                    
-                      <Button
-                        variant="contained"
+            <section id="cabecalho">
+              <img id="logo" src={Logo} alt={'Logo'}/>
+              <h1>"Encontre as melhores viagens espaciais!"</h1>
+            </section>
+            <section id="corpo-site">      
+              <section className="div-login">
+                <h3>Sou Administrador</h3>
+                
+                <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
+                    <InputLabel color="primary.light" htmlFor="input-usuario">Usuário</InputLabel>
+                    <FilledInput
                         color="primary"
-                        endIcon={<IconSend />}
-                        id="botao-admin"
-                        onClick={fazerLogin}
-                        size="small"
-                      >
-                        Entrar
-                      </Button>
-                  </section>
-                    
-                  <section className="div-login">
-                      <h3>Quero me candidatar</h3>
-                      <p>Escontre a sua viagem dos sonhos</p>
-                      <Button
-                        variant="contained"
+                        id="input-usuario"
+                        type={'text'}
+                        value={valorUsuario}
+                        onChange={e => setValorUsuario(e.target.value)}
+                        endAdornment={
+                          <InputAdornment position="start">
+                            <AccountCircle color="error"/>
+                          </InputAdornment>
+                        }
+                    />
+                </Inputs>
+                
+                <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
+                    <InputLabel htmlFor="input-senha">Senha</InputLabel>
+                    <FilledInput
                         color="primary"
-                        endIcon={<IconSend />}
-                        id="botao-user"
-                        onClick={goToUserPage}
-                        size="large"
-                      >
-                        Entrar
-                      </Button>
-                  </section>
+                        id="input-senha"
+                        type={mostraSenha ? 'text' : 'password'}
+                        value={valorSenha}
+                        onChange={e => setValorSenha(e.target.value)}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              color = "error.dark"
+                              aria-label="Visibilidade Senha"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {mostraSenha ? <Visibility color = "error.dark"/> : <VisibilityOff color = "error.dark" />}
+                            </IconButton>
+                        </InputAdornment>
+                      }
+                  />
+                </Inputs>
+              
+                <Button
+                  variant="contained"
+                  color="primary"
+                  endIcon={<IconSend />}
+                  id="botao-admin"
+                  onClick={fazerLogin}
+                  size="small"
+                >
+                  Entrar
+                </Button>
               </section>
-           </MuiThemeProvider>
+                
+              <section className="div-login">
+                <h3>Quero me candidatar</h3>
+                <p>Escontre a sua viagem dos sonhos</p>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  endIcon={<IconSend />}
+                  id="botao-user"
+                  onClick={goToUserPage}
+                  size="large"
+                >
+                  Entrar
+                </Button>
+              </section>
+            </section>
+
+            <Snackbar open={openAlertSucesso} autoHideDuration={6000} onClose={fechaAlert}>
+              <Alert onClose={fechaAlert} severity="success">
+                Formulário enviado com sucesso!
+              </Alert>
+            </Snackbar>
+
+            <Snackbar open={openAlertErro} autoHideDuration={6000} onClose={fechaAlert}>
+              <Alert onClose={fechaAlert} severity="error">
+                Por favor, tente novamente.
+              </Alert>
+            </Snackbar>
+          </MuiThemeProvider>
       </TelaToda>
   );
 };

@@ -12,13 +12,14 @@ function InputData(props) {
   }, [selectedDate]);
 
   const formataData = () => {
-    var dia = (selectedDate.getDate() < 10 ? "0" : "") + selectedDate.getDate();
-    var mes =
-      (selectedDate.getMonth() + 1 < 10 ? "0" : "") +
-      (selectedDate.getMonth() + 1);
-    var ano = selectedDate.getYear() - 100;
-    setDataFromatada(dia + "/" + mes + "/" + ano);
-    console.log(dataFormatada);
+    if (selectedDate !== null){
+      let dia = (selectedDate.getDate() < 10 ? "0" : "") + selectedDate.getDate();
+      let mes = (selectedDate.getMonth() + 1 < 10 ? "0" : "") + (selectedDate.getMonth() + 1);
+      let ano = selectedDate.getYear() - 100;
+      const novaData = dia + "/" + mes + "/" + ano
+      setDataFromatada(novaData);
+      console.log(novaData);
+    }
   };
 
   return (

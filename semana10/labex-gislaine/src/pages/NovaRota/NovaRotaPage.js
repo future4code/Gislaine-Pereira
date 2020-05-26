@@ -14,21 +14,30 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import InputData from "../../components/InputData";
 import FuncaoLogin from "../../hooks/Login"
+import Plutao from "../../img/plutão.jpg"
+import Jupter from "../../img/jupiter.jpg"
+import Ganimedes from "../../img/ganimedes.jpg"
+import Marte from "../../img/marte.jpg"
+import Netuno from "../../img/netuno.jpg"
+import Saturno from "../../img/saturno.jpg"
+import Tita from "../../img/tita.jpg"
+import Mercurio from "../../img/Mercurio.jpg"
+import Nebula from "../../img/nebula.jpg"
 
 
 const MyTheme = createMuiTheme({
   palette: {
     primary: {
-      light: "rgba(255, 95, 0, 1)",
-      main: "#732000",
-      dark: "rgba(225, 62, 0, 1)",
-      contrastText: "rgba(255, 229, 210, 1)"
+      light: "#ff8035",
+      main: "#ff5f00",
+      dark: "#e13e00",
+      contrastText: "#1f0c01"
     },
     secondary: {
       dark: "#732000",
       main: "#1f0c01",
       light: "rgba(255, 255, 255, 0.4)",
-      contrastText: "rgba(255, 95, 0, 1)",
+      contrastText: "#ff5f00",
     }
   }
 })
@@ -48,26 +57,9 @@ const TelaToda = styled.div `
   flex-direction: column;
   align-items: center;
 `
-const InputName = styled(TextField)`
-    flex-basis: 100%;
-`
-const InputCategoria = styled(TextField)`
-    flex-basis: 100%;
-`
-const InputPreco = styled(TextField)`
-    flex-basis: 100%;
-`
-const BotaoEnviar = styled(Button)`
-    flex-basis: 100%;
-`
-const InputLinhas = styled(TextField)`
-    flex-basis: 100%;
-`
-
 const astros = [{
     value: 'Marte',
     label: 'Marte',
-    img: {}
   },
   {
     value: 'Jupiter',
@@ -101,7 +93,6 @@ const astros = [{
 
 const NovaRota = (props) => {
   FuncaoLogin()
-
   const [destino, setDestino] = useState('')
   const [titulo, setTitulo] = useState('')
   const [data, setData] = useState('')
@@ -109,6 +100,10 @@ const NovaRota = (props) => {
   const [descricao, setDescricao] = useState('')
   const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
   const [openAlertErro, setOpenAlertErro] = useState(false);
+
+  useEffect(() => {
+    escolheAstro();
+  }, [destino]);
 
   const limpaTudo = () => {
     setDestino('');
@@ -147,6 +142,39 @@ const NovaRota = (props) => {
       });
   }
 
+  let astroEscolhido
+  const escolheAstro = ()=>{
+    switch (destino) {
+      case "Marte":
+        astroEscolhido = Marte
+        break;
+      case "Jupiter":
+        astroEscolhido = Jupter
+        break;
+      case "Netuno":
+        astroEscolhido = Netuno
+        break;
+      case "Saturno":
+        astroEscolhido = Saturno
+        break;
+      case "Titã":
+        astroEscolhido = Tita
+        break;
+      case "Plutão":
+        astroEscolhido = Plutao
+        break;
+      case "Ganimedes":
+        astroEscolhido = Ganimedes
+        break;
+      case "Mercúrio":
+        astroEscolhido = Mercurio
+        break;
+      default:
+        astroEscolhido = Nebula
+        break;
+    }
+  }
+
   const fechaAlert = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
@@ -160,46 +188,59 @@ const NovaRota = (props) => {
       <CabecalhoAdmin />
 
       <MuiThemeProvider theme={MyTheme}>    
-        <h1>Cadastre a sua viagem</h1>
-        <section id="container-formulario">
-          <InputCategoria
-            required
-            id="input-seleciona-destino"
-            select
-            label="Destino"
-            value={destino}
-            onChange={e => {setDestino(e.target.value)}}
-            margin="normal"
-          >
-            {astros.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputCategoria>
-          <InputPreco
-            required
-            label="Duração (dias)"
-            id="input-duracao"
-            value={duracao}
-            type="number"
-            min="1"
-            onChange={e => {setDuracao(e.target.value)}}
-          />
-        
-          <InputData />
-
+        <section id="conteudo-principal-nova">
           <section id="container-titulo">
-            <InputName
+            <h1>Cadastre a sua viagem</h1>
+            <img src={Marte} alt='Astro escolhido'/>
+          </section>
+          
+          <section id="container-formulario">
+            <div className="inputs-novarota">
+              <TextField
+                required
+                fullWidth
+                id="input-seleciona-destino"
+                select
+                label="Destino"
+                value={destino}
+                onChange={e => {setDestino(e.target.value)}}
+                margin="normal"
+              >
+                {astros.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            
+            <section className='inputs-novarota'>
+              <TextField
+                required
+                label="Duração (dias)"
+                id="input-duracao"
+                value={duracao}
+                type="number"
+                min="1"
+                onChange={e => {setDuracao(e.target.value)}}
+              />
+            </section>
+          
+            <section className="inputs-novarota">
+              <InputData fullWidth/>
+            </section>
+            
+            <TextField
               required
               id="input-titulo-viagem"
               label="Título da Viagem"
               margin="dense"
               value={titulo}
               onChange={e => {setTitulo(e.target.value)}}
+              fullWidth
             />
-          </section>
-          <InputLinhas
+  
+            <TextField
               required
               id="standard-multiline-flexible"
               label="Insira a descrição da viagem"
@@ -209,12 +250,14 @@ const NovaRota = (props) => {
               onChange={e => {setDescricao(e.target.value)}}
               margin="normal"
               maxLength="10"
-          />
-
-          <BotaoEnviar onClick={cadastraViagem} variant="contained" color="secondary" >
-            Criar Destino &nbsp;
-            <EnviarIcon className={""} />
-          </BotaoEnviar>
+              fullWidth
+            />
+  
+            <Button onClick={cadastraViagem} variant="contained" color="primary" >
+              Criar Destino &nbsp;
+              <EnviarIcon className={""} />
+            </Button>
+          </section>
         </section>
       </MuiThemeProvider>
 

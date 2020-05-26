@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import AdministrarViagem from "./pages/AdmnistrarViagem/AdmViagemPage"
 import HomeAdmin from "./pages/HomeAdmin/HomeAdmPage"
 import HomeUser from "./pages/HomeUser/HomeUserPage"
 import NovaRota from "./pages/NovaRota/NovaRotaPage"
@@ -61,10 +60,6 @@ const App = () => {
           
           <Route exact path ="/admin/criar-nova-rota" >
             <NovaRota baseUrl={apiUrl}/>
-          </Route>
-          
-          <Route exact path = "/admin/administrar-viagem" >
-            <AdministrarViagem />
           </Route>
         </Switch>
       </BrowserRouter>
