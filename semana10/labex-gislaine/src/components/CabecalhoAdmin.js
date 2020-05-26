@@ -1,6 +1,6 @@
 import React from "react";
 import "./Components.css"
-import Logo from "../img/Logo.png"
+import Logo from "../img/Logo2.png"
 import styled from 'styled-components'
 import IconHome from "@material-ui/icons/Home"
 import Add from "@material-ui/icons/Queue"
@@ -8,7 +8,7 @@ import Exit from "@material-ui/icons/ExitToApp"
 import { useHistory } from "react-router-dom";
 
 const IconeAdd = styled(Add)`
-  color: #200d01;
+  color: #ff8035;
   &&{
     :hover{
       color: #5a2303
@@ -16,7 +16,7 @@ const IconeAdd = styled(Add)`
   }
 `
 const IconeHome = styled(IconHome)`
-  color: #200d01;
+  color: #ff8035;
   &&{
     :hover{
       color: #5a2303
@@ -24,7 +24,7 @@ const IconeHome = styled(IconHome)`
   }
 `
 const IconeSair = styled(Exit)`
-  color: #200d01;
+  color: #ff8035;
   &&{
     :hover{
       color: #5a2303

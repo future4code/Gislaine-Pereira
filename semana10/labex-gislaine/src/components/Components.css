@@ -1,23 +1,22 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-family: "Agency FB", "Tekton Pro", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h5 {
     font-size: 1.5vw;
     margin: 0.5vw 0;
     font-weight: bold;
-    color: white;
     text-align: center;
-    color: #000000;
+     color: #ff8035;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(243, 159, 104, 0.5), 0 0 5px rgba(253, 215, 165, 0.5);
-    border-bottom: 1px solid rgb(34, 13, 0);
+    text-shadow: 0 0 5px rgba(250, 170, 117, 0.2), 0 0 2px rgba(243, 166, 65, 0.1);
+    border-bottom: 1px solid #ff5f00;
 }
 
 form {
-    max-width: 30vw;
+    width: 25vw;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -35,9 +34,9 @@ textarea::placeholder{
 
 input, textarea {
     width: 100%;
-    border-radius: 5px 5px 5px 0;
+    border-radius: 5px 0 5px 0;
     border: 1px solid #200d01;
-    background-color: rgba(255, 234, 221, 0.1);
+    background-color: rgba(255, 234, 221, 0.5);
     font-size: 14px;
     margin-top: 1vw;
 }
@@ -63,7 +62,7 @@ input:disabled {
 }
 
 p.texto-icone-user, p.texto-icone-admin {
-    color: #200d01;
+    color: rgba(255, 128, 53, 0.5);
     font-weight: bold;
     text-align: center;
     margin:0;
@@ -71,7 +70,7 @@ p.texto-icone-user, p.texto-icone-admin {
 }
 
 p.texto-icone-admin {
-    font-size: 1vw;
+    font-size: 1.3vw;
 }
 
 p.texto-icone-user:hover, p.texto-icone-admin:hover {
@@ -119,7 +118,7 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 }
 
 #conteudo-cabecalho, #conteudo-rodape {
-    background: rgba(252, 241, 210, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
 }
@@ -151,8 +150,6 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 #conteudo-rodape {
     width: 98.5vw;
     height: 40vh;
-    background: rgba(252, 241, 210, 0.40);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,15 +164,14 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 }
 
 #botao-enviar {
-    background-color: #200d01;
     margin: 0.5vw 0 1vw 0;
-    color: #ff8035;
+    width: 10vw;
 }
 
 #titulo-cabecalho {
-    color: #000000;
+    color: rgba(255, 128, 53, 0.7);
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(250, 170, 117, 0.6), 0 0 5px rgba(243, 166, 65, 0.6);
+    text-shadow: 0 0 10px rgba(250, 170, 117, 0.2), 0 0 5px rgba(243, 166, 65, 0.1);
     font-size: 2.5vw;
     text-align: center;
     margin-left: 2vw;
@@ -193,7 +189,8 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 }
 
 #by-imagem {
-    width: 80%;
+    width: 15vw;
+    margin-right: 5vw;
 }
 
 .navegacao {
@@ -212,23 +209,21 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 .sobre-titulo {
     font-size: 1.5vw;
     margin-left: 1vw;
-    color: #200d01;
+    color: rgba(255, 128, 53, 0.7);
     font-weight: bold;
+    text-shadow: 0 0 5px rgba(250, 170, 117, 0.2), 0 0 2px rgba(243, 166, 65, 0.1);
     margin: 1.5vw 0;
     font-size: 1.7vw;
     text-align: center;
-    color: black;
     font-weight: bold;
-    border-bottom: 1px solid #642500;
+    border-bottom: 1px solid #ff5f00;
     grid-area: 1/1/2/4;
     margin:0;
     padding: 0;
-    text-shadow: 0 0 10px rgba(253, 206, 175, 0.5), 0 0 5px rgba(240, 214, 179, 0.5);
 }
 
 .sobre-texto {
-    text-decoration: none;
-    color: #200d01;
+    text-decoration: #ff5f00;
     font-weight: bold;
     font-size: 1.6vw;
     cursor: pointer;

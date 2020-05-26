@@ -7,17 +7,13 @@ import ImagemFundo from "../../img/fundo.jpg"
 import Logo from "../../img/Logo2.png"
 import Button from '@material-ui/core/Button';
 import IconSend from '@material-ui/icons/Send';
-import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Input from '@material-ui/core/Input';
 import FilledInput from '@material-ui/core/FilledInput';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
@@ -44,26 +40,29 @@ const MyTheme = createMuiTheme({
     palette: {
         primary: {
             light: "rgba(255, 95, 0, 1)",
-            main: "rgba(166, 62, 0, 1)",
+            main: "rgba(225, 62, 0, 1)",
             dark: "rgba(34, 13, 0, 1)",
             contrastText: "rgba(255, 229, 210, 1)"
         },
         error: {
-            main: "rgba(166, 62, 0, 1)",
-            light: "#e57373",
-            dark: "#50a00e",
-            contrastText: "#0bb496"
+            main: "#732000",
+            dark: "#1f0c01",
+            light: "rgba(255, 255, 255, 0.4)",
+            contrastText: "#000000",
         }
     }
 })
 
-
 const TelaToda = styled.div `
   background-image: url("${ImagemFundo}");
-  background-color: #0d0d2b;
+  background-color: #000000;
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+`
+const Inputs = styled(FormControl)`
+  background-color: rgba(255, 234, 221, 0.7);
+  border-radius: 5% 5% 0 0;
 `
 
 const Wellcome = () => {
@@ -101,43 +100,44 @@ const Wellcome = () => {
                     <section className="div-login">
                         <h3>Sou Administrador</h3>
                         
-                        <FormControl className={clsx(classes.margin, classes.textField)} variant="filled">
-                            <InputLabel htmlFor="filled-adornment-password">Usuário</InputLabel>
+                        <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
+                            <InputLabel color="primary.light" htmlFor="input-usuario">Usuário</InputLabel>
                             <FilledInput
                                 error
-                                id="filled-adornment-password"
+                                id="input-usuario"
                                 type={'text'}
                                 value={valorUsuario}
                                 onChange={e => setValorUsuario(e.target.value)}
                                 endAdornment={
                                   <InputAdornment position="start">
-                                    <AccountCircle color="primary"/>
+                                    <AccountCircle color="error"/>
                                   </InputAdornment>
                                 }
                             />
-                        </FormControl>
+                        </Inputs>
                         
-                        <FormControl className={clsx(classes.margin, classes.textField)} variant="filled">
-                            <InputLabel htmlFor="filled-adornment-password">Senha</InputLabel>
+                        <Inputs className={clsx(classes.margin, classes.textField)} variant="filled">
+                            <InputLabel htmlFor="input-senha">Senha</InputLabel>
                             <FilledInput
                                 error
-                                id="filled-adornment-password"
+                                id="input-senha"
                                 type={mostraSenha ? 'text' : 'password'}
                                 value={valorSenha}
                                 onChange={e => setValorSenha(e.target.value)}
                                 endAdornment={
                                   <InputAdornment position="end">
                                     <IconButton
+                                      color = "error.dark"
                                       aria-label="Visibilidade Senha"
                                       onClick={handleClickShowPassword}
                                       onMouseDown={handleMouseDownPassword}
                                     >
-                                      {mostraSenha ? <Visibility color="primary"/> : <VisibilityOff color="primary" />}
+                                      {mostraSenha ? <Visibility color = "error.dark"/> : <VisibilityOff color = "error.dark" />}
                                     </IconButton>
                                 </InputAdornment>
                               }
                           />
-                        </FormControl>
+                        </Inputs>
                       
                         <Button
                           variant="contained"

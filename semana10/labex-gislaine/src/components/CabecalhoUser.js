@@ -1,13 +1,13 @@
 import React from "react";
 import "./Components.css"
-import Logo from "../img/Logo.png"
+import Logo from "../img/Logo2.png"
 import styled from 'styled-components'
 import IconHome from "@material-ui/icons/Home"
 import Exit from "@material-ui/icons/ExitToApp"
 import { useHistory } from "react-router-dom";
 
 const IconeHome = styled(IconHome)`
-  color: #200d01;
+  color: #ff8035;
   &&{
     :hover{
       color: #5a2303
@@ -15,7 +15,7 @@ const IconeHome = styled(IconHome)`
   }
 `
 const IconeSair = styled(Exit)`
-  color: #200d01;
+  color: #ff8035;
   &&{
     :hover{
       color: #5a2303
@@ -39,18 +39,12 @@ const CabecalhoUser = () => {
       <img id='logo-site' src={Logo} alt="Logo" />
       
       <h1 id='titulo-cabecalho'>"Encontre as melhores viagens espaciais!"</h1>
-      
-      <section id='icones-user'>
-        <article className="navegacao" onClick={goToHome}>
-          <IconeHome fontSize={'large'} />
-          <p className="texto-icone-user">Home</p>
-        </article>
 
         <article className="navegacao" onClick={goToWellcome}>
           <IconeSair fontSize={'large'} />
           <p className="texto-icone-user">Sair</p>
         </article>
-      </section>
+
       
     </div>
   );

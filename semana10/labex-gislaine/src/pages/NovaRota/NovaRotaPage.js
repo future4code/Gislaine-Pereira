@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import styled from 'styled-components'
-import "../Pages.css"
-import CabecalhoAdmin from "../../components/CabecalhoAdmin"
-import Rodape from "../../components/Rodapé"
-import Fundo from "../../img/fundo2.jpg"
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
+import styled from 'styled-components';
+import "../Pages.css";
+
+import CabecalhoAdmin from "../../components/CabecalhoAdmin";
+import Rodape from "../../components/Rodapé";
+import Fundo from "../../img/fundo2.jpg";
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import axios from 'axios'
+import axios from 'axios';
 import MenuItem from '@material-ui/core/MenuItem';
 import EnviarIcon from '@material-ui/icons/Send';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import FormCadastroViagem from "../../components/FormCadastroViagem"
+import InputData from "../../components/InputData"
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -46,10 +47,6 @@ const styles = theme => ({
   },
 });
 
-const TituloForm = styled.h1`
-    color: #363636;
-    margin: 5vw 0;
-`
 
 const TelaToda = styled.div `
   background-image: url("${Fundo}");
@@ -197,8 +194,8 @@ const NovaRota = (props) => {
       <CabecalhoAdmin />
 
       <MuiThemeProvider theme={MyTheme}>    
+        <h1 id="#titulo-formulario"> Insira as características da Viagem </h1> 
         <section id="container-formulario">
-          <h1>Insira as características da Viagem</h1>  
           <InputsLadoALado>
             <ContainerInputParcelas>
               <InputCategoria
@@ -229,7 +226,7 @@ const NovaRota = (props) => {
               />
             </ContainerInputPreco>
            
-             <FormCadastroViagem />
+             <InputData />
             
           </InputsLadoALado>                            
           <InputsLadoALado>
@@ -252,6 +249,7 @@ const NovaRota = (props) => {
                 value={descricao}
                 onChange={e => {setDescricao(e.target.value)}}
                 margin="normal"
+                maxLength="10"
             />
           </InputsLadoALado> 
           <ContainerBotao>
