@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import "../Pages.css"
+import FuncaoLogin from "../../hooks/Login"
 import CabecalhoAdmin from "../../components/CabecalhoAdmin"
 import Rodape from "../../components/Rodapé"
 import Fundo from "../../img/fundo2.jpg"
@@ -14,8 +15,7 @@ import Tita from "../../img/tita.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Mercurio from "../../img/Mercurio.jpg"
 import Button from '@material-ui/core/Button';
-import IconPlus from '@material-ui/icons/Add'
-
+import IconPlus from '@material-ui/icons/Add';
 
 const TelaToda = styled.div `
   background-image: url("${Fundo}");
@@ -27,6 +27,8 @@ const TelaToda = styled.div `
 `
 
 const HomeAdmin = (props) => {
+  FuncaoLogin()
+  
   const [open, setOpen] = useState(false);
   const [idViagem, setIdViagem] = useState('')
 

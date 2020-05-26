@@ -48,7 +48,7 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Wellcome />
+            <Wellcome baseUrl={apiUrl} />
           </Route>
   
           <Route exact path="/admin/home">

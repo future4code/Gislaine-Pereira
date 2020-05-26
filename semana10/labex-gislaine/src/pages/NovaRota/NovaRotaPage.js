@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import "../Pages.css";
-
 import CabecalhoAdmin from "../../components/CabecalhoAdmin";
 import Rodape from "../../components/Rodapé";
 import Fundo from "../../img/fundo4.jpg";
@@ -14,6 +13,8 @@ import EnviarIcon from '@material-ui/icons/Send';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import InputData from "../../components/InputData";
+import FuncaoLogin from "../../hooks/Login"
+
 
 const MyTheme = createMuiTheme({
   palette: {
@@ -99,6 +100,8 @@ const astros = [{
 ];
 
 const NovaRota = (props) => {
+  FuncaoLogin()
+
   const [destino, setDestino] = useState('')
   const [titulo, setTitulo] = useState('')
   const [data, setData] = useState('')

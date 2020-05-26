@@ -4,9 +4,10 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import FuncaoLogin from "../../hooks/Login"
 
 const AdministrarViagem = () => {
-
+  FuncaoLogin()
 
   return (
     <div>

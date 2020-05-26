@@ -43,6 +43,7 @@ const Cabecalho = () => {
   };
 
   const goToWellcome = () => {
+    localStorage.clear();
     history.push("/");
   };
 
