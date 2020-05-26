@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import "../Pages.css"
 import CabecalhoUser from "../../components/CabecalhoUser"
 import Rodape from "../../components/Rodapé"
-import Fundo from "../../img/fundo2.jpg"
+import Fundo from "../../img/fundo4.jpg"
 import Plutao from "../../img/plutão.jpg"
 import Jupter from "../../img/jupiter.jpg"
 import Ganimedes from "../../img/ganimedes.jpg"

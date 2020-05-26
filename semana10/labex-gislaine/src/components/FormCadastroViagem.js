@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 
 
+
 function FormCadastroViagem(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [dataFormatada, setDataFromatada] = useState("");
@@ -17,16 +18,19 @@ function FormCadastroViagem(props) {
   };
 
   return (
-    <Fragment>
-      <KeyboardDatePicker
-        label="Aniversário"
-        clearable
-        value={selectedDate}
-        onChange={e => setSelectedDate(e)}
-        minDate={new Date()}
-        format="dd/MM/yy"
-      />
-    </Fragment>
+    <MuiThemeProvider theme={MyTheme}>
+      <Fragment>
+        <KeyboardDatePicker
+          label="Aniversário"
+          clearable
+          color="primary"
+          value={selectedDate}
+          onChange={e => setSelectedDate(e)}
+          minDate={new Date()}
+          format="dd/MM/yy"
+        />
+      </Fragment>
+    </MuiThemeProvider>
     );
 }
 

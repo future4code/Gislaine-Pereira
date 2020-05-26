@@ -4,7 +4,7 @@ import "../Pages.css";
 
 import CabecalhoAdmin from "../../components/CabecalhoAdmin";
 import Rodape from "../../components/Rodapé";
-import Fundo from "../../img/fundo2.jpg";
+import Fundo from "../../img/fundo4.jpg";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -13,40 +13,28 @@ import MenuItem from '@material-ui/core/MenuItem';
 import EnviarIcon from '@material-ui/icons/Send';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import InputData from "../../components/InputData"
+import InputData from "../../components/InputData";
+
+const MyTheme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "rgba(255, 95, 0, 1)",
+      main: "#732000",
+      dark: "rgba(225, 62, 0, 1)",
+      contrastText: "rgba(255, 229, 210, 1)"
+    },
+    secondary: {
+      dark: "#732000",
+      main: "#1f0c01",
+      light: "rgba(255, 255, 255, 0.4)",
+      contrastText: "rgba(255, 95, 0, 1)",
+    }
+  }
+})
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-
-
-const styles = theme => ({
-    root: {
-        display: 'flex',
-    },
-    formControl: {
-        margin: theme.spacing.unit * 3,
-    },
-    container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-  dense: {
-    marginTop: 19,
-  },
-  menu: {
-    width: 200,
-  },
-  group: {
-    margin: `${theme.spacing.unit}px 0`,
-  },
-});
-
 
 const TelaToda = styled.div `
   background-image: url("${Fundo}");
@@ -62,43 +50,18 @@ const TelaToda = styled.div `
 const InputName = styled(TextField)`
     flex-basis: 100%;
 `
-
-const InputsLadoALado = styled.section `
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 1vw 0;
-`
 const InputCategoria = styled(TextField)`
     flex-basis: 100%;
-`
-const ContainerInputParcelas = styled.div`
-    display: flex;
-    width: 13vw;
-`
-const ContainerInputPreco = styled.div`
-    display: flex;
-    width: 12vw;
 `
 const InputPreco = styled(TextField)`
     flex-basis: 100%;
 `
-const ContainerBotao = styled.section`
-    display: flex;
-    width: 15vw;
-    margin: 5vw;
-`
-
 const BotaoEnviar = styled(Button)`
     flex-basis: 100%;
 `
-
 const InputLinhas = styled(TextField)`
     flex-basis: 100%;
 `
-
-const MyTheme = createMuiTheme({
-});
 
 const astros = [{
     value: 'Marte',
@@ -194,70 +157,61 @@ const NovaRota = (props) => {
       <CabecalhoAdmin />
 
       <MuiThemeProvider theme={MyTheme}>    
-        <h1 id="#titulo-formulario"> Insira as características da Viagem </h1> 
+        <h1>Cadastre a sua viagem</h1>
         <section id="container-formulario">
-          <InputsLadoALado>
-            <ContainerInputParcelas>
-              <InputCategoria
-                required
-                id="input-seleciona-destino"
-                select
-                label="Destino"
-                value={destino}
-                onChange={e => {setDestino(e.target.value)}}
-                margin="normal"
-              >
-                {astros.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </InputCategoria>
-            </ContainerInputParcelas>
-            <ContainerInputPreco>
-              <InputPreco
-                required
-                label="Duração (dias)"
-                id="input-duracao"
-                value={duracao}
-                type="number"
-                min="1"
-                onChange={e => {setDuracao(e.target.value)}}
-              />
-            </ContainerInputPreco>
-           
-             <InputData />
-            
-          </InputsLadoALado>                            
-          <InputsLadoALado>
-            <section id="container-titulo">
-              <InputName
-                required
-                id="input-titulo-viagem"
-                label="Título da Viagem"
-                margin="dense"
-                value={titulo}
-                onChange={e => {setTitulo(e.target.value)}}
-              />
-            </section>
-            <InputLinhas
-                required
-                id="standard-multiline-flexible"
-                label="Insira a descrição da viagem"
-                multiline
-                rowsMax="8"
-                value={descricao}
-                onChange={e => {setDescricao(e.target.value)}}
-                margin="normal"
-                maxLength="10"
+          <InputCategoria
+            required
+            id="input-seleciona-destino"
+            select
+            label="Destino"
+            value={destino}
+            onChange={e => {setDestino(e.target.value)}}
+            margin="normal"
+          >
+            {astros.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </InputCategoria>
+          <InputPreco
+            required
+            label="Duração (dias)"
+            id="input-duracao"
+            value={duracao}
+            type="number"
+            min="1"
+            onChange={e => {setDuracao(e.target.value)}}
+          />
+        
+          <InputData />
+
+          <section id="container-titulo">
+            <InputName
+              required
+              id="input-titulo-viagem"
+              label="Título da Viagem"
+              margin="dense"
+              value={titulo}
+              onChange={e => {setTitulo(e.target.value)}}
             />
-          </InputsLadoALado> 
-          <ContainerBotao>
-              <BotaoEnviar id="botao-cadastar-viagem" onClick={cadastraViagem} variant="contained" color="primary" className={""}>
-                Criar Destino &nbsp;
-                <EnviarIcon className={""} />
-              </BotaoEnviar>
-          </ContainerBotao>
+          </section>
+          <InputLinhas
+              required
+              id="standard-multiline-flexible"
+              label="Insira a descrição da viagem"
+              multiline
+              rowsMax="8"
+              value={descricao}
+              onChange={e => {setDescricao(e.target.value)}}
+              margin="normal"
+              maxLength="10"
+          />
+
+          <BotaoEnviar onClick={cadastraViagem} variant="contained" color="secondary" >
+            Criar Destino &nbsp;
+            <EnviarIcon className={""} />
+          </BotaoEnviar>
         </section>
       </MuiThemeProvider>
 
