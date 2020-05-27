@@ -140,7 +140,7 @@ const Wellcome = (props) => {
                         onChange={e => setValorUsuario(e.target.value)}
                         endAdornment={
                           <InputAdornment position="start">
-                            <AccountCircle color="error"/>
+                            <AccountCircle color="primary.dark"/>
                           </InputAdornment>
                         }
                     />
@@ -162,7 +162,7 @@ const Wellcome = (props) => {
                               onClick={handleClickShowPassword}
                               onMouseDown={handleMouseDownPassword}
                             >
-                              {mostraSenha ? <Visibility color = "error.dark"/> : <VisibilityOff color = "error.dark" />}
+                              {mostraSenha ? <Visibility color = "primary.dark"/> : <VisibilityOff color = "primary.dark" />}
                             </IconButton>
                         </InputAdornment>
                       }

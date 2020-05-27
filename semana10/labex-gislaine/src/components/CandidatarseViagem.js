@@ -161,6 +161,7 @@ const Candidatarse = (props) => {
                 id='idade'
                 label="Idade"
                 type="number"
+                min="18"
                 value={age}
                 onChange={e => {setAge(e.target.value)}}
               />

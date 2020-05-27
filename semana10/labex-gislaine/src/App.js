@@ -7,11 +7,53 @@ import HomeUser from "./pages/HomeUser/HomeUserPage"
 import NovaRota from "./pages/NovaRota/NovaRotaPage"
 import Wellcome from "./pages/Wellcome/index"
 import styled from 'styled-components'
-import ImagemFundo from "./img/fundo2.jpg"
+import ImagemFundo from "./img/fundo4.jpg"
 import { MuiThemeProvider } from "@material-ui/core";
 import theme from "./style/theme";
 
 const apiUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/gislaine-julian"
+
+const astros = [
+  {
+    value: 'Mercúrio',
+    label: 'Mercúrio',
+  },
+  {
+    value: 'Vênus',
+    label: 'Vênus',
+  },
+  {
+    value: 'Marte',
+    label: 'Marte',
+  },
+  {
+    value: 'Jupiter',
+    label: 'Júpiter',
+  },
+  {
+    value: 'Saturno',
+    label: 'Saturno',
+  },
+  {
+    value: 'Urano',
+    label: 'Urano',
+  },
+  {
+    value: 'Netuno',
+    label: 'Netuno',
+  },
+  {
+    value: 'Plutão',
+    label: 'Plutão',
+  },
+  {
+    value: 'Titã',
+    label: 'Titã',
+  }, {
+    value: 'Ganimedes',
+    label: 'Ganimedes',
+  },
+];
 
 const TelaToda = styled.div `
   background-image: url("${ImagemFundo}");
@@ -55,11 +97,11 @@ const App = () => {
           </Route>
           
           <Route exact path="/usuario/home">
-            <HomeUser viagens={viagens} baseUrl={apiUrl}/>
+            <HomeUser listaAstros={astros} viagens={viagens} baseUrl={apiUrl}/>
           </Route>
           
           <Route exact path ="/admin/criar-nova-rota" >
-            <NovaRota baseUrl={apiUrl}/>
+            <NovaRota listaAstros={astros} baseUrl={apiUrl}/>
           </Route>
         </Switch>
       </BrowserRouter>

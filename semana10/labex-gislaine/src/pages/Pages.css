@@ -12,15 +12,22 @@ h2 {
     padding: 0;
 }
 
+#titulo-nova-rota {
+    color: #facdb3;
+    text-shadow: 0 0 10px rgba(161, 75, 17, 0.8), 0 0 30px rgba(100, 42, 8, 0.5);
+    font-weight: bold;
+}
+
 #container-titulo > img{
     border-radius: 50%;
-    width: 90%;
+    width: 80%;
 }
 
 #container-titulo{
     display: flex;
     flex-direction: column;
     width: 30vw;
+    height: 70vh;
     justify-content: space-around;
     align-items: center;
 }

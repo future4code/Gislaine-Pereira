@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import styled from 'styled-components';
 import "../Pages.css";
 import CabecalhoAdmin from "../../components/CabecalhoAdmin";
@@ -23,7 +26,8 @@ import Saturno from "../../img/saturno.jpg"
 import Tita from "../../img/tita.jpg"
 import Mercurio from "../../img/Mercurio.jpg"
 import Nebula from "../../img/nebula.jpg"
-
+import Venus from "../../img/venus.jpg"
+import Urano from "../../img/urano.jpg"
 
 const MyTheme = createMuiTheme({
   palette: {
@@ -38,6 +42,10 @@ const MyTheme = createMuiTheme({
       main: "#1f0c01",
       light: "rgba(255, 255, 255, 0.4)",
       contrastText: "#ff5f00",
+    },
+    error:{
+      main: "#dd0000",
+      contrastText: "#fde1e7"
     }
   }
 })
@@ -57,61 +65,48 @@ const TelaToda = styled.div `
   flex-direction: column;
   align-items: center;
 `
-const astros = [{
-    value: 'Marte',
-    label: 'Marte',
-  },
-  {
-    value: 'Jupiter',
-    label: 'Júpiter',
-  },
-  {
-    value: 'Mercúrio',
-    label: 'Mercúrio',
-  },
-  {
-    value: 'Netuno',
-    label: 'Netuno',
-  },
-  {
-    value: 'Saturno',
-    label: 'Saturno',
-  },
-  {
-    value: 'Plutão',
-    label: 'Plutão',
-  },
-  {
-    value: 'Titã',
-    label: 'Titã',
-  },
-  {
-    value: 'Ganimedes',
-    label: 'Ganimedes',
-  },
-];
 
 const NovaRota = (props) => {
+  
+  useEffect(() => {
+    formataData();
+  }, [form.selectedDate]);
+  
   FuncaoLogin()
-  const [destino, setDestino] = useState('')
-  const [titulo, setTitulo] = useState('')
-  const [data, setData] = useState('')
-  const [duracao, setDuracao] = useState('')
-  const [descricao, setDescricao] = useState('')
+   const { form, onChange, resetForm } = useForm({
+    destino: "",
+    titulo: "",
+    selectedDate: new Date(),
+    duracao: "",
+    descricao: "",
+  });
+
+  const [dataFormatada, setDataFromatada] = useState("");
   const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
   const [openAlertErro, setOpenAlertErro] = useState(false);
+  
+  const formataData = () => {
+    if (form.selectedDate !== null) {
+      let dia = (form.selectedDate.getDate() < 10 ? "0" : "") + form.selectedDate.getDate();
+      let mes = (form.selectedDate.getMonth() + 1 < 10 ? "0" : "") + (form.selectedDate.getMonth() + 1);
+      let ano = form.selectedDate.getYear() - 100;
+      const novaData = dia + "/" + mes + "/" + ano
+      setDataFromatada(novaData);
+      console.log(novaData);
+    }
+  };
 
-  useEffect(() => {
-    escolheAstro();
-  }, [destino]);
+  const handleInputChange = event => {
+    const { value, name } = event.target;
 
-  const limpaTudo = () => {
-    setDestino('');
-    setTitulo('');
-    setData('');
-    setDuracao('');
-    setDescricao('');
-  }
+    onChange(name, value);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    console.log(form);
+  };
 
   const formSucesso = () => {
     setOpenAlertSucesso(true);
@@ -124,18 +119,17 @@ const NovaRota = (props) => {
 
   const cadastraViagem = () =>{
     const body ={
-        name: {titulo},
-        planet: {destino},
-        date: {data},
-        description: {descricao},
-        durationInDays: {duracao}
+      name: form.titulo,
+      planet: form.destino,
+      date: {dataFormatada},
+      description: form.descricao,
+      durationInDays: form.duracao,
     }
     axios
       .post(`${props.baseUrl}/trips`, body)
       .then(response => {
         formSucesso();
-        limpaTudo();
-      })
+      }) 
       .catch(err => {
         formErro();
         console.log(err);
@@ -143,37 +137,42 @@ const NovaRota = (props) => {
   }
 
   let astroEscolhido
-  const escolheAstro = ()=>{
-    switch (destino) {
-      case "Marte":
-        astroEscolhido = Marte
-        break;
-      case "Jupiter":
-        astroEscolhido = Jupter
-        break;
-      case "Netuno":
-        astroEscolhido = Netuno
-        break;
-      case "Saturno":
-        astroEscolhido = Saturno
-        break;
-      case "Titã":
-        astroEscolhido = Tita
-        break;
-      case "Plutão":
-        astroEscolhido = Plutao
-        break;
-      case "Ganimedes":
-        astroEscolhido = Ganimedes
-        break;
-      case "Mercúrio":
-        astroEscolhido = Mercurio
-        break;
-      default:
-        astroEscolhido = Nebula
-        break;
-    }
+  switch (form.destino) {
+    case "Marte":
+      astroEscolhido = Marte;
+      break;
+    case "Jupiter":
+      astroEscolhido = Jupter
+      break;
+    case "Netuno":
+      astroEscolhido = Netuno
+      break;
+    case "Saturno":
+      astroEscolhido = Saturno
+      break;
+    case "Titã":
+      astroEscolhido = Tita
+      break;
+    case "Plutão":
+      astroEscolhido = Plutao
+      break;
+    case "Ganimedes":
+      astroEscolhido = Ganimedes
+      break;
+    case "Mercúrio":
+      astroEscolhido = Mercurio
+      break;
+    case "Vênus":
+      astroEscolhido = Venus
+      break;
+    case "Urano":
+      astroEscolhido = Urano
+      break;
+    default:
+      astroEscolhido = Nebula
+      break;
   }
+
 
   const fechaAlert = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -190,23 +189,24 @@ const NovaRota = (props) => {
       <MuiThemeProvider theme={MyTheme}>    
         <section id="conteudo-principal-nova">
           <section id="container-titulo">
-            <h1>Cadastre a sua viagem</h1>
-            <img src={Marte} alt='Astro escolhido'/>
+            <h1 id="titulo-nova-rota">Cadastre a sua viagem</h1>
+            <img src={astroEscolhido} alt='Astro escolhido'/>
           </section>
           
-          <section id="container-formulario">
+          <form id="container-formulario">
             <div className="inputs-novarota">
               <TextField
                 required
                 fullWidth
+                name="destino"
                 id="input-seleciona-destino"
                 select
                 label="Destino"
-                value={destino}
-                onChange={e => {setDestino(e.target.value)}}
+                value={form.destino}
+                onChange={handleInputChange}
                 margin="normal"
               >
-                {astros.map(option => (
+                {props.listaAstros.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
@@ -218,16 +218,30 @@ const NovaRota = (props) => {
               <TextField
                 required
                 label="Duração (dias)"
+                name="duracao"
                 id="input-duracao"
-                value={duracao}
+                value={form.duracao}
                 type="number"
-                min="1"
-                onChange={e => {setDuracao(e.target.value)}}
+                min="50"
+                onChange={handleInputChange}
               />
             </section>
           
             <section className="inputs-novarota">
-              <InputData fullWidth/>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Fragment>
+                  <KeyboardDatePicker
+                    required
+                    label="Data da Viagem"
+                    name="selectedDate"
+                    clearable
+                    value={form.selectedDate}
+                    onChange={handleInputChange}
+                    minDate={new Date()}
+                    format="dd/MM/yy"
+                  />
+                </Fragment>
+              </MuiPickersUtilsProvider>
             </section>
             
             <TextField
@@ -235,6 +249,9 @@ const NovaRota = (props) => {
               id="input-titulo-viagem"
               label="Título da Viagem"
               margin="dense"
+              inputProps={{ 
+                pattern: "[a-z0-9A-Z°-]{5,}",
+                title: "O nome deve conter mais de 5 letras" }}
               value={titulo}
               onChange={e => {setTitulo(e.target.value)}}
               fullWidth
@@ -245,11 +262,13 @@ const NovaRota = (props) => {
               id="standard-multiline-flexible"
               label="Insira a descrição da viagem"
               multiline
+              inputProps={{ 
+                pattern: "[A-Za-z]{30,100}", 
+                title: "O nome deve conter entre 30 3 100 caracteres" }}
               rowsMax="8"
               value={descricao}
               onChange={e => {setDescricao(e.target.value)}}
               margin="normal"
-              maxLength="10"
               fullWidth
             />
   
@@ -257,7 +276,7 @@ const NovaRota = (props) => {
               Criar Destino &nbsp;
               <EnviarIcon className={""} />
             </Button>
-          </section>
+          </form>
         </section>
       </MuiThemeProvider>
 
