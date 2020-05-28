@@ -24,7 +24,6 @@ const TelaToda = styled.div `
   max-width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
 `
 
 const HomeUser = (props) => {
@@ -102,7 +101,7 @@ const HomeUser = (props) => {
           {ListaViagem}
       </section>
       
-      <Candidatarse baseUrl={props.baseUrl} fechaForm={fechaForm.bind()} isOpen={open} viagemId={idViagem}/>
+      <Candidatarse baseUrl={props.baseUrl} fechaForm={fechaForm} isOpen={open} viagemId={idViagem}/>
       
       <Rodape />
 

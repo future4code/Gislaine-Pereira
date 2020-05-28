@@ -15,7 +15,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import EnviarIcon from '@material-ui/icons/Send';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import InputData from "../../components/InputData";
 import FuncaoLogin from "../../hooks/Login"
 import Plutao from "../../img/plutão.jpg"
 import Jupter from "../../img/jupiter.jpg"
@@ -28,6 +27,7 @@ import Mercurio from "../../img/Mercurio.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Venus from "../../img/venus.jpg"
 import Urano from "../../img/urano.jpg"
+import useForm from "../../hooks/Formulario"
 
 const MyTheme = createMuiTheme({
   palette: {
@@ -68,46 +68,27 @@ const TelaToda = styled.div `
 
 const NovaRota = (props) => {
   
-  useEffect(() => {
-    formataData();
-  }, [form.selectedDate]);
-  
   FuncaoLogin()
    const { form, onChange, resetForm } = useForm({
     destino: "",
     titulo: "",
-    selectedDate: new Date(),
     duracao: "",
     descricao: "",
   });
-
-  const [dataFormatada, setDataFromatada] = useState("");
+  const [dataSelecionada, setDataSelecionada] = useState(new Date())
   const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
   const [openAlertErro, setOpenAlertErro] = useState(false);
   
-  const formataData = () => {
-    if (form.selectedDate !== null) {
-      let dia = (form.selectedDate.getDate() < 10 ? "0" : "") + form.selectedDate.getDate();
-      let mes = (form.selectedDate.getMonth() + 1 < 10 ? "0" : "") + (form.selectedDate.getMonth() + 1);
-      let ano = form.selectedDate.getYear() - 100;
-      const novaData = dia + "/" + mes + "/" + ano
-      setDataFromatada(novaData);
-      console.log(novaData);
-    }
-  };
-
-  const handleInputChange = event => {
-    const { value, name } = event.target;
+  const mudaValorInput = event => {
+    const { name, value } = event.target;
 
     onChange(name, value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    console.log(form);
-  };
-
+  const submitForm = event =>{
+    event.preventDefault()
+  }
+  
   const formSucesso = () => {
     setOpenAlertSucesso(true);
   };
@@ -117,24 +98,38 @@ const NovaRota = (props) => {
     console.log(erro);
   };
 
-  const cadastraViagem = () =>{
+  const cadastraViagem = async() =>{
+    let dataFormatada
+    if (form.dataSelecionada !== null) {
+      let dia = (dataSelecionada.getDate() < 10 ? "0" : "") + dataSelecionada.getDate();
+      let mes = (dataSelecionada.getMonth() + 1 < 10 ? "0" : "") + (dataSelecionada.getMonth() + 1);
+      let ano = dataSelecionada.getYear() - 100;
+      const novaData = dia + "/" + mes + "/" + ano
+      dataFormatada = novaData;
+      console.log(novaData);
+    }
+    const token = window.localStorage.getItem("token") 
     const body ={
       name: form.titulo,
       planet: form.destino,
-      date: {dataFormatada},
+      date: dataFormatada,
       description: form.descricao,
       durationInDays: form.duracao,
     }
     axios
-      .post(`${props.baseUrl}/trips`, body)
-      .then(response => {
-        formSucesso();
-      }) 
-      .catch(err => {
-        formErro();
-        console.log(err);
-      });
+      .post(`${props.baseUrl}/trips`, body, {
+        headers:{
+          auth: token
+        }
+      }).then(response => {
+         formSucesso();
+       }) 
+       .catch(err => {
+         formErro();
+         console.log(err);
+       });
   }
+
 
   let astroEscolhido
   switch (form.destino) {
@@ -173,7 +168,6 @@ const NovaRota = (props) => {
       break;
   }
 
-
   const fechaAlert = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
@@ -193,7 +187,7 @@ const NovaRota = (props) => {
             <img src={astroEscolhido} alt='Astro escolhido'/>
           </section>
           
-          <form id="container-formulario">
+          <form onSubmit={submitForm} id="container-formulario" >
             <div className="inputs-novarota">
               <TextField
                 required
@@ -203,7 +197,7 @@ const NovaRota = (props) => {
                 select
                 label="Destino"
                 value={form.destino}
-                onChange={handleInputChange}
+                onChange={mudaValorInput}
                 margin="normal"
               >
                 {props.listaAstros.map(option => (
@@ -223,7 +217,7 @@ const NovaRota = (props) => {
                 value={form.duracao}
                 type="number"
                 min="50"
-                onChange={handleInputChange}
+                onChange={mudaValorInput}
               />
             </section>
           
@@ -233,10 +227,10 @@ const NovaRota = (props) => {
                   <KeyboardDatePicker
                     required
                     label="Data da Viagem"
-                    name="selectedDate"
+                    name="dataSelecionada"
                     clearable
-                    value={form.selectedDate}
-                    onChange={handleInputChange}
+                    value={dataSelecionada}
+                    onChange={date => {setDataSelecionada(date)}}
                     minDate={new Date()}
                     format="dd/MM/yy"
                   />
@@ -249,11 +243,12 @@ const NovaRota = (props) => {
               id="input-titulo-viagem"
               label="Título da Viagem"
               margin="dense"
+              name="titulo"
               inputProps={{ 
                 pattern: "[a-z0-9A-Z°-]{5,}",
                 title: "O nome deve conter mais de 5 letras" }}
-              value={titulo}
-              onChange={e => {setTitulo(e.target.value)}}
+              value={form.titulo}
+              onChange={mudaValorInput}
               fullWidth
             />
   
@@ -262,12 +257,13 @@ const NovaRota = (props) => {
               id="standard-multiline-flexible"
               label="Insira a descrição da viagem"
               multiline
+              name="descricao"
               inputProps={{ 
                 pattern: "[A-Za-z]{30,100}", 
                 title: "O nome deve conter entre 30 3 100 caracteres" }}
               rowsMax="8"
-              value={descricao}
-              onChange={e => {setDescricao(e.target.value)}}
+              value={form.descricao}
+              onChange={mudaValorInput}
               margin="normal"
               fullWidth
             />

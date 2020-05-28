@@ -145,7 +145,6 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2vw;
 }
 
 #conteudo-rodape {
@@ -154,6 +153,7 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2%;
 }
 
 #formulario {
