@@ -92,13 +92,13 @@ const Candidatarse = (props) => {
       age: form.age,
       applicationText: form.mensagem,
       profession: form.profissao,
-      country: {pais},
+      country: pais,
     }
     axios
       .post(`${props.baseUrl}/trips/${idViagem}/apply`, body)
       .then(response => {
         console.log(response.data);
-
+        resetForm();
         formSucesso()
       })
       .catch(err => {

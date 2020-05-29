@@ -105,7 +105,13 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 #conteudo-dialogo {
     width: 30vw;
     height: 60vh;
+    margin: 0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
+
 #redes-sociais, #institucional {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -211,6 +217,13 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
     margin-right: 5vw;
 }
 
+.detalhes-candidatos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .navegacao {
     display: flex;
     flex-direction: column;
@@ -258,4 +271,15 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 }
 .input-pais{
     width: 150%;
+}
+
+.paineis-candidatos{
+   width: 25vw;
+   margin-bottom: 3%;
+}
+
+.texto-candidatos{
+    color: black;
+    text-align: left;
+    margin: 0;
 }

@@ -15,8 +15,10 @@ import Tita from "../../img/tita.jpg"
 import Nebula from "../../img/nebula.jpg"
 import Mercurio from "../../img/Mercurio.jpg"
 import Button from '@material-ui/core/Button';
-import IconPlus from '@material-ui/icons/Add';
-import AdminViagem from "../../components/AdmViagem"
+import IconCheck from "@material-ui/icons/Check"
+import IconPerfil from "@material-ui/icons/AssignmentIndRounded"
+import Candidatos from "../../components/Candidatos"
+import Aprovados from "../../components/Aprovados"
 
 const TelaToda = styled.div `
   background-image: url("${Fundo}");
@@ -30,11 +32,16 @@ const TelaToda = styled.div `
 const HomeAdmin = (props) => {
   FuncaoLogin()
   
-  const [open, setOpen] = useState(false);
+  const [openCandidato, setOpenCandidato] = useState(false);
+  const [openAprovado, setOpenAprovado] = useState(false);
   const [idViagemSelecionada, setIdViagemSelecionada] = useState('')
 
-  const fechaForm = () => {
-    setOpen(false);
+  const fechaFormCandidato = () => {
+    setOpenCandidato(false);
+  };
+
+  const fechaFormAprovado = () => {
+    setOpenAprovado(false);
   };
 
   const ListaViagem = props.viagens.map((viagem) => {
@@ -75,14 +82,25 @@ const HomeAdmin = (props) => {
       <p className='detalhe-viagem'>Data: {viagem.date}</p>
       <Button
         variant="contained"
-        endIcon={<IconPlus />}
+        endIcon={<IconPerfil />}
         id="inscrever-se"
-        onClick = {() => {setOpen(true); setIdViagemSelecionada(viagem.id)}
+        onClick = {() => {setOpenCandidato(true); setIdViagemSelecionada(viagem.id)}
         }
         size="small"
       >
         Inscritos
       </Button>
+      <Button
+        variant="contained"
+        endIcon={<IconCheck />}
+        id="inscrever-se"
+        onClick = {() => {setOpenAprovado(true); setIdViagemSelecionada(viagem.id)}
+        }
+        size="small"
+      >
+        Aprovados
+      </Button>
+
     </article>
     
   })
@@ -95,7 +113,19 @@ const HomeAdmin = (props) => {
           {ListaViagem}
       </section>
 
-      <AdminViagem baseUrl={props.baseUrl} fechaForm={fechaForm} isOpen={open} viagemId={idViagemSelecionada}/>
+      <Candidatos 
+        baseUrl={props.baseUrl} 
+        fechaFormCandidato={fechaFormCandidato}
+        isOpenCandidato={openCandidato}
+        viagemId={idViagemSelecionada}
+      />
+
+      <Aprovados
+        baseUrl={props.baseUrl} 
+        fechaFormAprovado={fechaFormAprovado} 
+        isOpenAprovado={openAprovado}
+        viagemId={idViagemSelecionada}
+      />
       
       <Rodape />
 
