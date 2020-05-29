@@ -93,7 +93,7 @@ const App = () => {
           </Route>
   
           <Route exact path="/admin/home">
-            <HomeAdmin viagens={viagens}/>
+            <HomeAdmin viagens={viagens} baseUrl={apiUrl}/>
           </Route>
           
           <Route exact path="/usuario/home">

@@ -13,7 +13,7 @@ const FormPaises = (props) => {
     <div> 
       <Input 
         required
-        className='input-pequeno'
+        className='input-pais'
         select
         label="País"
         value={props.pais}

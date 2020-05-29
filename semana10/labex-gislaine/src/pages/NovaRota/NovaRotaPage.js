@@ -69,7 +69,7 @@ const TelaToda = styled.div `
 const NovaRota = (props) => {
   
   FuncaoLogin()
-   const { form, onChange, resetForm } = useForm({
+  const { form, onChange, resetForm } = useForm({
     destino: "",
     titulo: "",
     duracao: "",
@@ -81,7 +81,6 @@ const NovaRota = (props) => {
   
   const mudaValorInput = event => {
     const { name, value } = event.target;
-
     onChange(name, value);
   };
 
@@ -123,13 +122,13 @@ const NovaRota = (props) => {
         }
       }).then(response => {
          formSucesso();
+         resetForm();
        }) 
        .catch(err => {
          formErro();
          console.log(err);
        });
   }
-
 
   let astroEscolhido
   switch (form.destino) {

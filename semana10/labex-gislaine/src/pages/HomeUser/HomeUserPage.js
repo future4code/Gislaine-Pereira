@@ -34,8 +34,6 @@ const HomeUser = (props) => {
     setOpen(false);
   };
 
-  console.log(props.viagens)
-
   const ListaViagem = props.viagens.map((viagem) => {
     let astroEscolhido  
     switch (viagem.planet) {

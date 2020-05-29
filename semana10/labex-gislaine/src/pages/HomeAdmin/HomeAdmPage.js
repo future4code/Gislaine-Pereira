@@ -31,7 +31,7 @@ const HomeAdmin = (props) => {
   FuncaoLogin()
   
   const [open, setOpen] = useState(false);
-  const [idViagem, setIdViagem] = useState('')
+  const [idViagemSelecionada, setIdViagemSelecionada] = useState('')
 
   const fechaForm = () => {
     setOpen(false);
@@ -77,11 +77,7 @@ const HomeAdmin = (props) => {
         variant="contained"
         endIcon={<IconPlus />}
         id="inscrever-se"
-        onClick = {
-          () => {
-            setOpen(true);
-            setIdViagem(viagem.id)
-          }
+        onClick = {() => {setOpen(true); setIdViagemSelecionada(viagem.id)}
         }
         size="small"
       >
@@ -99,7 +95,7 @@ const HomeAdmin = (props) => {
           {ListaViagem}
       </section>
 
-      <AdminViagem baseUrl={props.baseUrl} fechaForm={fechaForm.bind()} isOpen={open} viagemId={idViagem}/>
+      <AdminViagem baseUrl={props.baseUrl} fechaForm={fechaForm} isOpen={open} viagemId={idViagemSelecionada}/>
       
       <Rodape />
 

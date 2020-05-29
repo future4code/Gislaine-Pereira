@@ -95,6 +95,17 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
     padding: 0;
 }
 
+#form-iscricao{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#conteudo-dialogo {
+    width: 30vw;
+    height: 60vh;
+}
 #redes-sociais, #institucional {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -138,6 +149,12 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
     align-items: flex-start;
 }
 
+#inputs-pequenos{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
 #conteudo-cabecalho {
     height: 15vh;
     width: 94.7vw;
@@ -234,4 +251,11 @@ p.texto-icone-user:hover, p.texto-icone-admin:hover {
 
 .sobre-texto:hover {
     color: #5a2303;
+}
+
+.input-pequeno{
+    width: 30%;
+}
+.input-pais{
+    width: 150%;
 }

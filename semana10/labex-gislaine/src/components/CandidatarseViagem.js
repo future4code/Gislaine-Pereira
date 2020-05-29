@@ -8,13 +8,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Enviar from '@material-ui/icons/Send'
 import Cancelar from '@material-ui/icons/Cancel'
-import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core'
 import axios from "axios";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import FormPaises from "./FormPaises";
+import useForm from "../hooks/Formulario"
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={12} variant="filled" {...props} />;
@@ -34,13 +34,16 @@ const Input = styled(TextField)`
 `
 
 const Candidatarse = (props) => {
+  const { form, onChange, resetForm } = useForm({
+    name: "",
+    age: "",
+    profissao: "",
+    mensagem: "",
+  });
+  
   const [pais, setPais] = useState('Brasil')
   const [openForm, setOpenForm] = useState('')
   const [idViagem, setIdViagem] = useState("")
-  const [name, setName] = useState('')
-  const [age, setAge] = useState('')
-  const [profissao, setProfissao] = useState("")
-  const [mensagem, setMensagem] = useState('')
   const [openAlertSucesso, setOpenAlertSucesso] = useState(false);
   const [openAlertErro, setOpenAlertErro] = useState(false);
 
@@ -56,18 +59,19 @@ const Candidatarse = (props) => {
     setPais(event.target.value)
   }
   
-  const limpaTudo = () =>{
-    setPais('');
-    setIdViagem('');
-    setName('');
-    setAge('');
-    setProfissao('');
-    setMensagem('');
-  }
-  
+  const mudaValorInput = event => {
+    const { name, value } = event.target;
+
+    onChange(name, value);
+  };
+
   const formSucesso = () => {
     setOpenAlertSucesso(true);
   };
+
+  const submitForm = event => {
+    event.preventDefault()
+  }
 
   const formErro = (erro) => {
     setOpenAlertErro(true);
@@ -84,25 +88,23 @@ const Candidatarse = (props) => {
 
   const enviaCandidato = () => {
     const body ={
-      name: {name},
-      age:{age},
-      applicationText: {mensagem},
-      profession: {profissao},
+      name: form.name,
+      age: form.age,
+      applicationText: form.mensagem,
+      profession: form.profissao,
       country: {pais},
     }
     axios
       .post(`${props.baseUrl}/trips/${idViagem}/apply`, body)
       .then(response => {
         console.log(response.data);
-        limpaTudo();
+
         formSucesso()
       })
       .catch(err => {
         formErro(err);
       });
   }
-
-  console.log(pais)
 
   return (
     <MuiThemeProvider theme={MyTheme}>
@@ -113,7 +115,23 @@ const Candidatarse = (props) => {
             Preencha todos os dados 
           </DialogContentText>
           
-          <section className="inputs">
+          <form onSubmit={submitForm}>
+            <section id="inputs-pequenos">
+              <FormPaises pais={pais} selecionaPais={mudaPais}/>
+              <Input
+                className="input-pequeno"
+                required
+                autoFocus
+                id='idade'
+                label="Idade"
+                type="number"
+                min="18"
+                value={form.age}
+                name="age"
+                onChange={mudaValorInput}
+              />
+            </section>
+           
             <Input
               required
               autoFocus
@@ -121,48 +139,44 @@ const Candidatarse = (props) => {
               id='input-medio'
               label="Nome"
               type="text"
-              value={name}
-              onChange={e => {setName(e.target.value)}}
+              value={form.name}
+              inputProps={{ 
+                pattern: "[a-zA-Z]{3,}",
+                title: "O nome deve conter mais de 3 letras" }}
+              name="name"
+              onChange={mudaValorInput}
             />
-            <section id='container-idade'>
-              <Input
-                required
-                autoFocus
-                id='idade'
-                label="Idade"
-                type="number"
-                min="18"
-                value={age}
-                onChange={e => {setAge(e.target.value)}}
-              />
-            </section>
-            
-            <FormPaises pais={pais} selecionaPais={mudaPais}/>
-          
-          </section>
-         
-          <section className='inputs'>
             <Input
               required
               autoFocus
+              fullWidth
               margin="dense"
               label="Profissão"
               id='profissao'
               type="text"
-              value={profissao}
-              onChange={e => {setProfissao(e.target.value)}}
+              inputProps={{ 
+                pattern: "[a-zA-Z0-9]{10,}",
+                title: "A profissão deve conter mais de 10 caracteres" }}
+              name="profissao"
+              value={form.profissao}
+              onChange={mudaValorInput}
             />
-              <Input
-                required
-                autoFocus
-                margin="dense"
-                label="Mensagem"
-                type="text"
-                multiline
-                value={mensagem}
-                onChange={e => {setMensagem(e.target.value)}}
-              />
-          </section>
+            <Input
+              required
+              autoFocus
+              margin="dense"
+              label="Mensagem"
+              fullWidth
+              type="text"
+              inputProps={{ 
+                pattern: "[a-zA-Z0-9]{30,}",
+                title: "A mensagem deve ter mais de 30 caracteres" }}
+              multiline
+              value={form.mensagem}
+              name="mensagem"
+              onChange={mudaValorInput}
+            />
+          </form>
         </DialogContent>
         <DialogActions>
           <Button

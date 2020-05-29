@@ -138,7 +138,7 @@ h2 {
 }
 
 .viagemUser {
-    height: 65vh;
+    height:70vh;
     justify-content: space-between;
 }
 
@@ -155,7 +155,7 @@ h2 {
 
 .viagemAdmin {
     justify-content: space-around;
-    height: 55%;
+    height: 50vh;
 }
 
 h2, .detalhe-viagem, .descricao{
