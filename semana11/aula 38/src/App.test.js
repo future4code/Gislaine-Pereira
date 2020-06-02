@@ -18,3 +18,8 @@ const criarPost = () =>{
     return utils
 }
 
+test("Ao clicar no Botão de novo Post", () =>{
+    const { getByText } = criarPost()
+    const post = getByText("Post Teste")
+    expect(post).toBeInTheDocument()
+})
