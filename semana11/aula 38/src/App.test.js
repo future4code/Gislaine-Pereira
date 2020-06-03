@@ -31,4 +31,12 @@ describe("Ações com os posts", () => {
         fireEvent.click(button)
         expect(button).toHaveTextContent(/Descurtir/)
     })
+
+    test("deve-se apagar o post quando clicar no botão de apagar", () =>{
+    const { getByText, queryByText } = criarPost()
+    const botaoApagar = getByText(/Apagar/)
+    fireEvent.click(botaoApagar)
+    const verificaPost = queryByText(/Post Teste/)
+    expect(verificaPost).toEqual(null)
+    })
 })
