@@ -18,8 +18,17 @@ const criarPost = () =>{
     return utils
 }
 
-test("Ao clicar no Botão de novo Post", () =>{
-    const { getByText } = criarPost()
-    const post = getByText("Post Teste")
-    expect(post).toBeInTheDocument()
+describe("Ações com os posts", () => {
+    test("Criar novo post ao clicar no Botão de novo Post", () =>{
+        const { getByText } = criarPost()
+        const post = getByText("Post Teste")
+        expect(post).toBeInTheDocument()
+    })
+
+    test("Curtir um post ao clicar no botão de curtir", () =>{
+        const { getByText } = criarPost()
+        const button = getByText("Curtir")
+        fireEvent.click(button)
+        expect(button).toHaveTextContent(/Descurtir/)
+    })
 })
