@@ -40,3 +40,31 @@ describe("Ações com os posts", () => {
     expect(verificaPost).toEqual(null)
     })
 })
+
+describe("Ações com o input", () =>{
+    test('Ao clicar em criar post, o input deve ser limpo', () =>{
+        const { getByPlaceholderText } = criarPost()
+        const inputNovoPost = getByPlaceholderText(/Novo post/).value
+        expect(inputNovoPost).toEqual('')
+    })
+
+    test("mensagem Nenhum post deve aparecer na tela quando não houver post", () => {
+    const {getByText} = render(<App/>)
+    const nenhumPost = getByText(/nenhum post publicado/i)
+    expect(nenhumPost).toBeInTheDocument()
+    })
+
+    test("mostrar quantidade de posts caso exista ao menos um", () => {
+        const {getByText} = criarPost()
+        const quantosPosts = getByText(/1/)
+        expect(quantosPosts).toBeInTheDocument(/quantidade de posts/i)
+    })
+
+    test("caso o usuário tente criar post vazio", () => {
+    const {getByText} = render(<App/>)
+    const button = getByText(/adicionar/i)
+    fireEvent.click(button)
+    expect(getByText(/Insira o conteúdo do Post/i).toBeInTheDocument())
+    })
+})
+

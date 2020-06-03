@@ -5,10 +5,18 @@ import { Post } from "./components/Post";
 const App = () => {
   const [postsList, setPostsList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [mensagemErro, setMensagemErro] = useState(false)
 
   const onChangeInput = event => {
     setInputValue(event.target.value);
   };
+
+  let mensagem 
+  if(postsList.length === 0){
+    mensagem = "Nenhum post publicado"
+  }else{
+    mensagem = `Quantidade de Posts: ${postsList.length}`
+  }
 
   const addPost = () => {
     // Adiciona um post à lista
@@ -19,8 +27,9 @@ const App = () => {
     };
 
     const newPostsList = [newPost, ...postsList];
-
+    setInputValue('')
     setPostsList(newPostsList);
+    setMensagemErro(inputValue === "" ? true : false)
   };
 
   const deletePost = postId => {
@@ -49,6 +58,24 @@ const App = () => {
     setPostsList(newPostsList);
   };
 
+  let conteudo 
+  if (mensagemErro === false) {
+    conteudo = postsList.map(post => {
+        return (
+          <Post
+            key={post.id}
+            post={post}
+            toggleLike={toggleLike}
+            deletePost={deletePost}
+          />
+        );
+      })
+  }else{
+    return(
+      <p>Insira o conteúdo do Post</p>
+    )
+  }
+
   return (
     <div className="App">
       <div>
@@ -61,16 +88,8 @@ const App = () => {
         <button onClick={addPost}>Adicionar</button>
       </div>
       <br />
-      {postsList.map(post => {
-        return (
-          <Post
-            key={post.id}
-            post={post}
-            toggleLike={toggleLike}
-            deletePost={deletePost}
-          />
-        );
-      })}
+      <h4>{mensagem}</h4>
+      {conteudo}
     </div>
   );
 };
