@@ -1,16 +1,15 @@
 * {
   border: none;
   margin: none;
-  font-family: 'French Script MT', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 20vh;
-  background: radial-gradient(214.39% 214.39% at 48.28% 126.89%, #6E1485 0%, rgba(223, 7, 33, 0.06) 100%), linear-gradient(94.97deg, #0C27B0 0.08%, #00FFD1 100%);
+  background: radial-gradient(185.03% 185.04% at 48.09% 156.25%, #6E1485 0%, rgba(223, 7, 33, 0.06) 100%), linear-gradient(94.97deg, #0C27B0 0.08%, #00FFD1 100%);
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.4);
   margin-bottom: 2%;
 }
@@ -20,7 +19,7 @@ h1 {
   font-style: normal;
   font-weight: bold;
   text-align: center;
-  color: #E6FFFD;
+  color: #39B5A4;
   font-size: 5rem;
   padding-left: 2vw;
   text-align: start;
@@ -34,24 +33,32 @@ h1 {
   min-height: 100vh;
 }
 
-#tarefas {
+#formulario{
+  background: #e5fffd99;
+  border: 2px solid #632D80;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 53%;
+  height: 80%;
+}
+
+#conteudo-principal {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  width: 99%;
   min-height: 60vh;
-  padding: 0.5vw;
-  width: 98%;
-}
-
-#container-dia{
-  border: 1px solid #331566;
-  background-color: #331566;
-
+  padding: 0;
+  margin: 0;
 }
 
 .titulo-dia {
   font-size: 3.5vw;
-  border-bottom: 1px solid #331566;
   font-family: Monotype Corsiva;
   font-style: italic;
   font-weight: normal;
@@ -59,5 +66,30 @@ h1 {
   line-height: 54px;
   text-align: center;
   color: #5D4685;
+  width: 100%;
+}
 
+.conteudo{
+  font-family: "Adobe Hebrew", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: start;
+  color: #0D3242;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.dia-semana{
+  border: 2px solid rgba(51, 21, 102, 0.5);
+  box-shadow: -2px 3px 8px -2px rgba(93,70,133,0.5);
+  width: 13%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 0.5%;
 }
