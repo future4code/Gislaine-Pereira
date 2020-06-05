@@ -111,12 +111,10 @@ function App() {
     axios
       .post(`${urlBase}`, body)
       .then(response => {
-        console.log(response.data);
           setOpenLoad(false)
         pegaTarefas()
       })
       .catch(err => {
-        console.log(err);
         setOpenErro(true)
       });
     pegaTarefas()
@@ -131,7 +129,6 @@ function App() {
         setOpenLoad(false)
     })
     .catch(err => {
-       console.log(err);
        setOpenErro(true)
      });
   }
@@ -147,6 +144,7 @@ function App() {
             <CampoTexto
               className={classes.margin}
               label="Tarefa"
+              placeholder="Insira sua Tarefa"
               required
               variant="outlined"
               value={inputTarefa}

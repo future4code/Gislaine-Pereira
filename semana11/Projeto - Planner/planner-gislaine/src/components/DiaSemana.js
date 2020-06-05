@@ -27,10 +27,8 @@ const DiaSmena =(props) =>{
         axios
           .put(`${props.urlBase}/${id}`, body)
           .then(response => {
-            console.log('Deu certo!');
           })
           .catch(err => {
-            console.log(`Deu Erro! ${err}`);
             props.abrirErro()
           });
         
@@ -62,7 +60,6 @@ const DiaSmena =(props) =>{
     </article>
   })
   
-  console.log(tarefasDoDia)
   return(
       <div div className = "dia-semana" >
         <section class="titulo-dia">{props.titulo}</section>
