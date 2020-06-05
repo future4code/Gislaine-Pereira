@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fade, ThemeProvider, withStyles, makeStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { withStyles, makeStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import Loading from "./img/loading.gif";
 import './App.css';
 import DiaSemana from './components/DiaSemana';
 import TextField from '@material-ui/core/TextField';
@@ -15,6 +16,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
+import Backdrop from '@material-ui/core/Backdrop';
+import Erro from "./img/error.gif"
 
 const urlBase = "https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-julian-gislaine"
 
@@ -37,6 +40,10 @@ const CampoTexto = withStyles({
 })(TextField);
 
 const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -69,50 +76,63 @@ const MyTheme = createMuiTheme({
 
 function App() {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const [openSelect, setOpenSelect] = useState(false);
+  const [openLoad, setOpenLoad] = useState(false)
   const [inputTarefa, setInputTarefa] = useState("")
   const [selecionaDia, setSelecionaDia] = useState("")
   const [listaTarefas, setListaTarefas] = useState([])
+  const [openErro, setOpenErro] = useState(false)
   
   useEffect(() => {
     pegaTarefas()
-  }, [urlBase])
+  }, [])
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const abrirSelect = () => {
+    setOpenSelect(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const fechaErro = () =>{
+    setOpenErro(false)
+  }
+
+  const fechaSelect = () => {
+    setOpenSelect(false);
   };
 
-  const adicionaTarefa = async () => {
+  const adicionaTarefa = () => {
+    setOpenLoad(true)
     setInputTarefa("")
     setSelecionaDia("")
     const body ={
       text: inputTarefa,
       day: selecionaDia,
+      completa: false,
     }
-    await axios
+    axios
       .post(`${urlBase}`, body)
       .then(response => {
         console.log(response.data);
+          setOpenLoad(false)
+        pegaTarefas()
       })
       .catch(err => {
         console.log(err);
+        setOpenErro(true)
       });
     pegaTarefas()
   }
 
-
-  const pegaTarefas = async () => {
-    await axios
+  const pegaTarefas = () => {
+    setOpenLoad(true)
+    axios
     .get(`${urlBase}`)
     .then(response => {
       setListaTarefas(response.data)
+        setOpenLoad(false)
     })
-     .catch(err => {
+    .catch(err => {
        console.log(err);
+       setOpenErro(true)
      });
   }
   
@@ -131,12 +151,12 @@ function App() {
               variant="outlined"
               value={inputTarefa}
               onChange={e =>{setInputTarefa(e.target.value)}}
-              id="validation-outlined-input"
+              id="campo-texto"
             />
 
 
             <Fab 
-              onClick={handleClickOpen}
+              onClick={abrirSelect}
               variant="extended"
               size="medium"
               color="primary"
@@ -145,7 +165,7 @@ function App() {
               {selecionaDia === ""? "Selecione o dia" : selecionaDia}
             </Fab>
             
-            <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose}>
+            <Dialog disableBackdropClick disableEscapeKeyDown open={openSelect} onClose={fechaSelect}>
               <DialogContent>
                 <FormControl component="fieldset">
                   <RadioGroup aria-label="gender" name="gender1" value={selecionaDia} onChange={e =>{setSelecionaDia(e.target.value)}}>
@@ -160,10 +180,10 @@ function App() {
                 </FormControl>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={handleClose} color="primary">
+                  <Button onClick={fechaSelect} color="primary">
                     Cancela
                   </Button>
-                  <Button onClick={handleClose} color="primary">
+                  <Button onClick={fechaSelect} color="primary">
                     Ok
                   </Button>
                 </DialogActions>
@@ -184,14 +204,30 @@ function App() {
         </header>
   
         <section id="conteudo-principal">
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Domingo"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Segunda"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Terça"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Quarta"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Quinta"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Sexta"}/>
-            <DiaSemana listaTarefasDia={listaTarefas} titulo={"Sábado"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Domingo"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Segunda"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Terça"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Quarta"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Quinta"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Sexta"}/>
+            <DiaSemana urlBase={urlBase} abrirErro={()=>{setOpenErro(true)}} abrirLoading={()=>{setOpenLoad(true)}} fecharLoading={() =>{setOpenLoad(false)}} listaTarefasDia={listaTarefas} titulo={"Sábado"}/>
         </section>
+
+        <Backdrop className={classes.backdrop} open={openLoad}>
+          <img src={Loading} alt={'Carregando'}/>
+        </Backdrop>
+
+        <Dialog className={classes.backdrop} open={openErro} onClose={fechaErro}>
+              <DialogContent>
+                <p>Ocorreu um erro, tente novamente</p>
+                <img src={Erro} alt={'Carregando'}/>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={fechaErro} color="primary">
+                    Ok
+                  </Button>
+                </DialogActions>
+            </Dialog>
       </MuiThemeProvider>
     </div>
   );
