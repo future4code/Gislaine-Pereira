@@ -61,7 +61,7 @@ const DiaSmena =(props) =>{
   })
   
   return(
-      <div div className = "dia-semana" >
+      <div className="dia-semana">
         <section class="titulo-dia">{props.titulo}</section>
         <section class="conteudo">{tarefasNaTela}</section>
       </div>
