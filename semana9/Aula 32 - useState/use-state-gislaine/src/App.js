@@ -4,7 +4,7 @@ import axios from "axios";
 import { PokeCard } from "./components/index.js";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon"
 
-export function App() {
+export function App(props) {
   const [pokeList, setPokeList] = useState([])
   const [pokeName, setPokeName] = useState([])
 

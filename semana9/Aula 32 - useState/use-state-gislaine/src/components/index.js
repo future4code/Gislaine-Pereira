@@ -8,7 +8,6 @@ export function PokeCard(props) {
     axios
       .get(`${props.urlBase}/${props.pokemon}`)
       .then(response => {
-        // guarda as infos do pokemon no estado
         setPokemon(response.data);
       })
       .catch(err => {
