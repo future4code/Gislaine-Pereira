@@ -147,8 +147,8 @@ test('Quando clica numa Tarefa, ela deve ser riscada', async () =>{
     })
     const { getByText } = render(<App />)
     const tarefa = getByText(/tarefa teste/i)
-    userEvent.click(tarefa)
-    userEvent.click(tarefa)
+    fireEvent.click(tarefa)
+    fireEvent.click(tarefa)
     expect(tarefa).toHaveStyle('text-decoration: none')
   });
 
@@ -166,7 +166,7 @@ test('Quando clica numa Tarefa, ela deve ser riscada', async () =>{
     axios.put = jest.fn().mockResolvedValue()
     const { getByText } = render(<App />)
     const tarefa = getByText(/tarefa teste/i)
-    userEvent.click(tarefa)
+    fireEvent.click(tarefa)
 
     expect(axios.put).toHaveBeenCalledWith(`https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-julian-gislaine/1111`, {
       completa: true
