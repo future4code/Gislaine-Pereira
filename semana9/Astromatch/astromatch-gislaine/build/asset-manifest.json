@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3b25a4f7.chunk.css",
+    "main.js": "/static/js/main.a00f83e0.chunk.js",
+    "main.js.map": "/static/js/main.a00f83e0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9844d08a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9844d08a.js.map",
+    "static/js/2.065c89ed.chunk.js": "/static/js/2.065c89ed.chunk.js",
+    "static/js/2.065c89ed.chunk.js.map": "/static/js/2.065c89ed.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7264a4c7b8f6d40573e74262bb3ceb96.js": "/precache-manifest.7264a4c7b8f6d40573e74262bb3ceb96.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.3b25a4f7.chunk.css.map": "/static/css/main.3b25a4f7.chunk.css.map",
+    "static/js/2.065c89ed.chunk.js.LICENSE.txt": "/static/js/2.065c89ed.chunk.js.LICENSE.txt",
+    "static/media/Coracao.gif": "/static/media/Coracao.96cb615a.gif",
+    "static/media/core.png": "/static/media/core.c6516da3.png",
+    "static/media/logo.png": "/static/media/logo.a4a9eaf7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9844d08a.js",
+    "static/js/2.065c89ed.chunk.js",
+    "static/css/main.3b25a4f7.chunk.css",
+    "static/js/main.a00f83e0.chunk.js"
+  ]
+}
