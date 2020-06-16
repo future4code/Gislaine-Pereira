@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.af789495.chunk.css",
+    "main.js": "/static/js/main.183b9e1d.chunk.js",
+    "main.js.map": "/static/js/main.183b9e1d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.57fd4b26.js",
+    "runtime-main.js.map": "/static/js/runtime-main.57fd4b26.js.map",
+    "static/js/2.da64f660.chunk.js": "/static/js/2.da64f660.chunk.js",
+    "static/js/2.da64f660.chunk.js.map": "/static/js/2.da64f660.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e38fecf9847c5f6e9c62ff6d53f0aad8.js": "/precache-manifest.e38fecf9847c5f6e9c62ff6d53f0aad8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.af789495.chunk.css.map": "/static/css/main.af789495.chunk.css.map",
+    "static/js/2.da64f660.chunk.js.LICENSE.txt": "/static/js/2.da64f660.chunk.js.LICENSE.txt",
+    "static/media/Logo2.png": "/static/media/Logo2.dc3aa2b6.png",
+    "static/media/Mercurio.jpg": "/static/media/Mercurio.f8522711.jpg",
+    "static/media/by.png": "/static/media/by.02a073d4.png",
+    "static/media/fundo.jpg": "/static/media/fundo.e6d3a2c4.jpg",
+    "static/media/fundo4.jpg": "/static/media/fundo4.374feaa9.jpg",
+    "static/media/ganimedes.jpg": "/static/media/ganimedes.a0553f78.jpg",
+    "static/media/jupiter.jpg": "/static/media/jupiter.a7599727.jpg",
+    "static/media/marte.jpg": "/static/media/marte.fa028963.jpg",
+    "static/media/nebula.jpg": "/static/media/nebula.25953a46.jpg",
+    "static/media/netuno.jpg": "/static/media/netuno.5e92d7b3.jpg",
+    "static/media/plutão.jpg": "/static/media/plutão.0312576c.jpg",
+    "static/media/saturno.jpg": "/static/media/saturno.a49713a0.jpg",
+    "static/media/tita.jpg": "/static/media/tita.17f424a2.jpg",
+    "static/media/twt.png": "/static/media/twt.33ba818f.png",
+    "static/media/urano.jpg": "/static/media/urano.9c573cec.jpg",
+    "static/media/venus.jpg": "/static/media/venus.a732abeb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57fd4b26.js",
+    "static/js/2.da64f660.chunk.js",
+    "static/css/main.af789495.chunk.css",
+    "static/js/main.183b9e1d.chunk.js"
+  ]
+}
