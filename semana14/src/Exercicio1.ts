@@ -1,15 +1,22 @@
 
 // A)
 
-let saudacao: string = "Hello, World"
+let saudacao: string = 'Hello World'
 console.log(saudacao)
 
+/* Aparece o erro: error TS2322: Type '42' is not assignable to type 'string'. */
 
+//-------------------------------------------------------------------------------
 
 // B)
-let numero: number = 18
+let numero: number = 42
 
 
+//Para aceitar um string podemos colocar um | e fica: 
+
+let numeroString: number | string = 42
+
+//--------------------------------------------------------------------------------
 
 // C)
 type pessoa = {
@@ -19,32 +26,32 @@ type pessoa = {
 }
 const astrodev: pessoa = {
     name: 'Astro',
-    age: 30,
-    corFavorita: 'branco'
-}
-
-
-
-// D)
-const Julian: pessoa = {
-    name: 'Julian',
-    age: 59,
+    age: 25,
     corFavorita: 'laranja'
 }
 
-const Bouman: pessoa = {
-    name: 'Bouman',
-    age: 37,
-    corFavorita: 'cinza'
+//---------------------------------------------------------------------
+
+// D)
+const Gislaine: pessoa = {
+    name: 'Gislaine',
+    age: 36,
+    corFavorita: 'preto'
 }
 
-const Hamilton: pessoa = {
-    name: 'Hamilton',
-    age: 30,
-    corFavorita: 'black'
+const Luciano: pessoa = {
+    name: 'Luciano',
+    age: 36,
+    corFavorita: 'azul'
 }
 
+const Laureci: pessoa = {
+    name: 'Laureci',
+    age: 64,
+    corFavorita: 'amarelo'
+}
 
+//----------------------------------------------------------------------
 
 // E)
 enum arcoIris {
@@ -57,9 +64,10 @@ enum arcoIris {
     violeta = "violeta"
 }
 
-type LabeUser = {
+type Cores = {
     class: arcoIris
 }
-const Newton: LabeUser = {
+
+const Joaão: Cores = {
     class: arcoIris.violeta
 }
