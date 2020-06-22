@@ -29,8 +29,10 @@ const listaPosts = [
     },
 ];
 function escolheAutor(filtrados, autorPost) {
-    let postsAutor = listaPosts.filter((post) => {
+    let postsAutor = filtrados.filter((post) => {
         return post.autor === autorPost;
     });
+    return postsAutor;
 }
+console.log(escolheAutor(listaPosts, 'Natasha'));
 //# sourceMappingURL=Exercicio4.js.map
