@@ -24,10 +24,10 @@ function qualEra(ano, era) {
         return "Idade Contemporânea";
     }
 }
-console.log("10.000 AC" + qualEra(10000, Eras.AC));
-console.log("3.0000 AC" + qualEra(3000, Eras.AC));
-console.log("120 DC" + qualEra(120, Eras.DC));
-console.log("700 DC" + qualEra(700, Eras.DC));
-console.log("1.700 DC" + qualEra(1, Eras.DC));
-console.log("1.990 DC" + qualEra(500, Eras.DC));
+console.log("10.000 AC - " + qualEra(10000, Eras.AC));
+console.log("3.0000 AC - " + qualEra(3000, Eras.AC));
+console.log("120 DC - " + qualEra(120, Eras.DC));
+console.log("700 DC - " + qualEra(700, Eras.DC));
+console.log("1.700 DC - " + qualEra(1700, Eras.DC));
+console.log("1.990 DC - " + qualEra(1990, Eras.DC));
 //# sourceMappingURL=Exercicio5.js.map
