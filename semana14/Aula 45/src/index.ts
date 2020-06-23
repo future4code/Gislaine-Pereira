@@ -44,3 +44,8 @@ const qualNum2: number = Number(process.argv[4])
 
 console.log(operacaoMatematica(qualoperacao, qualNum1, qualNum2))
 
+
+
+/*
+NÃO FAÇO IDIA DE COMO FAZER OS PRÓXIMOS, ESTOU TOTALMENTE PERDIDA NESTE ASSUNTO
+*/
