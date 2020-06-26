@@ -11,45 +11,45 @@ type Extrato = {
 type ContaUser = {
     cpf: string,
     nome: string,
-    nascimento:string,
+    nascimento: string,
     saldoAtual: number,
     extrato: Extrato[]
 }
 
-const criarConta = (nome: string, cpf: string, nascimento: string):void => {
-// Comparar ad datas, ver se á maior de idade
+const criarConta = (nome: string, cpf: string, nascimento: string): void => {
+    // Comparar ad datas, ver se á maior de idade
 
-    const dataNascimentoUser = moment(nascimento, "DD/MM/YYYY") 
+    const dataNascimentoUser = moment(nascimento, "DD/MM/YYYY")
     const dataHoje = moment()
 
     const idadeUsuario = dataHoje.diff(dataNascimentoUser, "years")
 
-    if (idadeUsuario < 18){
+    if (idadeUsuario < 18) {
         console.log("Menores de idade não podem criar uma conta")
         return
     }
     //  Ler o Json
-    
-    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/src/usuarios.json"
+
+    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
     const DadosUsuario: Buffer = fs.readFileSync(caminhoUsario)
     const usuariosString: string = DadosUsuario.toString()
 
-// Parsear o arquivo
+    // Parsear o arquivo
 
     const usuarios: ContaUser[] = JSON.parse(usuariosString)
 
-// validar o CPF
+    // validar o CPF
 
-    const procuraUsuarios = usuarios.find((usuario: ContaUser) =>{
+    const procuraUsuarios = usuarios.find((usuario: ContaUser) => {
         return usuario.cpf === cpf;
     })
 
-    if (procuraUsuarios !== undefined){
+    if (procuraUsuarios !== undefined) {
         console.log("Já existe um usuário com este CPF")
         return;
     }
 
-// Adicionar usuario no Array
+    // Adicionar usuario no Array
     usuarios.push({
         nome,
         cpf,
@@ -60,9 +60,9 @@ const criarConta = (nome: string, cpf: string, nascimento: string):void => {
 
     console.log(usuarios);
 
-// Reescreva o arquivo todo
+    // Reescreva o arquivo todo
 
-const usuariosStringFied = JSON.stringify(usuarios, null, 2)
+    const usuariosStringFied = JSON.stringify(usuarios, null, 2)
     fs.writeFileSync(caminhoUsario, usuariosStringFied)
 
 };

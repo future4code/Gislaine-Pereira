@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node build/funcoes.js",
+    "criarConta": "tsc && node build/criarConta.js",
+    "verificarSaldo": "tsc && node build/verificarSaldo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "gislaine",

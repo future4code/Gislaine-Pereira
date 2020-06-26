@@ -32,7 +32,7 @@ const criarConta = (nome, cpf, nascimento) => {
         console.log("Menores de idade não podem criar uma conta");
         return;
     }
-    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/src/usuarios.json";
+    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
     const DadosUsuario = fs.readFileSync(caminhoUsario);
     const usuariosString = DadosUsuario.toString();
     const usuarios = JSON.parse(usuariosString);
@@ -58,4 +58,4 @@ const nome = process.argv[2];
 const cpf = process.argv[3];
 const nascimento = process.argv[4];
 criarConta(nome, cpf, nascimento);
-//# sourceMappingURL=funcoes.js.map
+//# sourceMappingURL=criarConta.js.map
