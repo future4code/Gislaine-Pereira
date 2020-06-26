@@ -1,0 +1,29 @@
+[
+  {
+    "cpf": "111.111.111-11",
+    "nome": "Gislaine",
+    "nascimento": "15/11/1983",
+    "saldoAtual": 0,
+    "extrato": [
+      {
+        "valor": 25,
+        "data": "26/06/2020",
+        "descricao": "Almoço"
+      }
+    ]
+  },
+  {
+    "nome": "Saxa",
+    "cpf": "222.222.222-22",
+    "nascimento": "22/02/1998",
+    "saldoAtual": 0,
+    "extrato": []
+  },
+  {
+    "nome": "Saxa",
+    "cpf": "222.222.222.22",
+    "nascimento": "22/02/1998",
+    "saldoAtual": 0,
+    "extrato": []
+  }
+]
