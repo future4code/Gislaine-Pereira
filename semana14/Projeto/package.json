@@ -6,6 +6,7 @@
   "scripts": {
     "criarConta": "tsc && node build/criarConta.js",
     "verificarSaldo": "tsc && node build/verificarSaldo.js",
+    "modificarSaldo": "tsc && node build/modificarSaldo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "gislaine",
