@@ -1,6 +1,9 @@
-import moment from "moment"
+import moment from "moment";
+moment.locale("pt-br");
 import * as fs from "fs"
 import { userInfo } from "os"
+import { caminhoUsario } from './funções';
+import { pegarUsuarios } from './funções';
 
 type Extrato = {
     valor: Number,
@@ -28,15 +31,7 @@ const criarConta = (nome: string, cpf: string, nascimento: string): void => {
         console.log("Menores de idade não podem criar uma conta")
         return
     }
-    //  Ler o Json
-
-    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
-    const DadosUsuario: Buffer = fs.readFileSync(caminhoUsario)
-    const usuariosString: string = DadosUsuario.toString()
-
-    // Parsear o arquivo
-
-    const usuarios: ContaUser[] = JSON.parse(usuariosString)
+    const usuarios = pegarUsuarios()
 
     // validar o CPF
 

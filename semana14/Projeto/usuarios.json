@@ -3,21 +3,49 @@
     "cpf": "111.111.111-11",
     "nome": "Gislaine",
     "nascimento": "15/11/1983",
-    "saldoAtual": 0,
-    "extrato": []
+    "saldoAtual": 70,
+    "extrato": [
+      {
+        "valor": 20,
+        "data": "28/06/2020",
+        "descricao": "Uma conta qualquer"
+      },
+      {
+        "valor": 15,
+        "data": "28/06/2020",
+        "descricao": "Almoço"
+      },
+      {
+        "valor": 25,
+        "data": "29/06/2020",
+        "descricao": "Ração"
+      }
+    ]
   },
   {
     "nome": "Saxa",
     "cpf": "222.222.222-22",
     "nascimento": "22/02/1998",
     "saldoAtual": 50,
-    "extrato": []
+    "extrato": [
+      {
+        "valor": 10,
+        "data": "28/06/2020",
+        "descricao": "Depósito de dinheiro"
+      }
+    ]
   },
   {
     "nome": "Natasha",
     "cpf": "333.333.333-33",
     "nascimento": "28/02/1998",
-    "saldoAtual": 25,
-    "extrato": []
+    "saldoAtual": 50,
+    "extrato": [
+      {
+        "valor": 5,
+        "data": "27/06/2020",
+        "descricao": "Depósito de dinheiro"
+      }
+    ]
   }
 ]

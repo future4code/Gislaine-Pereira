@@ -1,6 +1,9 @@
-import moment from "moment"
+import moment from "moment";
+moment.locale("pt-br");
 import * as fs from "fs"
 import { userInfo } from "os"
+import { caminhoUsario } from './funções';
+import { pegarUsuarios } from './funções';
 
 type Extrato = {
     valor: Number,
@@ -17,25 +20,21 @@ type ContaUser = {
 }
 
 const verificarSaldo = (nome: string, cpf: string) => {
-    //  Ler o Json
-
-    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
-    const DadosUsuario: Buffer = fs.readFileSync(caminhoUsario)
-    const usuariosString: string = DadosUsuario.toString()
-
-    // Parsear o arquivo
-
-    const usuarios: ContaUser[] = JSON.parse(usuariosString)
+    const usuarios = pegarUsuarios()
 
     // validar o CPF
 
     const procuraUsuarios = usuarios.find((usuario: ContaUser) => {
-        return usuario.cpf === cpf;
+        if (usuario.cpf === cpf && usuario.nome === nome) {
+            return true
+        }
     })
 
-
-    console.log("Seu saldo atual é R$",procuraUsuarios?.saldoAtual);
-
+    if (procuraUsuarios !== undefined) {
+        console.log("Seu saldo atual é R$", procuraUsuarios.saldoAtual);
+    } else {
+        console.log("Usuario não encontrado")
+    }
 
 };
 

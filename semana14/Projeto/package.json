@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pagarConta": "tsc && node build/pagarConta.js",
     "criarConta": "tsc && node build/criarConta.js",
     "verificarSaldo": "tsc && node build/verificarSaldo.js",
-    "modificarSaldo": "tsc && node build/modificarSaldo.js",
+    "adicionarSaldo": "tsc && node build/adicionarSaldo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "gislaine",

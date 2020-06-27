@@ -27,35 +27,40 @@ moment_1.default.locale("pt-br");
 const fs = __importStar(require("fs"));
 const fun__es_1 = require("./fun\u00E7\u00F5es");
 const fun__es_2 = require("./fun\u00E7\u00F5es");
-const criarConta = (nome, cpf, nascimento) => {
-    const dataNascimentoUser = moment_1.default(nascimento, "DD/MM/YYYY");
+const pagarConta = (valor, descricao, cpf, dataPgto) => {
+    let dataPagamento;
+    if (dataPgto === undefined) {
+        dataPagamento = moment_1.default();
+    }
+    else {
+        dataPagamento = moment_1.default(dataPgto, "DD/MM/YYYY");
+    }
     const dataHoje = moment_1.default();
-    const idadeUsuario = dataHoje.diff(dataNascimentoUser, "years");
-    if (idadeUsuario < 18) {
-        console.log("Menores de idade não podem criar uma conta");
+    const prazo = dataPagamento.diff(dataHoje, "days");
+    if (prazo < 0) {
+        console.log("Data de pagamento já passou, escolha hoje ou uma no futuro");
         return;
     }
     const usuarios = fun__es_2.pegarUsuarios();
     const procuraUsuarios = usuarios.find((usuario) => {
         return usuario.cpf === cpf;
     });
-    if (procuraUsuarios !== undefined) {
-        console.log("Já existe um usuário com este CPF");
+    if (procuraUsuarios === undefined) {
+        console.log("Usuario não encontrado");
         return;
     }
-    usuarios.push({
-        nome,
-        cpf,
-        nascimento,
-        saldoAtual: 0,
-        extrato: [],
+    const dataString = dataPagamento.format("DD/MM/YYYY");
+    procuraUsuarios.extrato.push({
+        valor,
+        data: dataString,
+        descricao
     });
-    console.log(usuarios);
     const usuariosStringFied = JSON.stringify(usuarios, null, 2);
     fs.writeFileSync(fun__es_1.caminhoUsario, usuariosStringFied);
 };
-const nome = process.argv[2];
-const cpf = process.argv[3];
-const nascimento = process.argv[4];
-criarConta(nome, cpf, nascimento);
-//# sourceMappingURL=criarConta.js.map
+const valor = Number(process.argv[2]);
+const descricao = process.argv[3];
+const cpf = process.argv[4];
+const dataPgto = process.argv[5];
+pagarConta(valor, descricao, cpf, dataPgto);
+//# sourceMappingURL=pagarConta.js.map

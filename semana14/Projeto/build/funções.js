@@ -19,10 +19,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pegarUsuarios = exports.caminhoUsario = void 0;
+exports.pegaUsuario = exports.pegarUsuarios = exports.caminhoUsario = void 0;
 const fs = __importStar(require("fs"));
 exports.caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
 exports.pegarUsuarios = () => {
+    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
+    const DadosUsuario = fs.readFileSync(caminhoUsario);
+    const usuariosString = DadosUsuario.toString();
+    const usuarios = JSON.parse(usuariosString);
+    return usuarios;
+};
+exports.pegaUsuario = () => {
     const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
     const DadosUsuario = fs.readFileSync(caminhoUsario);
     const usuariosString = DadosUsuario.toString();
