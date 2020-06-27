@@ -19,25 +19,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.pegarUsuarios = exports.caminhoUsario = void 0;
 const fs = __importStar(require("fs"));
-const fun__es_1 = require("./fun\u00E7\u00F5es");
-const fun__es_2 = require("./fun\u00E7\u00F5es");
-const modificarSaldo = (nome, cpf, valor) => {
-    const usuarios = fun__es_2.pegarUsuarios();
-    const procuraUsuarios = usuarios.find((usuario) => {
-        return usuario.cpf === cpf;
-    });
-    if (procuraUsuarios !== undefined) {
-        procuraUsuarios.saldoAtual = valor;
-    }
-    else {
-        console.log("Usuario não encontrado");
-    }
-    const usuariosStringFied = JSON.stringify(usuarios, null, 2);
-    fs.writeFileSync(fun__es_1.caminhoUsario, usuariosStringFied);
+exports.caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
+exports.pegarUsuarios = () => {
+    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
+    const DadosUsuario = fs.readFileSync(caminhoUsario);
+    const usuariosString = DadosUsuario.toString();
+    const usuarios = JSON.parse(usuariosString);
+    return usuarios;
 };
-const nome = process.argv[2];
-const cpf = process.argv[3];
-const valor = Number(process.argv[4]);
-modificarSaldo(nome, cpf, valor);
-//# sourceMappingURL=modificarSaldo.js.map
+//# sourceMappingURL=funções.js.map

@@ -4,26 +4,20 @@
     "nome": "Gislaine",
     "nascimento": "15/11/1983",
     "saldoAtual": 0,
-    "extrato": [
-      {
-        "valor": 25,
-        "data": "26/06/2020",
-        "descricao": "Almoço"
-      }
-    ]
+    "extrato": []
   },
   {
     "nome": "Saxa",
     "cpf": "222.222.222-22",
     "nascimento": "22/02/1998",
-    "saldoAtual": 30,
+    "saldoAtual": 50,
     "extrato": []
   },
   {
-    "nome": "Natsha",
+    "nome": "Natasha",
     "cpf": "333.333.333-33",
     "nascimento": "28/02/1998",
-    "saldoAtual": 0,
+    "saldoAtual": 25,
     "extrato": []
   }
 ]

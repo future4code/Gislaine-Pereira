@@ -1,6 +1,8 @@
 import moment from "moment"
 import * as fs from "fs"
 import { userInfo } from "os"
+import { caminhoUsario } from './funções';
+import { pegarUsuarios } from './funções';
 
 type Extrato = {
     valor: Number,
@@ -16,18 +18,9 @@ type ContaUser = {
     extrato: Extrato[]
 }
 
+
 const modificarSaldo = (nome: string, cpf: string, valor: number) => {
-    //  Ler o Json
-
-    const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
-    const DadosUsuario: Buffer = fs.readFileSync(caminhoUsario)
-    const usuariosString: string = DadosUsuario.toString()
-
-    // Parsear o arquivo
-
-    const usuarios: ContaUser[] = JSON.parse(usuariosString)
-
-    // validar o CPF
+    const usuarios = pegarUsuarios()
 
     const procuraUsuarios = usuarios.find((usuario: ContaUser) => {
         return usuario.cpf === cpf;
@@ -41,10 +34,8 @@ const modificarSaldo = (nome: string, cpf: string, valor: number) => {
 
     const usuariosStringFied = JSON.stringify(usuarios, null, 2)
     fs.writeFileSync(caminhoUsario, usuariosStringFied)
-
 };
 
-//Colocar os argumentos no terminal
 const nome = process.argv[2]
 const cpf = process.argv[3]
 const valor = Number(process.argv[4])
