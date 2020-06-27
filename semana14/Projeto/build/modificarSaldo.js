@@ -20,7 +20,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
-const verificarSaldo = (nome, cpf) => {
+const modificarSaldo = (nome, cpf, valor) => {
     const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json";
     const DadosUsuario = fs.readFileSync(caminhoUsario);
     const usuariosString = DadosUsuario.toString();
@@ -28,9 +28,17 @@ const verificarSaldo = (nome, cpf) => {
     const procuraUsuarios = usuarios.find((usuario) => {
         return usuario.cpf === cpf;
     });
-    console.log("Seu saldo atual é R$", procuraUsuarios === null || procuraUsuarios === void 0 ? void 0 : procuraUsuarios.saldoAtual);
+    if (procuraUsuarios !== undefined) {
+        procuraUsuarios.saldoAtual = valor;
+    }
+    else {
+        console.log("Usuario não encontrado");
+    }
+    const usuariosStringFied = JSON.stringify(usuarios, null, 2);
+    fs.writeFileSync(caminhoUsario, usuariosStringFied);
 };
 const nome = process.argv[2];
 const cpf = process.argv[3];
-verificarSaldo(nome, cpf);
-//# sourceMappingURL=verificarSaldo.js.map
+const valor = Number(process.argv[4]);
+modificarSaldo(nome, cpf, valor);
+//# sourceMappingURL=modificarSaldo.js.map

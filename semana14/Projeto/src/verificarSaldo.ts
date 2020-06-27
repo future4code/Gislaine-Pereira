@@ -16,7 +16,7 @@ type ContaUser = {
     extrato: Extrato[]
 }
 
-const criarConta = (nome: string, cpf: string) => {
+const verificarSaldo = (nome: string, cpf: string) => {
     //  Ler o Json
 
     const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
@@ -43,4 +43,4 @@ const criarConta = (nome: string, cpf: string) => {
 const nome = process.argv[2]
 const cpf = process.argv[3]
 
-criarConta(nome, cpf)
+verificarSaldo(nome, cpf)

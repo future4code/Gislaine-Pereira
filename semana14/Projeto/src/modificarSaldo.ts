@@ -16,7 +16,7 @@ type ContaUser = {
     extrato: Extrato[]
 }
 
-const criarConta = (nome: string, cpf: string, valor: Number): void => {
+const modificarSaldo = (nome: string, cpf: string, valor: number) => {
     //  Ler o Json
 
     const caminhoUsario = "C:/Users/gisla/Documents/Future4/Gislaine-Pereira/semana14/Projeto/usuarios.json"
@@ -34,22 +34,10 @@ const criarConta = (nome: string, cpf: string, valor: Number): void => {
     })
 
     if (procuraUsuarios !== undefined) {
-        console.log("Já existe um usuário com este CPF")
-        return;
+        procuraUsuarios.saldoAtual = valor
+    }else{
+        console.log("Usuario não encontrado")
     }
-
-    // Adicionar usuario no Array
-    usuarios.push({
-        nome,
-        cpf,
-        nascimento,
-        saldoAtual: 0,
-        extrato: [],
-    });
-
-    console.log(usuarios);
-
-    // Reescreva o arquivo todo
 
     const usuariosStringFied = JSON.stringify(usuarios, null, 2)
     fs.writeFileSync(caminhoUsario, usuariosStringFied)
@@ -59,6 +47,6 @@ const criarConta = (nome: string, cpf: string, valor: Number): void => {
 //Colocar os argumentos no terminal
 const nome = process.argv[2]
 const cpf = process.argv[3]
-const nascimento = process.argv[4]
+const valor = Number(process.argv[4])
 
-criarConta(nome, cpf, nascimento)
+modificarSaldo(nome, cpf, valor)

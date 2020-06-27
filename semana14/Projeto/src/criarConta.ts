@@ -64,7 +64,7 @@ const criarConta = (nome: string, cpf: string, nascimento: string): void => {
 
     const usuariosStringFied = JSON.stringify(usuarios, null, 2)
     fs.writeFileSync(caminhoUsario, usuariosStringFied)
-
+    
 };
 
 //Colocar os argumentos no terminal
