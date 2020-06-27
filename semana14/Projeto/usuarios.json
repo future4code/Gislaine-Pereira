@@ -7,18 +7,23 @@
     "extrato": [
       {
         "valor": 20,
-        "data": "28/06/2020",
+        "data": "20/06/2020",
         "descricao": "Uma conta qualquer"
       },
       {
-        "valor": 15,
+        "valor": -15,
         "data": "28/06/2020",
         "descricao": "Almoço"
       },
       {
-        "valor": 25,
+        "valor": -25,
         "data": "29/06/2020",
         "descricao": "Ração"
+      },
+      {
+        "valor": 10,
+        "data": "28/06/2020",
+        "descricao": "Depósito de dinheiro"
       }
     ]
   },
