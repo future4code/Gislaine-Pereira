@@ -43,11 +43,8 @@ const atualizarSaldo = (cpf: string) => {
         const dataConta = moment(conta.data, "DD/MM/YYYY")
         return dataConta >= hoje
     }).map((conta:Extrato)=>{
-        if (conta.descricao !== "Depósito de dinheiro"){
-            conta.valor = Number(conta.valor)* -1 
-        }
        return conta.valor
-    })  
+    })
 
     let saldoAtualizado = procuraUsuarios.saldoAtual
     for (let i = 0; i < listaSaldos.length; i++) {

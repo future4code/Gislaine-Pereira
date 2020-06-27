@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pagarConta": "tsc && node build/pagarConta.js",
+    "transferencia": "tsc && node build/transferencia.js",
     "atualizarSaldo": "tsc && node build/atualizarSaldo.js",
     "criarConta": "tsc && node build/criarConta.js",
     "verificarSaldo": "tsc && node build/verificarSaldo.js",

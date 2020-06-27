@@ -27,44 +27,49 @@ moment_1.default.locale("pt-br");
 const fs = __importStar(require("fs"));
 const fun__es_1 = require("./fun\u00E7\u00F5es");
 const fun__es_2 = require("./fun\u00E7\u00F5es");
-const pagarConta = (valor, descricao, cpf, dataPgto) => {
-    let dataPagamento;
-    if (dataPgto === undefined) {
-        dataPagamento = moment_1.default();
-    }
-    else {
-        dataPagamento = moment_1.default(dataPgto, "DD/MM/YYYY");
-    }
-    const dataHoje = moment_1.default();
-    const prazo = dataPagamento.diff(dataHoje, "days");
-    if (prazo < 0) {
-        console.log("Data de pagamento já passou, escolha hoje ou uma no futuro");
-        return;
-    }
+const transferencia = (nomeRem, cpfRem, nomeDest, cpfDest, valor) => {
     const usuarios = fun__es_2.pegarUsuarios();
-    const procuraUsuarios = usuarios.find((usuario) => {
-        return usuario.cpf === cpf;
+    console.log(usuarios);
+    const dadosRemetente = usuarios.find((usuario) => {
+        if (usuario.cpf === cpfRem && usuario.nome === nomeRem) {
+            return true;
+        }
     });
-    if (procuraUsuarios === undefined) {
-        console.log("Usuario não encontrado");
+    const dadosDestinatario = usuarios.find((usuario) => {
+        if (usuario.cpf === cpfDest && usuario.nome === nomeDest) {
+            return true;
+        }
+    });
+    if (dadosRemetente === undefined) {
+        console.log("Seus dados não foram encontrados, tente novamente");
         return;
     }
-    if (procuraUsuarios.saldoAtual < valor) {
+    if (dadosDestinatario === undefined) {
+        console.log("Destinatário não encontrado, tente novamente");
+        return;
+    }
+    const dataPgto = moment_1.default().format("DD/MM/YYYY");
+    if (dadosRemetente.saldoAtual < valor) {
         console.log("Saldo insuficiente, operação não efetuada");
         return;
     }
-    const dataString = dataPagamento.format("DD/MM/YYYY");
-    procuraUsuarios.extrato.push({
+    dadosRemetente.extrato.push({
         valor: valor * -1,
-        data: dataString,
-        descricao
+        data: dataPgto,
+        descricao: `Transferência de dinheiro para ${dadosDestinatario.nome}, CPF: ${dadosDestinatario.cpf}`
+    });
+    dadosDestinatario.extrato.push({
+        valor,
+        data: dataPgto,
+        descricao: `Recebimento de dinheiro de ${dadosRemetente.nome}, CPF: ${dadosRemetente.cpf}`
     });
     const usuariosStringFied = JSON.stringify(usuarios, null, 2);
     fs.writeFileSync(fun__es_1.caminhoUsario, usuariosStringFied);
 };
-const valor = Number(process.argv[2]);
-const descricao = process.argv[3];
-const cpf = process.argv[4];
-const dataPgto = process.argv[5];
-pagarConta(valor, descricao, cpf, dataPgto);
-//# sourceMappingURL=pagarConta.js.map
+const nomeRem = process.argv[2];
+const cpfRem = process.argv[3];
+const nomeDest = process.argv[4];
+const cpfDest = process.argv[5];
+const valor = Number(process.argv[6]);
+transferencia(nomeRem, cpfRem, nomeDest, cpfDest, valor);
+//# sourceMappingURL=transferencia.js.map

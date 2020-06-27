@@ -6,7 +6,7 @@
     "saldoAtual": 70,
     "extrato": [
       {
-        "valor": 20,
+        "valor": -20,
         "data": "20/06/2020",
         "descricao": "Uma conta qualquer"
       },
@@ -24,6 +24,11 @@
         "valor": 10,
         "data": "28/06/2020",
         "descricao": "Depósito de dinheiro"
+      },
+      {
+        "valor": -20,
+        "data": "27/06/2020",
+        "descricao": "Transferência de dinheiro para Natasha, CPF: 333.333.333-33"
       }
     ]
   },
@@ -50,6 +55,11 @@
         "valor": 5,
         "data": "27/06/2020",
         "descricao": "Depósito de dinheiro"
+      },
+      {
+        "valor": 20,
+        "data": "27/06/2020",
+        "descricao": "Recebimento de dinheiro de Gislaine, CPF: 111.111.111-11"
       }
     ]
   }

@@ -55,7 +55,7 @@ const pagarConta = (valor: number, descricao: string, cpf: string, dataPgto?: st
     const dataString = dataPagamento.format("DD/MM/YYYY")
     
     procuraUsuarios.extrato.push({
-        valor,
+        valor: valor*-1,
         data: dataString,
         descricao
     });
