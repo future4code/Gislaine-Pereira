@@ -46,6 +46,12 @@ const pagarConta = (valor: number, descricao: string, cpf: string, dataPgto?: st
         return
     }
 
+    if (procuraUsuarios.saldoAtual < valor){
+        console.log("Saldo insuficiente, operação não efetuada")
+        return
+    }
+    
+
     const dataString = dataPagamento.format("DD/MM/YYYY")
     
     procuraUsuarios.extrato.push({
