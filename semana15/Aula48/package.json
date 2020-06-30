@@ -1,9 +1,10 @@
 {
-  "name": "projeto-semana14",
+  "name": "semana14-48",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vou matar este backend",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node build/index.js",
     "pagarConta": "tsc && node build/pagarConta.js",
     "transferencia": "tsc && node build/transferencia.js",
     "atualizarSaldo": "tsc && node build/atualizarSaldo.js",

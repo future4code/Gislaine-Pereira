@@ -19,7 +19,7 @@ type ContaUser = {
     extrato: Extrato[]
 }
 
-const criarConta = (nome: string, cpf: string, nascimento: string): void => {
+export const criarConta = (nome: string, cpf: string, nascimento: string): void => {
     // Comparar ad datas, ver se á maior de idade
 
     const dataNascimentoUser = moment(nascimento, "DD/MM/YYYY")
@@ -46,7 +46,7 @@ const criarConta = (nome: string, cpf: string, nascimento: string): void => {
 
     // Adicionar usuario no Array
     usuarios.push({
-        nome,
+        nome: nome,
         cpf,
         nascimento,
         saldoAtual: 0,
@@ -55,7 +55,7 @@ const criarConta = (nome: string, cpf: string, nascimento: string): void => {
 
     console.log(usuarios);
 
-    // Reescreva o arquivo todo
+    // Reescreve o arquivo todo
 
     const usuariosStringFied = JSON.stringify(usuarios, null, 2)
     fs.writeFileSync(caminhoUsario, usuariosStringFied)
