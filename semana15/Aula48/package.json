@@ -1,0 +1,24 @@
+{
+  "name": "semana14-48",
+  "version": "1.0.0",
+  "description": "Vou matar este backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node build/index.js",
+    "pagarConta": "tsc && node build/pagarConta.js",
+    "transferencia": "tsc && node build/transferencia.js",
+    "atualizarSaldo": "tsc && node build/atualizarSaldo.js",
+    "criarConta": "tsc && node build/criarConta.js",
+    "verificarSaldo": "tsc && node build/verificarSaldo.js",
+    "adicionarSaldo": "tsc && node build/adicionarSaldo.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gislaine",
+  "license": "ISC",
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.0.14",
+    "moments": "0.0.2",
+    "typescript": "^3.9.5"
+  }
+}
