@@ -91,7 +91,7 @@ WHERE gender = "female"
 SELECT SUM(salary) FROM Actor
 ```
 
-### Exercício 4
+### Exercício 5
 **a)**
 Dentro da Tabela Actor ele agrupor por Gênero e contou quantas pessaos tinham em cada um. 
 
@@ -101,3 +101,112 @@ Dentro da Tabela Actor ele agrupor por Gênero e contou quantas pessaos tinham e
 SELECT id, name FROM Actor
 ORDER BY name DESC;
 ```
+
+**c)** 
+```
+SELECT * FROM Actor
+ORDER BY salary ASC;
+```
+
+**d)**
+```
+SELECT * FROM Actor
+ORDER BY salary DESC
+LIMIT 3;
+```
+ 
+ **e)**
+ ```
+ SELECT AVG(salary), gender FROM Actor
+GROUP BY gender
+```
+
+### Exercício 6
+**a)**
+```
+ALTER TABLE Movie 
+ADD playing_limit_date DATE;
+```
+**b)**
+```
+ALTER TABLE Movie 
+CHANGE rating rating FLOAT;
+```
+**c)**
+```
+UPDATE Movie
+SET playing_limit_date = "2020-11-02"
+WHERE id = "004"
+
+UPDATE Movie
+SET playing_limit_date = "2020-05-15"
+WHERE id = "002"
+```
+**d)**
+```
+DELETE FROM Movie 
+WHERE id = "001"
+
+UPDATE Movie
+SET synopsis = "Teste de Sinopse"
+WHERE id = "001";
+```
+Não afetou nenhuma linha e respondeu "*0 linha (s) afetada (s) Linhas correspondidas: 0 Alteradas: 0 Avisos: 0*". Não afetou porque o id 001 não existe mais. 
+
+
+### Exercício 7
+**a)**
+```
+SELECT COUNT(*) FROM Movie 
+WHERE rating > 7.5 AND playing_limit_date > current_date();
+```
+**b)**
+```
+SELECT AVG(rating) FROM Movie;
+```
+**c)**
+```
+SELECT COUNT(*) FROM Movie 
+WHERE playing_limit_date > current_date();
+```
+**d)**
+```
+SELECT COUNT(*) FROM Movie 
+WHERE release_Date > current_date();
+```
+**e)**
+```
+SELECT MAX(rating) FROM Movie 
+```
+
+**f)**
+```
+SELECT MIN(rating) FROM Movie 
+```
+
+### Exercício 8
+**a)**
+```
+SELECT * FROM Movie 
+ORDER BY title asc;
+```
+**b)**
+```
+SELECT * FROM Movie 
+ORDER BY title LIMIT 5;
+```
+
+**c)** 
+```
+SELECT * FROM Movie 
+WHERE release_date < CURDATE()  AND playing_limit_date > current_date()
+ORDER BY release_date DESC 
+LIMIT 3;
+```
+**d)**
+```
+SELECT * FROM Movie 
+ORDER BY rating DESC 
+LIMIT 3;
+```
+
