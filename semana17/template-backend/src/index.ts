@@ -31,6 +31,7 @@ app.post("/signup", async (req: Request, res: Response) => {
     const hashManager = new HashManager()
     const cipherText = await hashManager.hash(userData.password)
 
+
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();
 
@@ -66,6 +67,12 @@ app.post("/login", async (req: Request, res: Response) => {
 
     const userDatabase = new UserDatabase();
     const user = await userDatabase.getUserByEmail(userData.email);
+
+    const hashManager = new HashManager()
+    const passwordIsCorrect = await hashManager.compare(
+      user.Data.password, user.password
+    )
+
 
     if (user.password !== userData.password) {
       throw new Error("Invalid password");

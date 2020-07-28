@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
-import { IdGenerator } from "./services/IdGenerator";
-import { UserDatabase } from "./data/UserDatabase";
-import { Authenticator } from "./services/Authenticator";
+import { IdGenerator } from "./IdGenerator";
+import { UserDatabase } from "../data/UserDatabase";
+import { Authenticator } from "./Authenticator";
 
 dotenv.config();
 
