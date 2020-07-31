@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import HashManager from '../services/HashManager';
 import { UserBusiness } from '../business/UserBusiness';
 import { Authenticator } from '../services/Authenticator';
-import { UserInputDTO } from '../model/User';
+import { UserInputDTO, UserSignupDTO } from '../model/User';
 
 export class UserController{
     public async signup(req: Request, res: Response){
@@ -29,7 +29,17 @@ export class UserController{
             const hashPassword = await hashManager.hash(userData.password);
 
             const userBusiness = new UserBusiness;
-            const userId = userBusiness.signup(userData.name, userData.email, userData.password, userData.role)
+            const userId = await userBusiness.createId(userData.name, userData.email, userData.password, userData.role)
+
+            const user: UserSignupDTO = {
+                id: userId,
+                name: userData.name,
+                email: userData.email,
+                password: hashPassword,
+                role: userData.role
+            };
+
+            await userBusiness.signup(user);
 
             const authenticator = new Authenticator();
             const acessToken = authenticator.generateToken({id: userId, role: userData.role})

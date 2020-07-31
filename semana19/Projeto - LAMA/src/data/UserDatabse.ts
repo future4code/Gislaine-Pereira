@@ -1,11 +1,11 @@
 import { BaseDatabase } from './BaseDatabase';
-import { UserInputDTO } from '../model/User';
+import { UserInputDTO, UserSignupDTO } from '../model/User';
 
 export class UserDatabase extends BaseDatabase{
 
     private static TABLE_NAME = "USERS_LAMA"
     
-    public async signup(user: UserInputDTO){
+    public async signup(user: UserSignupDTO){
         try {
             await super.getConnection()
             .insert({
