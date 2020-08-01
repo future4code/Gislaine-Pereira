@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import HashManager from '../services/HashManager';
 import { UserBusiness } from '../business/UserBusiness';
 import { Authenticator } from '../services/Authenticator';
-import { UserInputDTO, UserSignupDTO } from '../model/User';
+import { UserInputDTO, UserSignupDTO, UserLoginDTO } from '../model/User';
 
 export class UserController{
     public async signup(req: Request, res: Response){
@@ -18,7 +18,7 @@ export class UserController{
             }
             
             
-            const userData: UserInputDTO ={
+            const input: UserInputDTO ={
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
@@ -26,28 +26,56 @@ export class UserController{
             }
 
             const hashManager = new HashManager();
-            const hashPassword = await hashManager.hash(userData.password);
+            const hashPassword = await hashManager.hash(input.password);
 
-            const userBusiness = new UserBusiness;
-            const userId = await userBusiness.createId(userData.name, userData.email, userData.password, userData.role)
+            const userBusiness = new UserBusiness();
+            const userId = await userBusiness.createId(input.name, input.email, input.password, input.role)
 
             const user: UserSignupDTO = {
                 id: userId,
-                name: userData.name,
-                email: userData.email,
+                name: input.name,
+                email: input.email,
                 password: hashPassword,
-                role: userData.role
+                role: input.role
             };
 
             await userBusiness.signup(user);
 
             const authenticator = new Authenticator();
-            const acessToken = authenticator.generateToken({id: userId, role: userData.role})
+            const acessToken = authenticator.generateToken({id: userId, role: input.role})
 
             res.status(200).send({token: acessToken})
 
         } catch (error) {
             res.status(400).send({error: error.message})
+        }
+    }
+
+    public async login(req: Request, res: Response){
+
+        try {
+            if (!req.body.email || !req.body.password) {
+                throw new Error("Invalid input");
+            }
+            if (req.body.email.indexOf("@") === -1) {
+                throw new Error("Invad email address");
+            }
+
+            const input: UserLoginDTO = {
+                email: req.body.email,
+                password: req.body.password,
+            }
+
+            const userBusiness = new UserBusiness();
+            const user = await userBusiness.getUserByEmail(input);
+
+            const authenticator = new Authenticator();
+            const acessToken = authenticator.generateToken({ id: user.getId(), role: user.getRole() })
+
+            res.status(200).send({ token: acessToken })
+
+        } catch (error) {
+            res.status(400).send({ error: error.message })
         }
     }
 }
