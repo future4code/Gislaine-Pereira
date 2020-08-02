@@ -42,7 +42,7 @@ export class BandaDatabase extends BaseDatabase{
                 .from(BandaDatabase.TABLE_NAME)
                 .where({ name });
             
-            return result[0]
+            return Banda.toBandaModel(result[0]);
 
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)

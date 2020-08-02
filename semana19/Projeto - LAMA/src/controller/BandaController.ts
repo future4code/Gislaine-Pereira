@@ -53,22 +53,21 @@ export class BandaController{
         }
     }
 
-    public async getInfoBanda(req: Request, res: Response){
+    public async getInfoBanda(req: Request, res: Response):Promise<any>{
         try {
             if (!req.body.name && !req.body.id) {
                 throw new Error("Insira um nome ou um id");
-            }
-
+            }  
+            
             const bandaBusiness = new BandaBusiness;
 
             const banda = await bandaBusiness.getBandaByName(req.body.name)
-//            res.status(200).send({ Banda: banda})
-            
-//            if (!req.body.id) {
-//                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
-//            } else {
-//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
-//            }
+          
+            if (!req.body.id) {
+                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
+            } else if(!req.body.name){
+                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
+            }
             
         } catch (error) {
             res.status(420).send({ error: error.message })

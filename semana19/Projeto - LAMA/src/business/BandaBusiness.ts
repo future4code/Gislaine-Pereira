@@ -16,11 +16,13 @@ export class BandaBusiness{
     }
 
     public async getBandaByName(name: string){
-        await this.bandaDb.getBandaByName(name)
+        const banda = await this.bandaDb.getBandaByName(name)
+        return banda
     }
 
     public async getBandaById(id: string) {
-        await this.bandaDb.getBandaById(id)
+        const banda = await this.bandaDb.getBandaById(id)
+        return banda
     }
 }    
 
