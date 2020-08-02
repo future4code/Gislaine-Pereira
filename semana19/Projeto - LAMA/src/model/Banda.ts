@@ -18,6 +18,9 @@ export class Banda{
         return this.id;
     }
 
+    getAll(){
+        return Banda
+    }
     getName(){
         return this.name
 
@@ -63,5 +66,10 @@ export interface BandaCreateDTO {
     name: string,
     music_genre: MusicGenre,
     responsible: string,
+}
+
+export interface GetBandaDTO {
+    name: string,
+    id: string,
 }
 

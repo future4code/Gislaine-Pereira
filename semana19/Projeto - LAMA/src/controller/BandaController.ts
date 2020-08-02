@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Authenticator } from '../services/Authenticator';
-import { BandaInputDTO, BandaCreateDTO } from '../model/Banda';
+import { BandaInputDTO, BandaCreateDTO, GetBandaDTO } from '../model/Banda';
 import { BandaBusiness } from './../business/BandaBusiness';
 import { BandaDatabase } from './../data/BandaDatabse';
 
@@ -51,6 +51,27 @@ export class BandaController{
         } catch (error) {
             res.status(400).send({ error: error.message })
         }
+    }
 
+    public async getInfoBanda(req: Request, res: Response){
+        try {
+            if (!req.body.name && !req.body.id) {
+                throw new Error("Insira um nome ou um id");
+            }
+
+            const bandaBusiness = new BandaBusiness;
+
+            const banda = await bandaBusiness.getBandaByName(req.body.name)
+//            res.status(200).send({ Banda: banda})
+            
+//            if (!req.body.id) {
+//                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
+//            } else {
+//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
+//            }
+            
+        } catch (error) {
+            res.status(420).send({ error: error.message })
+        }
     }
 }

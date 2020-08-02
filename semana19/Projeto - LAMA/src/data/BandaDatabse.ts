@@ -1,6 +1,5 @@
 import { BaseDatabase } from './BaseDatabase';
-import { BandaCreateDTO } from './../model/Banda';
-
+import { BandaCreateDTO, Banda} from './../model/Banda';
 
 export class BandaDatabase extends BaseDatabase{
     private static COLUMN_NAME_BANDA: string = "name"
@@ -33,6 +32,39 @@ export class BandaDatabase extends BaseDatabase{
             );
         return result[0][0]
 
+        await BaseDatabase.destroyConnection();
+    }
+
+    public async getBandaByName(name: string): Promise<any> {
+        try {
+            const result = await this.getConnection()
+                .select("*")
+                .from(BandaDatabase.TABLE_NAME)
+                .where({ name });
+            
+            return result[0]
+
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+
+        
+        await BaseDatabase.destroyConnection();
+    }
+    
+    public async getBandaById(id: string): Promise<Banda> {
+        try {
+            const result = await this.getConnection()
+                .select("*")
+                .from(BandaDatabase.TABLE_NAME)
+                .where({ id });
+
+            return Banda.toBandaModel(result[0]);
+
+
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
         await BaseDatabase.destroyConnection();
     }
 

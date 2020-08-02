@@ -15,6 +15,13 @@ export class BandaBusiness{
         await this.bandaDb.create(banda)
     }
 
+    public async getBandaByName(name: string){
+        await this.bandaDb.getBandaByName(name)
+    }
+
+    public async getBandaById(id: string) {
+        await this.bandaDb.getBandaById(id)
+    }
 }    
 
 
