@@ -1,4 +1,3 @@
-import { UserController } from '../controller/UserController';
 import { UserRole } from '../services/Authenticator';
 import { IdGenerator } from '../services/IdGenerator';
 import { UserDatabase } from '../data/UserDatabse';

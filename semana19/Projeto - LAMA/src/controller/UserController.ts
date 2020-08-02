@@ -3,6 +3,7 @@ import HashManager from '../services/HashManager';
 import { UserBusiness } from '../business/UserBusiness';
 import { Authenticator } from '../services/Authenticator';
 import { UserInputDTO, UserSignupDTO, UserLoginDTO } from '../model/User';
+import { UserDatabase } from './../data/UserDatabse';
 
 export class UserController{
     public async signup(req: Request, res: Response){
@@ -17,6 +18,12 @@ export class UserController{
                 throw new Error("Invalid password lenght");
             }
             
+            const newUser = new UserDatabase();
+            const emailUser = await newUser.userAlreadyExists(req.body.email);
+
+            if (emailUser.quantity !== 0) {
+                throw new Error("Você já está cadastrado! Por favor faça login.");
+            }
             
             const input: UserInputDTO ={
                 name: req.body.name,

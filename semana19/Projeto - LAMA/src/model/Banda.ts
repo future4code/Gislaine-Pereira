@@ -1,8 +1,16 @@
+export enum MusicGenre {
+    METAL = "Metal",
+    SERTANEJO = "Sertanejo",
+    CLASSICA = "Classica",
+    MPB = "MPB",
+    ROCK_NACIONAL = "Rock Nacional"
+}
+
 export class Banda{
     constructor(
         private id: string,
         private name: string,
-        private music_genre: string,
+        private music_genre: MusicGenre,
         private responsible: string,
     ){}
 
@@ -31,7 +39,7 @@ export class Banda{
         this.name = name
     }
 
-    setMusic_genre(music_genre: string) {
+    setMusic_genre(music_genre: MusicGenre) {
         this.music_genre = music_genre;
     }
 
@@ -46,13 +54,14 @@ export class Banda{
 
 export interface BandaInputDTO{
     name: string, 
-    music_genre: string, 
+    music_genre: MusicGenre, 
     responsible: string, 
 }
 
 export interface BandaCreateDTO {
     id: string,
     name: string,
-    music_genre: string,
+    music_genre: MusicGenre,
     responsible: string,
 }
+

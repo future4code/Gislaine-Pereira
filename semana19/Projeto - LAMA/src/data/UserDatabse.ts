@@ -1,8 +1,8 @@
 import { BaseDatabase } from './BaseDatabase';
-import { UserInputDTO, UserSignupDTO, User } from '../model/User';
+import { UserSignupDTO, User } from '../model/User';
 
 export class UserDatabase extends BaseDatabase{
-
+    private static COLUMN_NAME_BANDA: string = "email"
     private static TABLE_NAME = "USERS_LAMA"
     
     public async signup(user: UserSignupDTO){
@@ -19,6 +19,7 @@ export class UserDatabase extends BaseDatabase{
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
+        await BaseDatabase.destroyConnection();
     }
 
     public async getUserByEmail(email: string): Promise<User>{
@@ -33,5 +34,17 @@ export class UserDatabase extends BaseDatabase{
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
+        await BaseDatabase.destroyConnection();
+    }
+
+    public async userAlreadyExists(email: string): Promise<any> {
+        const result = await this.getConnection()
+            .raw(`
+                SELECT COUNT(*) as quantity FROM ${UserDatabase.TABLE_NAME}
+                WHERE ${UserDatabase.COLUMN_NAME_BANDA}="${email}"`
+            );
+        return result[0][0]
+
+        await BaseDatabase.destroyConnection();
     }
 }
