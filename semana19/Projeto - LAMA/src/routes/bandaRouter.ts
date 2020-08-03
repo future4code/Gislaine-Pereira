@@ -3,5 +3,5 @@ import { BandaController } from './../controller/BandaController';
 
 export const bandaRouter = express.Router();
 
-bandaRouter.post("/registro-banda", new BandaController().register);
-bandaRouter.get("/info-banda", new BandaController().getInfoBanda);
+bandaRouter.post("/registro", new BandaController().register);
+bandaRouter.get("/info", new BandaController().getInfoBanda);

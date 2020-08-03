@@ -3,6 +3,7 @@ import { Authenticator } from '../services/Authenticator';
 import { BandaInputDTO, BandaCreateDTO, GetBandaDTO } from '../model/Banda';
 import { BandaBusiness } from './../business/BandaBusiness';
 import { BandaDatabase } from './../data/BandaDatabse';
+import { now } from "moment";
 
 
 export class BandaController{
@@ -22,7 +23,7 @@ export class BandaController{
             }
 
             const newBanda = new BandaDatabase();
-            const nameBanda = await newBanda.bandAlreadyExists(req.body.name);
+            const nameBanda = await newBanda.bandaAlreadyExists(req.body.name);
 
             if(nameBanda.quantity !== 0){
                 throw new Error("Esta banda já está cadastrada!");
@@ -55,22 +56,37 @@ export class BandaController{
 
     public async getInfoBanda(req: Request, res: Response):Promise<any>{
         try {
-            if (!req.body.name && !req.body.id) {
-                throw new Error("Insira um nome ou um id");
+            if (!req.body.termo_busca) {
+                throw new Error("Invalid input");
             }  
+
+            const token = req.headers.token as string;
+
+            const authenticator = new Authenticator();
+            const authenticationData = authenticator.getData(token);
+
+            const dataAgora = Math.floor(Date.now() / 1000)
+
+            if (dataAgora > authenticationData.exp) {
+                throw new Error("Faça Login novamente!");
+            }
             
             const bandaBusiness = new BandaBusiness;
 
-            const banda = await bandaBusiness.getBandaByName(req.body.name)
+            const banda = await bandaBusiness.getBanda(req.body.termo_busca)
+            res.status(200).send(banda)
           
-            if (!req.body.id) {
-                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
-            } else if(!req.body.name){
-                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
-            }
+//            if (!req.body.id) {
+//                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
+//            } else if (!req.body.name){
+//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
+//            }else{
+//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id) })
+//            }
             
         } catch (error) {
             res.status(420).send({ error: error.message })
         }
     }
 }
+

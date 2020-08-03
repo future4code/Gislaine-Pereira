@@ -15,13 +15,8 @@ export class BandaBusiness{
         await this.bandaDb.create(banda)
     }
 
-    public async getBandaByName(name: string){
-        const banda = await this.bandaDb.getBandaByName(name)
-        return banda
-    }
-
-    public async getBandaById(id: string) {
-        const banda = await this.bandaDb.getBandaById(id)
+    public async getBanda(termo: string){
+        const banda = await this.bandaDb.getBanda(termo)
         return banda
     }
 }    
