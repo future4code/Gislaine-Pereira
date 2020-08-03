@@ -5,7 +5,6 @@ import { BandaBusiness } from './../business/BandaBusiness';
 import { BandaDatabase } from './../data/BandaDatabse';
 import { now } from "moment";
 
-
 export class BandaController{
     public async register(req: Request, res: Response){
         try {
@@ -75,14 +74,6 @@ export class BandaController{
 
             const banda = await bandaBusiness.getBanda(req.body.termo_busca)
             res.status(200).send(banda)
-          
-//            if (!req.body.id) {
-//                res.status(200).send({ Banda: await bandaBusiness.getBandaByName(req.body.name)})
-//            } else if (!req.body.name){
-//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id)})
-//            }else{
-//                res.status(200).send({ Banda: await bandaBusiness.getBandaById(req.body.id) })
-//            }
             
         } catch (error) {
             res.status(420).send({ error: error.message })

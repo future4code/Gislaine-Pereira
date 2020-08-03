@@ -9,7 +9,6 @@ export class ShowController{
     public async create(req: Request, res: Response) {
 
         try {
-
             const input: ShowInputDTO = {
                 week_day: req.body.week_day,
                 start_time: req.body.start_time,
@@ -65,7 +64,6 @@ export class ShowController{
                 throw new Error("Não pode criar show neste horário. Por favor consulte nossa agenda e tente novamente!");
             }
          
-            
             const showBusiness = new ShowBusiness();
             const showId = await showBusiness.createId(input.week_day, input.start_time, input.end_time, input.band_id)
 
@@ -82,6 +80,35 @@ export class ShowController{
 
         } catch (error) {
             res.status(400).send({ error: error.message })
+        }
+    }
+
+    public async getInfoDay(req: Request, res: Response): Promise<any> {
+        try {
+            if (!req.body.week_day) {
+                throw new Error("Invalid input");
+            }
+
+            const token = req.headers.token as string;
+
+            const authenticator = new Authenticator();
+            const authenticationData = authenticator.getData(token);
+
+            const dataAgora = Math.floor(Date.now() / 1000)
+
+            if (dataAgora > authenticationData.exp) {
+                throw new Error("Faça Login novamente!");
+            }
+
+            const showBusiness = new ShowBusiness;
+
+            const bandsList = await showBusiness.getDayShows(req.body.week_day)
+            console.log(bandsList)
+
+//            res.status(200).send(shows)
+
+        } catch (error) {
+            res.status(420).send({ error: error.message })
         }
     }
 }

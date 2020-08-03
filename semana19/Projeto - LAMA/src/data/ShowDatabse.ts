@@ -1,10 +1,11 @@
 import { BaseDatabase } from './BaseDatabase';
-import { ShowCreateDTO, Show, dayWeek } from '../model/Show';
+import { ShowCreateDTO, dayWeek } from '../model/Show';
 
 export class ShowDatabase extends BaseDatabase{
     private static COLUMN_START: string = "start_time"
     private static COLUMN_END: string = "end_time"
     private static COLUMN_DAY: string = "week_day"
+    private static COLUMN_BANDA_ID: string = "band_id"
     private static TABLE_NAME = "SHOWS_LAMA"
     
     public async create(show: ShowCreateDTO){
@@ -41,15 +42,14 @@ export class ShowDatabase extends BaseDatabase{
         await BaseDatabase.destroyConnection();
     }
     
-    public async getShow(termo: string): Promise<Show> {
+    public async getDayShows(week_day: dayWeek): Promise<any> {
         try {
             const result = await this.getConnection()
-                .select("*")
+                .select(ShowDatabase.COLUMN_BANDA_ID)
                 .from(ShowDatabase.TABLE_NAME)
-                .where({ id: termo })
-                .orWhere({ name: termo});
+                .where({ week_day })
 
-            return Show.toShowModel(result[0]);
+            return result;
 
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)

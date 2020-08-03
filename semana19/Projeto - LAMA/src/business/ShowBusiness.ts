@@ -15,8 +15,8 @@ export class ShowBusiness{
         await this.showDb.create(show)
     }
 
-    public async getShow(termo: string){
-        const show = await this.showDb.getShow(termo)
+    public async getDayShows(week_day: dayWeek){
+        const show = await this.showDb.getDayShows(week_day)
         return show
     }
 }    
