@@ -13,14 +13,6 @@ export class User{
         return this.id;
     }
 
-    getName(){
-        return this.name
-
-    }
-
-    getEmail() {
-        return this.email;
-    }
 
     getPassword() {
         return this.password;
@@ -28,26 +20,6 @@ export class User{
 
     getRole() {
         return this.role;
-    }
-
-    setId(id: string) {
-        this.id = id;
-    }
-
-    setName(name: string) {
-        this.name = name
-    }
-
-    setEmail(email: string) {
-        this.email = email;
-    }
-
-    setPassword(password: string) {
-        this.password = password;
-    }
-
-    setRole(role: UserRole) {
-        this.role = role;
     }
 
     public static toUserModel(object: any): User{

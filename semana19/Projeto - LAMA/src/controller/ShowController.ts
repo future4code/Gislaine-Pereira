@@ -58,8 +58,6 @@ export class ShowController{
             const newShow = new ShowDatabase
             const schedule = await newShow.scheduleAlreadyExists(input.week_day, input.start_time, input.end_time)
 
-            console.log(schedule)
-
             if (schedule.quantity !== 0) {
                 throw new Error("Não pode criar show neste horário. Por favor consulte nossa agenda e tente novamente!");
             }

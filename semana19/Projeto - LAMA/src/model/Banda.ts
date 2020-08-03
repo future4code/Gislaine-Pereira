@@ -14,42 +14,6 @@ export class Banda{
         private responsible: string,
     ){}
 
-    getId(){
-        return this.id;
-    }
-
-    getAll(){
-        return Banda
-    }
-    getName(){
-        return this.name
-
-    }
-
-    getMusic_genre() {
-        return this.music_genre;
-    }
-
-    getResponsible() {
-        return this.responsible;
-    }
-
-    setId(id: string) {
-        this.id = id;
-    }
-
-    setName(name: string) {
-        this.name = name
-    }
-
-    setMusic_genre(music_genre: MusicGenre) {
-        this.music_genre = music_genre;
-    }
-
-    setResponsible(responsible: string) {
-        this.responsible = responsible;
-    }
-
     public static toBandaModel(object: any): Banda{
         return new Banda(object.id, object.name, object.music_genre, object.responsible);
     }
