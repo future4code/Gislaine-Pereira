@@ -1,0 +1,35 @@
+A)
+Eba! Consegui entender tudo!!! (Eu acho)
+
+B)
+Depende do que vioer vazio. Vem "Missing" + input vazio
+
+C) 
+statusCode: 400,
+"Missing input"
+
+D)
+statusCode: 400,
+"Missing email"
+
+E)
+statusCode: 400,
+"Invalid password"
+
+F)
+statusCode: 200,
+"User is correct"
+
+G) no if que verifica o email (Iuser.email), colocar no statusCode o número 420
+
+H)
+{
+  "user": {
+		"info": {
+			"name": "Astrodev",
+			"email": "astrodev@f4.com.br",
+			"password": "123456"
+		}
+  }
+}
+
